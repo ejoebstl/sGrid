@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;    
+    /*The MemberOverviewView is responsible for rendering the partial ListView and
+     for providing controls to change the type of the shown members or to enter a search term.*/
+    
+    int accountNumber = new sGridServer.Code.Security.MemberManager().Accounts.Count();
+    int pagesNumber = accountNumber / 6 + (accountNumber % 6 == 0 ? 0 : 1);
+}
+@using Resource = sGridServer.Resources.MemberConfiguration.MemberOverview
+
+<script type="text/javascript">
+    //set the selected page to first page
+    var selected = 1;
+    /*Submit a form with value of the search box and page as parameter,
+    reload the list view by success.*/
+    bindSubmit({
+        buttonId: "#submit_button",
+        actionUrl: '@Url.Action("List")',
+        data: function () {
+            //set selected option to the user type selected in the drop down list.
+            var selectedOption = $("#type_option").val();
+            if (selectedOption == 1) {
+                selectedOption = "Users";
+            } else if (selectedOption == 2) {
+                selectedOption = "Administrators";
+            } else if (selectedOption == 3) {
+                selectedOption = "Sponsors";
+            } else if (selectedOption == 4) {
+                selectedOption = "CoinPartners";
+            } else if (selectedOption == 0) {
+                selectedOption = "All";
+            }
+            return {    searchName: $("#search_box").val(),
+                        userType: selectedOption,
+                        page: selected
+            };
+        },
+        success: function (data) {
+            $("#list_view").html(data);
+        }
+    });
+    $().ready(function () {
+        //submit a form if a user presses "Enter"
+        $('#search_box').keypress(function (e) {
+            if (e.keyCode == 13) {
+                $("#submit_button").click();
+            }
+        });
+        //submit a form if user changes searching option.
+        $('#type_option').change(function () {
+            $("#submit_button").click();
+        });
+        //set jPaginator settings for showing the account list with paging.
+        $("#paginator").jPaginator({
+            nbPages: '@pagesNumber',
+            overBtnLeft: '#switch_o_left',
+            overBtnRight: '#switch_o_right',
+            maxBtnLeft: '#switch_m_left',
+            maxBtnRight: '#switch_m_right',
+            onPageClicked: function (a, num) {
+                selected = num;
+                $("#submit_button").click();
+            }
+        });
+    });
+</script>
+<div style = "width : 700px; height: 380px;">    
+    <div style = "height: 380px; float: left;" id = "list_view">
+        @Html.Action("List")
+    </div>
+    <div id = "controls" style = "width : 400px; margin-top: 45px; height: 380px; margin-left: 300px; font-size: 12px;">
+        <b>@Resource.Search</b>
+        <br />
+        <input type="text" id = "search_box" class="sg_styled_input"/>
+        <br />
+        <select id="type_option" class="sg_styled_input">
+            <option value = "0" selected = "selected">@Resource.All</option>
+            <option value = "1">@Resource.Users</option>
+            <option value = "2">@Resource.Administrators</option>
+            <option value = "3">@Resource.Sponsors</option>
+            <option value = "4">@Resource.CoinPartners</option>
+        </select>
+        <input type = "submit" style = "visibility: hidden" id = "submit_button"/>        
+        <div>
+            <input type = "button" class="sg_styled_button" value = "Create new!" onclick="location.href = '@Url.Action("Edit", "MemberConfiguration")'">
+        </div> 
+    </div>
+</div>
+<div id="paginator" style = "width: 700px; height: 40px;">
+    <!-- left control buttons-->
+    <span class="ui-icon ui-icon-arrowstop-1-w" id = "switch_m_left"></span>      
+    <span id="switch_o_left" class="ui-icon ui-icon-carat-1-w"></span>
+
+    <div class='paginator_p_wrap'>
+        <div class='paginator_p_bloc'>
+          <a class='paginator_p'></a> 
+        </div>
+    </div>
+
+    <!-- right control buttons-->
+    <span id="switch_o_right" class="ui-icon ui-icon-carat-1-e"></span>
+    <span id="switch_m_right" class="ui-icon ui-icon-arrowstop-1-e"></span>
+
+
+    <!-- slider -->
+    <div class='paginator_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all' style = "">
+        <a class='ui-slider-handle ui-state-default ui-corner-all' href='#'></a>
+    </div>
+</div>

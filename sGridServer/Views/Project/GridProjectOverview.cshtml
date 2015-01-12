@@ -1,0 +1,98 @@
+﻿@using Resource = sGridServer.Resources.Project.GridProjectOverview
+@using sGridServer.Code.GridProviders;
+@{
+    ViewBag.Title = Resource.Projects;
+
+    /* The GridProjectOverviewView is responsible for rendering the partial ListProjectsView 
+     * and for providing controls to change the search criteria of the shown projects. 
+     * If the search term changes, the ListProjectsView is reloaded. */
+}
+@{    
+    int projectNumber = GridProviderManager.RegisteredProviders.SelectMany(p => p.AvailableProjects).Count();
+    int pagesNumber = projectNumber / 6 + (projectNumber % 6 == 0 ? 0 : 1);
+}
+<script type="text/javascript">
+
+    //function to run by clicking the button with the id 'search_button'
+    bindSubmit({
+        buttonId: "#search_button",
+        //run a List action with the given data, such are searchName and the id of the user
+        actionUrl: '@Url.Action("ListProjects")',
+        data: function() {
+                return { searchName: $("#search_name_box").val() };
+        },
+        //load a ListView with the given data
+        success: function (data) {
+                    $("#list_view").html(data);
+                 }
+    });
+
+    //action by the opening the PartialView
+    $().ready(function() {
+        //action by pressing enter -> bindSubmit
+        $("#search_name_box").keypress(function(key) {
+            if(key.keyCode == 13) {
+                $("#search_button").click();
+            }
+        });
+        //set jPaginator settings for showing the profile list with paging.
+        $("#paginator").jPaginator({
+            nbPages: '@pagesNumber',
+            overBtnLeft: '#switch_o_left',
+            overBtnRight: '#switch_o_right',
+            maxBtnLeft: '#switch_m_left',
+            maxBtnRight: '#switch_m_right',
+            onPageClicked: function (a, num) {
+                selected = num;
+                $("#search_button").click();
+            }
+        });
+        //styles for this PartialView  
+        $(".sg_styled_button, .sg_styled_input").uniform();
+    });
+</script>
+
+<div style = "width : 610px; height: 420px; float: left;">    
+    <div style = "height: 400px; width: 400px; margin-left: -20px; float: left; margin-top: 10px;">
+        <b style="color: #066375; font-size: 12px;">@Resource.ProjectNumber</b>
+        <b style="color: #5c6b72">@projectNumber</b>
+        <hr style="display: block; height: 1px;
+        border: 0; border-top: 2px solid #d8e7ee;
+        margin: 0 0; padding: 0;"/>
+        <div id="list_view">
+            @Html.Action("ListProjects")
+        </div>              
+    </div>
+    <div id = "controls" style = "width : 300px; margin-top: 10px; height: 420px; margin-left: 420px; font-size: 12px;">
+        <b style="color: #5c6b72">@Resource.SearchText</b>
+        <br />
+        <input type="text" id = "search_name_box" class="sg_styled_input" style="width: 186px;"/>
+        <br />
+        <input type = "hidden" id = "search_button" class="sg_styled_input" style="color: #5c6b72;" /> 
+    </div>
+</div>     
+<div style = "width: 320px; float:left;">
+    <div style = "float: right; margin-top: 10px;" id = "top_ranked_view">
+        @Html.Action("GetTopProjects", "Statistics")
+    </div>
+</div>
+<div id="paginator" style = "width: 610px; height: 40px; float:left;">
+    <!-- left control buttons-->
+    <span class="ui-icon ui-icon-arrowstop-1-w" id = "switch_m_left"></span>      
+    <span id="switch_o_left" class="ui-icon ui-icon-carat-1-w"></span>
+
+    <div class='paginator_p_wrap'>
+        <div class='paginator_p_bloc'>
+            <a class='paginator_p'></a> 
+        </div>
+    </div>
+
+    <!-- right control buttons-->
+    <span id="switch_o_right" class="ui-icon ui-icon-carat-1-e"></span>
+    <span id="switch_m_right" class="ui-icon ui-icon-arrowstop-1-e"></span>
+
+    <!-- slider -->
+    <div class='paginator_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all' style = "">
+        <a class='ui-slider-handle ui-state-default ui-corner-all' href='#'></a>
+    </div>
+</div>

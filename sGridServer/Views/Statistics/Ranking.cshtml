@@ -1,0 +1,162 @@
+﻿@model User
+@using Resource = sGridServer.Resources.Statistics.Ranking
+           
+@{
+    ViewBag.Title = "Ranking";    
+    //This View is responsible for showing two tabs for global and user rankings.
+    
+    int accountNumber = new sGridServer.Code.Security.MemberManager().Users.Where(u => u.Active && u.ShowInHighScore).Count() ;
+    int pagesNumber = accountNumber / 6 + (accountNumber % 6 == 0 ? 0 : 1);
+}
+@{
+    ViewBag.Title = "Ranking";    
+    //This View is responsible for showing two tabs for global and user rankings.
+    int friendsNumber = 0;
+    int pagesNumberForFriends = 0;
+    if ((Model != null) && Model is User) 
+    {
+        friendsNumber = new sGridServer.Code.Security.MemberManager().GetFriends(Model).Where(u => u.Active && u.ShowInHighScore).Count() + 1;
+        pagesNumberForFriends = friendsNumber / 6 + (friendsNumber % 6 == 0 ? 0 : 1);
+    }
+}
+<script type="text/javascript">
+    //set the selected page to first page
+    var selected = 1;
+    var idToPass = @Html.Raw(Model == null ? -1 : Model.Id);
+    bindSubmit({
+        buttonId: "#submit_friends_button",
+        actionUrl: '@Url.Action("FriendsRanking")',
+        data: function () {            
+            return {
+                page: selected,
+                id: idToPass
+            };
+        },
+        success: function (data) {
+            $("#list_friends_view").html(data);
+        }
+    });
+    bindSubmit({
+        buttonId: "#submit_all_button",
+        actionUrl: '@Url.Action("AllUserRanking")',
+        data: function () {            
+            return {
+                page: selected
+            };
+        },
+        success: function (data) {
+            $("#list_all_view").html(data);
+            $("#list_all_view_only").html(data);
+        }
+    });
+    $().ready(function () {
+            $("#paginator_all").jPaginator({
+                nbPages: '@pagesNumber',
+                overBtnLeft: '#switch_o_left',
+                overBtnRight: '#switch_o_right',
+                maxBtnLeft: '#switch_m_left',
+                maxBtnRight: '#switch_m_right',
+                minSlidesForSlider: 20,
+                onPageClicked: function (a, num) {
+                    selected = num;                    
+                    $("#submit_all_button").click();
+                }
+            });
+            $("#paginator_friends").jPaginator({
+                nbPages: '@pagesNumberForFriends',
+                overBtnLeft: '#switch_o_left_friends',
+                minSlidesForSlider: 20,
+                overBtnRight: '#switch_o_right_friends',
+                maxBtnLeft: '#switch_m_left_friends',
+                maxBtnRight: '#switch_m_right_friends',
+                onPageClicked: function (a, num) {
+                    selected = num;
+                    $("#submit_friends_button").click();
+                }
+            });
+        });  
+</script>
+
+<h2>@Resource.RankingText</h2>
+<input type="hidden" id="submit_friends_button"/>
+<input type="hidden" id="submit_all_button"/>
+@if (Model != null)
+{
+<div id = "controls" style="font-size: 11px; float: left;">
+    <div style = "float: left; width: 465px;">
+            <div id = "list_all_view" style = "float: left; width: 465px; height: 410px;">@Html.Action("AllUserRanking")</div>
+            <div id="paginator_all" style = "width: 465px; height: 40px; float:left;">
+                <!-- left control buttons-->
+                <span class="ui-icon ui-icon-arrowstop-1-w" id = "switch_m_left"></span>      
+                <span id="switch_o_left" class="ui-icon ui-icon-carat-1-w"></span>
+
+                <div class='paginator_p_wrap'>
+                    <div class='paginator_p_bloc'>
+                        <a class='paginator_p'></a> 
+                    </div>
+                </div>
+
+                <!-- right control buttons-->
+                <span id="switch_o_right" class="ui-icon ui-icon-carat-1-e"></span>
+                <span id="switch_m_right" class="ui-icon ui-icon-arrowstop-1-e"></span>
+
+                <!-- slider -->
+                <div class='paginator_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all' style = "">
+                    <a class='ui-slider-handle ui-state-default ui-corner-all' href='#'></a>
+                </div>
+            </div>
+        </div>
+        <div id = "list_friends_view" style = "float: left; width: 400px; height: 410px;">@Html.Action("FriendsRanking")</div>
+        <div id="paginator_friends" style = "width: 400px; height: 40px; float:left;">
+            <!-- left control buttons-->
+            <span class="ui-icon ui-icon-arrowstop-1-w" id = "switch_m_left_friends"></span>      
+            <span id="switch_o_left_friends" class="ui-icon ui-icon-carat-1-w"></span>
+
+            <div class='paginator_p_wrap'>
+                <div class='paginator_p_bloc'>
+                    <a class='paginator_p'></a>
+                </div>
+            </div>
+
+            <!-- right control buttons-->
+            <span id="switch_o_right_friends" class="switch_o_right ui-icon ui-icon-carat-1-e"></span>
+            <span id="switch_m_right_friends" class="switch_m_right ui-icon ui-icon-arrowstop-1-e"></span>
+            
+            <!-- slider -->
+            <div class='paginator_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all' style = "">
+                <a class='ui-slider-handle ui-state-default ui-corner-all' href='#'></a>
+            </div>
+        </div>
+</div>
+}
+else
+{
+    <div style = "float: left; width: 465px;">
+            <div id = "list_all_view" style = "float: left; width: 465px; height: 410px;">@Html.Action("AllUserRanking")</div>
+            <div id="paginator_all" style = "width: 465px; height: 40px; float:left;">
+                <!-- left control buttons-->
+                <span class="switch_m_left ui-icon ui-icon-arrowstop-1-w" id = "switch_m_left"></span>      
+                <span id="switch_o_left" class="switch_o_left ui-icon ui-icon-carat-1-w"></span>
+
+                <div class='paginator_p_wrap'>
+                    <div class='paginator_p_bloc'>
+                        <a class='paginator_p'></a>
+                    </div>
+                </div>
+
+                <!-- right control buttons-->
+                <span id="switch_o_right" class="switch_o_right ui-icon ui-icon-carat-1-e"></span>
+                <span id="switch_m_right" class="switch_m_right ui-icon ui-icon-arrowstop-1-e"></span>
+
+                <!-- slider -->
+                <div class='paginator_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all' style = "">
+                    <a class='ui-slider-handle ui-state-default ui-corner-all' href='#'></a>
+                </div>
+            </div>
+        </div>
+    <div style = "width: 320px; float:right;">
+        <div style = "float: right;" id = "top_rank_view">
+            @Html.Action("GetTopProjects", "Statistics")
+        </div>
+    </div>
+}

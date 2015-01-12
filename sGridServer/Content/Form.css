@@ -1,0 +1,49 @@
+﻿/* Form style
+-----------------------------------------------------------*/
+.editor
+{
+	padding-top: 5px;
+}
+.editor label 
+{
+	float: left;
+	width: 150px;   
+}
+
+.TextBox
+{ 
+    margin: 0 0 0 160px;
+    width: 203px;
+}
+
+.TextBoxWithLabel
+{
+	margin: 0 0 0 10px;
+	width: 203px;
+}
+
+.TextArea
+{
+    width: 200px;
+    max-width: 200px;
+    height: 70px;
+    max-height: 70px;
+    margin: 0 0 0 10px;
+}
+
+.SendButton
+{
+    width: 80px;
+    margin: 0 0 0 287px;
+}
+
+.PictureOfCaptcha
+{ 
+    margin: 0 0 0 190px;
+}
+
+.DropDownAchievementType 
+{
+ 	width: 156px;
+ 	float: right;
+}

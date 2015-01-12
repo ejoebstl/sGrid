@@ -1,0 +1,13 @@
+﻿@using Resource = sGridServer.Resources.IdProviderHelper.RegisterView
+<p>
+    @Resource.Description
+</p>
+@foreach (sGridServer.Code.Security.IdProviderDescription desc in sGridServer.Code.Security.IdProviderManager.GetRegisteredProviders())
+{
+     <div class="sg_list_row">
+            <div class="sg_list_image">
+                <a href="@Url.Action("Register", new { controllerName = desc.ControllerName, returnUrl = Model })"><img src="@Url.Content(desc.IconUrl)" alt="@desc.ProviderName"/></a>
+            </div>
+            <div class="sg_list_text"><a href="@Url.Action("Register", new { controllerName = desc.ControllerName, returnUrl = Model })">@desc.ProviderName</a></div>
+     </div>
+}

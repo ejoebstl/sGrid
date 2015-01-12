@@ -1,0 +1,21 @@
+﻿@{
+    /*The partial AchievementsView is responsible for showing the achievements gained by the current user.*/
+}
+@model IEnumerable<Achievement>
+@using Resource = sGridServer.Resources.UserDashboard.Dashboard
+
+@foreach (sGridServer.Code.DataAccessLayer.Models.Achievement item in Model)
+{
+    <div class = "sg_list_row" style="width: 520px;">
+        <div class = "sg_list_image">
+            @if (item.Icon != "")
+            {
+                <img src = "@Url.Content(item.Icon)" class = "sg_list_image" alt = "@Resource.Icon"/>
+            }
+        </div>
+        <div class = "sg_list_text">
+        @Html.ActionLink(item.Name, "AchievementDetail", "UserAchievement", new { id = item.AchievementId},
+           new { @class = "openDialog", data_dialog_id = "achievement", data_dialog_title = @Resource.AchievementDetail })
+        </div>
+    </div>
+}

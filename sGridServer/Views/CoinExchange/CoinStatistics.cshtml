@@ -1,0 +1,58 @@
+﻿@{
+    /*This View provides controls to change the time span for the statistics
+    and shows the coins earned and spent by the user in the given timespan.*/  
+}
+@using Resource = sGridServer.Resources.CoinExchange.CoinsOverview
+<script type = "text/javascript">
+    //Submit a form with the provided timespan as parameter ("to" and "from" dates), show earned and spent coins by success.
+    bindSubmit({ 
+        buttonId: "#submit",
+        actionUrl: '@Url.Action("GetStatistics")',
+        data: function () {
+            return { to: $("#to").val(), from: $("#from").val() };
+        },
+        success: function (data) {
+            $('#result').html(data);
+        }
+    });
+    $().ready(function () {
+        //localize datepicker
+        $.datepicker.setDefaults( $.datepicker.regional[ "@LanguageManager.CurrentLanguage.Code" ] );
+        //set datepicker settings
+        $("#from").datepicker({
+            dateFormat: "yy-MM-dd",
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#from").datepicker("option", "minDate", selectedDate);
+            },
+            onSelect: function () {
+                $("#from").datepicker("option", "minDate", null);
+            },
+            hideIfNoPrevNext: false
+        });
+        $("#to").datepicker({            
+            dateFormat: "yy-MM-dd",
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#to").datepicker("option", "maxDate", selectedDate);
+            },
+            onSelect: function () {
+                $("#to").datepicker("option", "maxDate", null);
+            },
+            hideIfNoPrevNext: false
+        });
+
+        $(".sg_styled_button, .sg_styled_input").uniform();
+    });
+</script>
+
+<label>@Resource.From</label>
+<input type="text" id="from" name="from" class="sg_styled_input"/>
+<label>@Resource.To</label>
+<input type="text" id="to" name="to" class="sg_styled_input"/>
+<input type = "submit" id = "submit" class="sg_styled_button"/>
+<span id = "result"></span>

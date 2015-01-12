@@ -1,0 +1,14 @@
+﻿@using Resource = sGridServer.Resources.EMailIdProvider.MailSent;
+
+@{
+    ViewBag.Title = Resource.Title;
+    
+    /* The MailSent view is responsible for showing a message indicating that a mail has been sent. */
+    
+    if (Session["ClientLayout"] != null)
+    {
+        Layout = "~/Views/Shared/_Client.cshtml";
+    }
+}
+
+@Resource.Description

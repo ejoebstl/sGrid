@@ -1,0 +1,89 @@
+﻿@model IEnumerable<User>
+
+@{
+    //The partial RequestsView is responsible for rendering a list of pending friendship requests, 
+    //each of them can be accepted or declined. The model of the RequestsView is an enumeration of User objects.
+    //If user has no friendship requests there is a message to be shown.
+    //The RequestsView lists the picture and the nickname of each user who requested a friendship.
+    //Also two buttons are shown, one for accepting, one for rejecting. 
+}
+
+<script type="text/javascript">
+
+    //function to accept a friendship request from the user whom id is given as a parameter 
+    acceptRequest = function(id) {
+        $("#accept_" + id).html(ajaxLoader());
+        $.ajax({
+            //run an action to accept a friendship request
+            url: "@Url.Action("AcceptRequest")",
+            cache: false,
+            async: true,
+            type: "POST",
+            //the id of the user who sent a request
+            data: { user: id },
+            error: function (html) { 
+                $("#accept_" + id).html(ajaxError());
+            }, 
+            success: function (data) {
+                $("#accept_" + id).html(ajaxSuccess());
+            }
+        });
+    }
+
+    //function to decline a friendship request from the user whom id is given as a parameter
+    declineRequest = function(id) {
+        $("#decline_" + id).html(ajaxLoader());
+        $.ajax({
+            //run an action to decline a friendship request
+            url: "@Url.Action("DeclineRequest")",
+            cache: false,
+            async: true,
+            type: "POST",
+            //the id of the user who sent a friendship request
+            data: { user: id }, 
+            error: function (html) {
+                $("#decline_" + id).html(ajaxError());
+             },
+            success: function (data) {
+                $("#decline_" + id).html(ajaxSuccess());
+            }
+        });
+    };
+
+    //action by the opening the PartialView
+    $().ready(function() {
+        
+        //styles for this PartialView  
+        $(".sg_styled_button, .sg_list_row, .sg_list_image, .sg_list_text").uniform();
+    });
+</script>
+
+@if (Model != null)
+{
+    foreach (User u in Model)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_image">
+                <img src="@Url.Content(u.Picture)" class="sg_list_image" alt="" /> 
+            </div>
+            <div class="sg_list_text">
+                <a href="@Url.Action("ProfileDetail", "Profile", new { id = u.Id })">@u.Nickname</a>
+            </div>
+            <div id="accept_@u.Id" class="sg_list_button">
+                <a href="javascript:acceptRequest('@u.Id')" class="sg_list_button">
+                    <img src="@Url.Content("~/Content/images/buttons/accept_friend_request.png")" alt="Accept" class="sg_list_button"/>
+                </a>
+            </div>
+            <div id="decline_@u.Id" class="sg_list_button">
+                <a href="javascript:declineRequest('@u.Id')" class="sg_list_button">
+                    <img src="@Url.Content("~/Content/images/buttons/decline_friend_request.png")" alt="Decline" class="sg_list_button"/>
+                </a>
+            </div>
+        </div> 
+    }
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}
+

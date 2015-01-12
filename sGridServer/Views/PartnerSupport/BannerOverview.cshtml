@@ -1,0 +1,49 @@
+﻿@using Resource = sGridServer.Resources.PartnerSupport.BannerOverview
+
+@{
+    ViewBag.Title = Resource.TitleText;
+
+    /*The BannerOverviewView is responsible for rendering the partial ListBannerView 
+     * and for providing controls to change the list if all or only unapproved banners are shown. 
+     * If this setting is changed, the ListBannerView is reloaded.*/
+}
+
+<script type="text/javascript">
+
+    //function to run by clicking the button with the id 'search_name'
+    bindSubmit({
+        buttonId: "#search_button",
+        //run a ListBanner action with the given data
+        actionUrl: '@Url.Action("ListBanner")',
+        data: function() {
+                return { unapprovedOnly: $("select[name='unapproved']").val() == "unapproved" };
+              },
+        //load a ListBannerView with the given data
+        success: function (data) {
+                    $("#list_view").html(data);
+                 }
+    });
+
+    //action by the opening the View
+    $().ready(function() {
+        //action by pressing enter -> bindSubmit
+        $("select[name='unapproved']").keypress(function(key) {
+            if(key.keyCode == 13) {
+                $("#search_button").click();
+            }
+        });
+    });
+</script>
+
+<h2>@Resource.TitleText</h2>
+<div id = "controls">
+    <select name="unapproved" class="sg_styled_input">
+        <option value="unapproved">@Resource.UnapprovedText</option>
+        <option value="approved">@Resource.ApprovedText</option>
+    </select>
+    <input type="submit" id="search_button" class="sg_styled_button" value="@Resource.SubmitText"/>
+</div>
+
+<div id="list_view">
+    @Html.Action("ListBanner", new { unapprovedOnly = true } )
+ </div>

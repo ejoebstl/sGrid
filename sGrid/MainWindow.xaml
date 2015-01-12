@@ -1,0 +1,35 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xml:lang="en-US"
+	x:Class="sGridClientUI.MainWindow"
+	x:Name="Window"
+	Title="sGrid"
+	Width="507" Height="241" FontFamily="Arial" Closing="Window_Closing" Icon="/sGrid;component/Images/sGrid.png" ResizeMode="CanMinimize" Background="{x:Null}" StateChanged="Window_StateChanged">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.OpacityMask>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFD47777" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.OpacityMask>
+        <Button x:Name="buttonPauseStart" Content="Pause" Height="22" Margin="0,44,10,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="#FF707070" Background="{x:Null}" FontFamily="Calibri" FontSize="14" Click="PauseStart_Click" HorizontalAlignment="Right" Width="117" Focusable="False" />
+        <Button x:Name="buttonLogOutLogIn" Content="Log out" Height="22" Margin="0,80,10,0" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Calibri" FontSize="14" Click="LogOut_Click" HorizontalAlignment="Right" Width="117" Focusable="False" />
+        <Button x:Name="buttonSettings" Content="Settings" Margin="0,115,10,0" Background="{x:Null}" FontFamily="Calibri" FontSize="14" Height="22" VerticalAlignment="Top" Click="Settings_Click" HorizontalAlignment="Right" Width="117" Focusable="False" />
+        <Button x:Name="buttonExit" Content="Exit" HorizontalAlignment="Right" Height="22" Margin="0,0,10,9" VerticalAlignment="Bottom" Width="92" Background="{x:Null}" FontFamily="Calibri" FontSize="14" Click="Exit_Click" />
+        <Label Content="sGrid running POEM@HOME" Margin="8,8,10,0" FontFamily="Calibri" FontSize="18" Name="labelProjectName" Height="33" VerticalAlignment="Top" />
+        <ProgressBar x:Name="progressBarPercentage" Height="15" Margin="8,0,10,40" VerticalAlignment="Bottom" Background="#FFC7C7C7" BorderBrush="Black" Value="0.37" Foreground="#FF2761D4" Maximum="1" Minimum="0" />
+        <TextBlock HorizontalAlignment="Left" Margin="8,0,0,7" Name="textBlockHyperlink" Text="http://sgrid.ipd.kit.edu" FontFamily="Calibri" Width="242" Height="19" VerticalAlignment="Bottom" TextDecorations="Underline" Foreground="Blue" />
+        <Image Height="92" HorizontalAlignment="Left" Margin="4,46,0,0" Name="imageLogo" Stretch="Uniform" VerticalAlignment="Top" Width="196" Source="/sGrid;component/Images/sGrid%20Logo%20Small.png" IsHitTestVisible="False" />
+        <Label Content="Running..." Margin="200,93,133,0" Name="labelStatus" FontFamily="Calibri" Height="45" VerticalAlignment="Top" FontSize="14" />
+        <Label Content="37.3 %" FontFamily="Calibri" Height="56" HorizontalAlignment="Left" Margin="197,44,0,0" Name="labelPercentage" VerticalAlignment="Top" Width="116" FontSize="36" />
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                <GradientStop Color="White" Offset="0.448" />
+                <GradientStop Color="#FFDFF2F8" Offset="0.988" />
+            </LinearGradientBrush>
+        </Grid.Background>
+    </Grid>
+</Window>

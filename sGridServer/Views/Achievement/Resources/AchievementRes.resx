@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountBalance" xml:space="preserve">
+    <value>account balance</value>
+  </data>
+  <data name="ActiveTime" xml:space="preserve">
+    <value>active time in days</value>
+  </data>
+  <data name="AmountOfCoins" xml:space="preserve">
+    <value>amount of coins</value>
+  </data>
+  <data name="BonucCoins" xml:space="preserve">
+    <value>bonus coins</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CountOfFastCalculations" xml:space="preserve">
+    <value>number of times to send the fast answer in</value>
+  </data>
+  <data name="CurrentImage" xml:space="preserve">
+    <value>current image</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="FormHello" xml:space="preserve">
+    <value>Please fill the following form.</value>
+  </data>
+  <data name="HasToBeNonnegative" xml:space="preserve">
+    <value>The value named "{0}" has to be nonnegative.</value>
+  </data>
+  <data name="HasToBePositive" xml:space="preserve">
+    <value>The value named "{0}" has to be positive.</value>
+  </data>
+  <data name="HighscorePlacement" xml:space="preserve">
+    <value>minimal highscore placement</value>
+  </data>
+  <data name="IdentityError" xml:space="preserve">
+    <value>Error: An identical achievement has already been created.</value>
+  </data>
+  <data name="MinimalLimit" xml:space="preserve">
+    <value>considered timespan in days</value>
+  </data>
+  <data name="NewImage" xml:space="preserve">
+    <value>new image</value>
+  </data>
+  <data name="NumberOfAchievements" xml:space="preserve">
+    <value>number of achievements</value>
+  </data>
+  <data name="NumberOfClients" xml:space="preserve">
+    <value>number of clients</value>
+  </data>
+  <data name="NumberOfFriends" xml:space="preserve">
+    <value>number of friends</value>
+  </data>
+  <data name="NumberOfPackages" xml:space="preserve">
+    <value>number of packages</value>
+  </data>
+  <data name="NumberOfRewards" xml:space="preserve">
+    <value>number of rewards</value>
+  </data>
+  <data name="PartnerId" xml:space="preserve">
+    <value>coin partner id</value>
+  </data>
+  <data name="ProjectShortName" xml:space="preserve">
+    <value>project short name</value>
+  </data>
+  <data name="PropertyError" xml:space="preserve">
+    <value>Error: Invalid property labeled "{0}".</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="TimeOfShopping" xml:space="preserve">
+    <value>time of shopping in minutes</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Achievement Creation Form</value>
+  </data>
+  <data name="WrongPartnerIdError" xml:space="preserve">
+    <value>There is no partner with such an id.</value>
+  </data>
+  <data name="WrongProjectError" xml:space="preserve">
+    <value>The project you entered does not exist.</value>
+  </data>
+</root>

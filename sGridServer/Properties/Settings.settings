@@ -1,0 +1,88 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="sGridServer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BlobRoot" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;BlobRoot&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">BlobRoot</Value>
+    </Setting>
+    <Setting Name="FacebookAppId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">325813544186205</Value>
+    </Setting>
+    <Setting Name="FacebookAppSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0f1bf56a049d1d92ccc6469fce6bbcc7</Value>
+    </Setting>
+    <Setting Name="BannerWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">150</Value>
+    </Setting>
+    <Setting Name="BannerHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">35</Value>
+    </Setting>
+    <Setting Name="NewsImageWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="NewsImageHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="RewardIconWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="RewardIconHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="ProfilePictureWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="ProfilePictureHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="NotificationMailFromAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">notifications@sgrid.ipd.kit.edu</Value>
+    </Setting>
+    <Setting Name="CaptchaWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">150</Value>
+    </Setting>
+    <Setting Name="CaptchaHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="DefaultProfilePicture" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:5469/Content/images/users/default.jpg</Value>
+    </Setting>
+    <Setting Name="ProfilePictureStorageContainer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UserContainer</Value>
+    </Setting>
+    <Setting Name="DefaultAchievementPicture" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:5469/Content/images/achievements/default.jpg</Value>
+    </Setting>
+    <Setting Name="AchievementPictureStorageContainer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AchievementIcons</Value>
+    </Setting>
+    <Setting Name="AchievementIconWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="AchievementIconHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="RewardIconStorageContainer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RewardIcons</Value>
+    </Setting>
+    <Setting Name="DefaulRewardIcon" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:5469/Content/images/rewards/default.jpg</Value>
+    </Setting>
+    <Setting Name="PartnerStorageContainer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PartnerContainer</Value>
+    </Setting>
+    <Setting Name="ApplicationPasscode" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SGridLogo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:5469/Content/images/sGrid.png</Value>
+    </Setting>
+    <Setting Name="MinimumClientVersion" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

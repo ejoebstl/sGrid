@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;
+    /*This view is responsible for showing the admin dashboard and rendering the partial NewMessagesView, UnapprovedBannersView,
+     UnapprovedRewardsView and PerformanceOverviewView.*/
+}
+@using Resource = sGridServer.Resources.AdminDashboard.AdminDashboard
+
+<div id="performance_overview" style = "padding-top: 70px; display: table-cell">
+    <h4 style="color: #5c6b72">@Resource.PerformanceOverview: </h4>
+    @Html.Action("PerformanceOverview")
+</div>
+<div style = "display: inline-table">
+    <div id="unapproved_banners" style = "padding-top: 70px; display: table-cell; text-align: center">
+        <h4>@Resource.NewBanner</h4>
+        @Html.Action("UnapprovedBanners")
+    </div>
+    <div id="new_messages" style = "margin-top: 70px; padding-left: 20px; display: table-cell; text-align: center">
+        <h4>@Resource.NewMessages</h4>
+        @Html.Action("NewMessages")
+    </div>
+
+    <div id="unapproved_rewards" style = "margin-top: 70px; padding-left: 20px; display: table-cell; text-align: center">
+        <h4>@Resource.NewRewards</h4>
+        @Html.Action("UnapprovedRewards")
+    </div>
+</div>

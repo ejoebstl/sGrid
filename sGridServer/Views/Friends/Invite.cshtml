@@ -1,0 +1,61 @@
+﻿@using Resource = sGridServer.Resources.Friends.Invite
+
+@{
+    /*The partial InviteView is responsible for showing an invitation form,
+     * which contains a text box for an e-mail address and a button to send an invitation.*/
+}
+<script type="text/javascript">
+
+     //function by clicking a button with the id "invite_button"
+     bindSubmit({
+        buttonId: "#invite_button",
+
+        //run an action for invite a friend with the given email address
+        actionUrl: '@Url.Action("Invite")',
+        data: function() {
+                return { eMailAddress: $("#eMail_box").val() };
+            },
+
+        //after the invitation was sent shows a pop-up to the user
+        success: function () {
+            //context of the pop-up
+            $("#invitation_sent").html("<p><span class=\"ui-icon ui-icon-circle-check\" style=\"float: left; margin: 0 7px 50px 0;\"></span>@Resource.PopUp</p>");
+            //properties of the pop-up
+            $("#invitation_sent").dialog({
+                  resizable: false,
+                  height: 210,
+                  modal: true,
+                  buttons: {
+                      //closes the pop-up and reloads the FriendsOverviewView by clicking "Ok"-button
+                      Ok: function() {
+                              $(this).dialog("close");
+                              window.location.reload();
+                          }
+                  }
+            });
+        }
+    });
+
+    //action by the opening the PartialView
+    $().ready(function () {
+         //action by pressing enter -> bindSubmit
+         $("#search_name_box").keypress(function (key) {
+                if (key.keyCode == 13) {
+                         $("#invite_button").click();
+                }
+          });
+
+          //styles for this PartialView  
+          $(".sg_styled_button, .sg_styled_input").uniform();
+    });
+</script>
+
+<h2>@Resource.InviteText</h2>
+<div>
+    <label>@Resource.EMailText<//label>
+    <input type="text" name="eMail" class="sg_styled_input" id="eMail_box"/>
+    <input type="submit" id="invite_button" value="@Resource.SendText" class="sg_styled_button" />
+</div>
+
+<div id="invitation_sent" title="@Resource.InvitationSent">
+</div>

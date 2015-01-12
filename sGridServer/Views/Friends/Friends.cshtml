@@ -1,0 +1,46 @@
+﻿@model User
+@using Resource = sGridServer.Resources.Friends.FriendsOverview
+
+@{
+   //This PartialView is responsible for rendering the partial ListView and for providing controls to search in a friends list.
+}
+
+<script type="text/javascript">
+    //function to run by clicking the button with the id 'search_name'
+    bindSubmit({
+        buttonId: "#search_button",
+        //run a List action with the given data, such are searchName and the id of the user
+        actionUrl: '@Url.Action("List")',
+        data: function() {
+                return { searchName: $("#search_name_box").val(), 
+                         id: @Model.Id
+                };
+        },
+        //load a ListView with the given data
+        success: function (data) {
+                    $("#list_view").html(data);
+                 }
+    });
+
+    //action by the opening the PartialView
+    $().ready(function() {
+        //action by pressing enter -> bindSubmit
+        $("#search_name_box").keypress(function(key) {
+            if(key.keyCode == 13) {
+                $("#search_button").click();
+            }
+        });
+        
+        //styles for this PartialView  
+        $(".sg_styled_button, .sg_styled_input").uniform();
+    });
+</script>
+
+<div>
+    <input type="text" name="search_name" class="sg_styled_input" id="search_name_box"/>
+    <input type="submit" id="search_button" value = "@Resource.Search" class="sg_styled_button" />
+</div>
+
+<div id="list_view">
+    @Html.Action("List")
+</div>

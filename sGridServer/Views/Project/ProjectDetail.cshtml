@@ -1,0 +1,112 @@
+﻿@model sGridServer.Code.GridProviders.GridProjectDescription
+@using Resource = sGridServer.Resources.Project.ProjectDetail
+@using sGridServer.Code.GridProviders
+
+@{
+    /*The ProjectDetailView is responsible for showing details for a specific grid project. 
+     * The model of the ProjectDetailView is a GridProjectDescription object. */
+    
+    ViewBag.Title = @Model.Name;
+    
+    User currentUser = sGridServer.Code.Security.SecurityProvider.CurrentUser as User;
+    GridProviderManager manager = null;
+    if (currentUser != null) 
+        manager = new GridProviderManager(currentUser);
+}
+
+<script type="text/javascript">
+
+    /* Call the switch project action method. Show the switch dialog on success. */
+    bindSubmit({
+        buttonId: "#switch_button",
+        actionUrl: '@Url.Action("SwitchProject")',
+        data: function () {
+            return {
+                shortName: $("#project_short_name").val()
+            };
+        },
+        success: function (data) {
+            $("#switch_dialog").dialog({
+                height: 300,
+                width: 350,
+                modal: true
+            });
+        }
+    });
+
+    /* Invoke a process reset on the client application. Use a short timeout, since we don't want 
+    to hang if nobody is there  */
+    resetProject = function () {
+        $("#switch_dialog_contents").html(ajaxLoader());
+        $.ajax({
+            type: "GET",
+            dataType: "jsonp",
+            timeout: 1000,
+            url: "http://localhost:45045",
+            data: {
+                action: "update"
+            },
+        }).always(function() {closeDialog()});
+    }
+
+    /* Close the switch dialog and reload the page */
+    closeDialog = function () {
+        $("#switch_dialog").dialog("close");
+        location.reload();
+    }
+</script>
+
+@if (Model != null)
+{
+    <fieldset class="sg_editor_form"> 
+        <legend>@Model.Name</legend>
+
+        <img src="@Url.Content(Model.IconUrl)" width="150px" height="150px" alt="@Model.Name" style="float: left; margin-right: 20px; margin-left: 20px;"/>
+        <p>
+            <b>@Model.ShortInfo</b>
+        </p>
+        <p>
+            @Resource.FromProviderText
+            <a href="@Url.Action("GridProviderDetail", "Project", new { name = @Model.Provider.Name })">
+                @Model.Provider.Name
+            </a>
+        </p>
+        <p>
+            @Model.Description        
+           
+        </p>
+        <p>
+            <i>@Resource.AverageTimeText</i> @Model.AverageCalculationTime<br />
+            <i>@Resource.CoinsText</i> @Model.CoinsPerResult<br />
+            <i>@Resource.WebsiteText</i> <a href="@Model.WebsiteUrl">@Model.WebsiteUrl</a><br />
+        </p>
+        <p>
+            @if (currentUser != null)
+            {
+                if (manager.CurrentProject != null && manager.CurrentProject.ShortName == Model.ShortName)
+                { 
+                    <span style="color: green;">@Resource.CurrentProject</span><br />
+                }
+                else
+                {
+                    <input type="submit" id="switch_button" value="@Resource.JoinProject" class="sg_styled_button"/><br />
+                    <input type="hidden" value="@Model.ShortName" id="project_short_name"/>
+                }
+            }
+        </p>
+        <p>
+            <a href="@Url.Action("ProjectStatistics", "Project", new { shortName = Model.ShortName })">@Resource.Statistics</a><br />
+        </p>
+    </fieldset>
+    <div id="switch_dialog" style="display: none" title="Please confirm...">
+        <p id="switch_dialog_contents">
+        @Resource.ResetProject<br /><br />
+        <input type="button" class="sg_styled_button" onclick="javascript:resetProject()" id="project_reset_button" value="@Resource.Yes" />
+        <input type="button" class="sg_styled_button" onclick="javascript:closeDialog()" id="project_no_reset_button" value="@Resource.No" />
+        </p>
+    </div>
+}
+else
+{
+    <p style="color:Red;"><b>@ViewBag.Message</b></p>
+}

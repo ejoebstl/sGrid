@@ -1,0 +1,34 @@
+﻿@{
+    //The partial EditImageView is responsible for showing the form to edit a logo or a banner.
+}
+@model Tuple<String, Partner>
+@using Resource = sGridServer.Resources.Partnership.EditImage
+@if (Model.Item1 == "banner")
+{
+    Sponsor sponsor = (Model != null) ? Model.Item2 as Sponsor : null;
+    if (sponsor != null && sponsor.Banner != null && sponsor.Banner != "")
+    {
+        <img src="@Url.Content(sponsor.Banner)" class = "profile_picture_big" style = "margin-left: 30%" alt = "@Resource.Icon"/>
+    }    
+}
+else
+{
+    if (Model != null && Model.Item2 != null && Model.Item2.Logo != null && Model.Item2.Logo != "")
+    {
+        <img src="@Url.Content(Model.Item2.Logo)" class = "profile_picture_big" style = "margin-left: 30%" alt = "@Resource.Icon"/>
+    }
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+        $(".sg_styled_button, .sg_styled_input").uniform();
+    });
+</script>
+
+@using (Html.BeginForm("UploadImage", "Partnership", new { type = Model.Item1, id = Model.Item2.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="editor">
+        <input type="file" name="file" id="file" class="sg_styled_input" />
+    </div>
+    <input type="submit" value="submit" class="sg_styled_button" />
+}

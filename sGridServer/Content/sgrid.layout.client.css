@@ -1,0 +1,37 @@
+﻿body
+{
+    padding: 5px;
+}
+
+h1, h2, h3, h4, h5 
+{
+    margin: 0px;
+    padding: 0px;
+}
+#sg_client_header_section ul
+{
+	float: right;
+	width: 100px;
+	height: 15px;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	margin-top: 14px;
+}
+#sg_client_header_section li
+{
+	float: right;
+}
+#sg_client_header_section li a
+{
+	padding-left: 10px;
+	padding-right: 10px;
+	display:block;
+	height: 35px;
+	text-decoration: none;
+	color: #00547b;
+}
+#sg_frontpage_header_section li a:hover
+{
+	color: #37b3c2;
+}

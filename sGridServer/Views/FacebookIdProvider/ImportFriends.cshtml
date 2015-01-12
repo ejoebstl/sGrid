@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FacebookRegistrationData>
+@using Resource = sGridServer.Resources.FacebookIdProvider.ImportFriends
+@{
+    /* The ImportFriends view enables the user to import his facebook friends which are also registered with sGrid. */
+    ViewBag.Title = Resource.Title;
+}
+
+<script type="text/javascript">
+    inviteFriend = function (id) {
+            $("#invite_" + id).html(ajaxLoader());
+            $.ajax({
+                url: "@Url.Action("AddFriend")",
+                cache: false,
+                async: true,
+                type: "POST",
+                data: {friendId: id},
+                error: function (html) { 
+                    $("#invite_" + id).html(ajaxError()); 
+                }, 
+                success:  function (html) { 
+                    $("#invite_" + id).html(ajaxSuccess()); 
+                }
+            });
+    }
+</script>
+
+<p>
+@Resource.Description
+</p>
+
+@foreach (FacebookRegistrationData data in Model)
+{
+    <div class="sg_list_row">
+        <div class="sg_list_image">
+            <img src="@Url.Content(data.PictureUrl)" class="sg_list_image" alt="" /> 
+        </div>
+        <div class="sg_list_text">@data.Nickname</div>
+        <div id="invite_@data.Id" class="sg_list_button">
+            <a href="javascript:inviteFriend('@data.Id')" class="sg_list_button">
+                <img src="@Url.Content("~/Content/images/buttons/add_friend.png")" alt="@Resource.Invite" class="sg_list_button"/>
+            </a>
+        </div>
+    </div>
+}
+
+@if (Model.Count() == null)
+{
+    <p>
+        @Resource.NoFriends
+    </p>
+}
+
+@Html.ActionLink(Resource.Finished, "FinishImportFriends")

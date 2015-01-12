@@ -1,0 +1,95 @@
+﻿@{
+    //The partial GeneralView is responsible for showing the user’s general settings. This settings can be changed by user.
+}
+@model GeneralSettingsData
+@using Resource = sGridServer.Resources.ProfileSettings.Settings
+
+<script type = "text/javascript">
+    $().ready(function () {
+        //show a jQuery pop up to end sGrid membership.
+        $(".openDialog").click(function (e) {
+        
+            e.preventDefault();
+           
+            $('<div>')
+                .appendTo("body")
+                .dialog({
+                    close: function () { $(this).remove() },
+                    modal: true
+                })
+                .load(this.href, {});             
+        });
+        //close the dialog by clicking on the closing button
+        $(".close").on("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+        $("#submit_button").click(function (data) {
+            //start loader animation            
+            $("#loader").html(ajaxLoader());
+            //validate the form
+            $("form").validate();
+            if ($("form").valid()) {
+                //send data to the server, change loader by success or error, show generated message to the user.
+                $.ajax({                
+                        url: "@Url.Action("General")",
+                        cache: false,
+                        async: true,
+                        data: $('form').serialize(),
+                        type: "POST",
+                        error: function (result) { 
+                            $("#loader").html(ajaxError());
+                            $('#result').html(result); 
+                        }, 
+                        success: function(result) {
+                            if (result == "") {                         
+                                $("#loader").html(ajaxSuccess());
+                                result = "@Resource.ThankYou";
+                            } else {
+                                $("#loader").html(ajaxError());
+                            }
+                            $('#result').html(result); 
+                        }
+                });
+            }
+         });
+
+         $(".sg_editor_row select, .sg_editor_row input, .sg_submit_row input").uniform();
+     });
+</script>
+
+
+@Html.ActionLink(Resource.EndMembership, "EndMembership", "ProfileSettings", null,
+           new { @class = "openDialog", data_dialog_title = Resource.EndMembership })
+<div id="popup" style="display:none"></div>
+@using (Html.BeginForm()) 
+{
+    <fieldset class="sg_editor_form"> 
+        <div class="sg_editor_row">
+            <label>@Resource.Nickname: </label>
+            @Html.EditorFor(model => model.Nickname, "edit_nickname")
+            @Html.ValidationMessageFor(model => model.Nickname) 
+        </div>
+        @if (Model.ShowAdditional)
+        {
+            <div class="sg_editor_row">
+                <label>@Resource.OldPassword: </label>
+                @Html.EditorFor(model => model.PasswordOld, "old_password")
+                @Html.ValidationMessageFor(model => model.Nickname) 
+            </div>
+            <div class="sg_editor_row">
+                <label>@Resource.NewPassword: </label>
+                @Html.EditorFor(model => model.PasswordFirst, "new_password_first")
+                @Html.ValidationMessageFor(model => model.Nickname) 
+            </div>
+            <div class="sg_editor_row">
+                <label>@Resource.NewPasswordConfirm: </label>
+                @Html.EditorFor(model => model.PasswordSecond, "new_password_second")
+                @Html.ValidationMessageFor(model => model.Nickname) 
+            </div> 
+        }
+        <div class="sg_submit_row">
+            <input type="button" id = "submit_button" value="@Resource.Submit"/><span id="loader"></span><span id = "result"></span>
+        </div>  
+    </fieldset>
+}

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MemberStatsWithTeamHistory" msprop:Generator_TableClassName="MemberStatsWithTeamHistoryDataTable" msprop:Generator_TableVarName="tableMemberStatsWithTeamHistory" msprop:Generator_TablePropName="MemberStatsWithTeamHistory" msprop:Generator_RowDeletingName="MemberStatsWithTeamHistoryRowDeleting" msprop:Generator_UserTableName="MemberStatsWithTeamHistory" msprop:Generator_RowChangingName="MemberStatsWithTeamHistoryRowChanging" msprop:Generator_RowEvHandlerName="MemberStatsWithTeamHistoryRowChangeEventHandler" msprop:Generator_RowDeletedName="MemberStatsWithTeamHistoryRowDeleted" msprop:Generator_RowEvArgName="MemberStatsWithTeamHistoryRowChangeEvent" msprop:Generator_RowChangedName="MemberStatsWithTeamHistoryRowChanged" msprop:Generator_RowClassName="MemberStatsWithTeamHistoryRow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TeamHistory" msprop:Generator_ColumnVarNameInTable="columnTeamHistory" msprop:Generator_ColumnPropNameInRow="TeamHistory" msprop:Generator_ColumnPropNameInTable="TeamHistoryColumn" msprop:Generator_UserColumnName="TeamHistory" type="xs:string" minOccurs="0" />
+        <xs:element name="MemberStats" msprop:Generator_TableClassName="MemberStatsDataTable" msprop:Generator_TableVarName="tableMemberStats" msprop:Generator_TablePropName="MemberStats" msprop:Generator_RowDeletingName="MemberStatsRowDeleting" msprop:Generator_UserTableName="MemberStats" msprop:Generator_RowChangingName="MemberStatsRowChanging" msprop:Generator_RowEvHandlerName="MemberStatsRowChangeEventHandler" msprop:Generator_RowDeletedName="MemberStatsRowDeleted" msprop:Generator_RowEvArgName="MemberStatsRowChangeEvent" msprop:Generator_RowChangedName="MemberStatsRowChanged" msprop:Generator_RowClassName="MemberStatsRow" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MemberStat" msprop:Generator_TableClassName="MemberStatDataTable" msprop:Generator_TableVarName="tableMemberStat" msprop:Generator_TablePropName="MemberStat" msprop:Generator_RowDeletingName="MemberStatRowDeleting" msprop:Generator_UserTableName="MemberStat" msprop:Generator_RowChangingName="MemberStatRowChanging" msprop:Generator_RowEvHandlerName="MemberStatRowChangeEventHandler" msprop:Generator_RowDeletedName="MemberStatRowDeleted" msprop:Generator_RowEvArgName="MemberStatRowChangeEvent" msprop:Generator_RowChangedName="MemberStatRowChanged" msprop:Generator_RowClassName="MemberStatRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+                    <xs:element name="MemberId" msprop:Generator_ColumnVarNameInTable="columnMemberId" msprop:Generator_ColumnPropNameInRow="MemberId" msprop:Generator_ColumnPropNameInTable="MemberIdColumn" msprop:Generator_UserColumnName="MemberId" type="xs:int" minOccurs="0" />
+                    <xs:element name="RegisterDate" msprop:Generator_ColumnVarNameInTable="columnRegisterDate" msprop:Generator_ColumnPropNameInRow="RegisterDate" msprop:Generator_ColumnPropNameInTable="RegisterDateColumn" msprop:Generator_UserColumnName="RegisterDate" type="xs:dateTime" minOccurs="0" />
+                    <xs:element name="LastResult" msprop:Generator_ColumnVarNameInTable="columnLastResult" msprop:Generator_ColumnPropNameInRow="LastResult" msprop:Generator_ColumnPropNameInTable="LastResultColumn" msprop:Generator_UserColumnName="LastResult" type="xs:dateTime" minOccurs="0" />
+                    <xs:element name="NumDevices" msprop:Generator_ColumnVarNameInTable="columnNumDevices" msprop:Generator_ColumnPropNameInRow="NumDevices" msprop:Generator_ColumnPropNameInTable="NumDevicesColumn" msprop:Generator_UserColumnName="NumDevices" type="xs:int" minOccurs="0" />
+                    <xs:element name="StatisticsTotals" msprop:Generator_TableClassName="StatisticsTotalsDataTable" msprop:Generator_TableVarName="tableStatisticsTotals" msprop:Generator_TablePropName="StatisticsTotals" msprop:Generator_RowDeletingName="StatisticsTotalsRowDeleting" msprop:Generator_UserTableName="StatisticsTotals" msprop:Generator_RowChangingName="StatisticsTotalsRowChanging" msprop:Generator_RowEvHandlerName="StatisticsTotalsRowChangeEventHandler" msprop:Generator_RowDeletedName="StatisticsTotalsRowDeleted" msprop:Generator_RowEvArgName="StatisticsTotalsRowChangeEvent" msprop:Generator_RowChangedName="StatisticsTotalsRowChanged" msprop:Generator_RowClassName="StatisticsTotalsRow" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="RunTime" msprop:Generator_ColumnVarNameInTable="columnRunTime" msprop:Generator_ColumnPropNameInRow="RunTime" msprop:Generator_ColumnPropNameInTable="RunTimeColumn" msprop:Generator_UserColumnName="RunTime" type="xs:int" minOccurs="0" />
+                          <xs:element name="RunTimeRank" msprop:Generator_ColumnVarNameInTable="columnRunTimeRank" msprop:Generator_ColumnPropNameInRow="RunTimeRank" msprop:Generator_ColumnPropNameInTable="RunTimeRankColumn" msprop:Generator_UserColumnName="RunTimeRank" type="xs:int" minOccurs="0" />
+                          <xs:element name="Points" msprop:Generator_ColumnVarNameInTable="columnPoints" msprop:Generator_ColumnPropNameInRow="Points" msprop:Generator_ColumnPropNameInTable="PointsColumn" msprop:Generator_UserColumnName="Points" type="xs:int" minOccurs="0" />
+                          <xs:element name="PointsRank" msprop:Generator_ColumnVarNameInTable="columnPointsRank" msprop:Generator_ColumnPropNameInRow="PointsRank" msprop:Generator_ColumnPropNameInTable="PointsRankColumn" msprop:Generator_UserColumnName="PointsRank" type="xs:int" minOccurs="0" />
+                          <xs:element name="Results" msprop:Generator_ColumnVarNameInTable="columnResults" msprop:Generator_ColumnPropNameInRow="Results" msprop:Generator_ColumnPropNameInTable="ResultsColumn" msprop:Generator_UserColumnName="Results" type="xs:int" minOccurs="0" />
+                          <xs:element name="ResultsRank" msprop:Generator_ColumnVarNameInTable="columnResultsRank" msprop:Generator_ColumnPropNameInRow="ResultsRank" msprop:Generator_ColumnPropNameInTable="ResultsRankColumn" msprop:Generator_UserColumnName="ResultsRank" type="xs:int" minOccurs="0" />
+                        </xs:sequence>
+                        <xs:attribute name="MemberStat_Id" msprop:Generator_ColumnVarNameInTable="columnMemberStat_Id" msprop:Generator_ColumnPropNameInRow="MemberStat_Id" msprop:Generator_ColumnPropNameInTable="MemberStat_IdColumn" msprop:Generator_UserColumnName="MemberStat_Id" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="StatisticsAverages" msprop:Generator_TableClassName="StatisticsAveragesDataTable" msprop:Generator_TableVarName="tableStatisticsAverages" msprop:Generator_TablePropName="StatisticsAverages" msprop:Generator_RowDeletingName="StatisticsAveragesRowDeleting" msprop:Generator_UserTableName="StatisticsAverages" msprop:Generator_RowChangingName="StatisticsAveragesRowChanging" msprop:Generator_RowEvHandlerName="StatisticsAveragesRowChangeEventHandler" msprop:Generator_RowDeletedName="StatisticsAveragesRowDeleted" msprop:Generator_RowEvArgName="StatisticsAveragesRowChangeEvent" msprop:Generator_RowChangedName="StatisticsAveragesRowChanged" msprop:Generator_RowClassName="StatisticsAveragesRow" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="RunTimePerDay" msprop:Generator_ColumnVarNameInTable="columnRunTimePerDay" msprop:Generator_ColumnPropNameInRow="RunTimePerDay" msprop:Generator_ColumnPropNameInTable="RunTimePerDayColumn" msprop:Generator_UserColumnName="RunTimePerDay" type="xs:int" minOccurs="0" />
+                          <xs:element name="RunTimePerResult" msprop:Generator_ColumnVarNameInTable="columnRunTimePerResult" msprop:Generator_ColumnPropNameInRow="RunTimePerResult" msprop:Generator_ColumnPropNameInTable="RunTimePerResultColumn" msprop:Generator_UserColumnName="RunTimePerResult" type="xs:int" minOccurs="0" />
+                          <xs:element name="PointsPerHourRunTime" msprop:Generator_ColumnVarNameInTable="columnPointsPerHourRunTime" msprop:Generator_ColumnPropNameInRow="PointsPerHourRunTime" msprop:Generator_ColumnPropNameInTable="PointsPerHourRunTimeColumn" msprop:Generator_UserColumnName="PointsPerHourRunTime" type="xs:double" minOccurs="0" />
+                          <xs:element name="PointsPerDay" msprop:Generator_ColumnVarNameInTable="columnPointsPerDay" msprop:Generator_ColumnPropNameInRow="PointsPerDay" msprop:Generator_ColumnPropNameInTable="PointsPerDayColumn" msprop:Generator_UserColumnName="PointsPerDay" type="xs:double" minOccurs="0" />
+                          <xs:element name="PointsPerResult" msprop:Generator_ColumnVarNameInTable="columnPointsPerResult" msprop:Generator_ColumnPropNameInRow="PointsPerResult" msprop:Generator_ColumnPropNameInTable="PointsPerResultColumn" msprop:Generator_UserColumnName="PointsPerResult" type="xs:double" minOccurs="0" />
+                          <xs:element name="ResultsPerDay" msprop:Generator_ColumnVarNameInTable="columnResultsPerDay" msprop:Generator_ColumnPropNameInRow="ResultsPerDay" msprop:Generator_ColumnPropNameInTable="ResultsPerDayColumn" msprop:Generator_UserColumnName="ResultsPerDay" type="xs:double" minOccurs="0" />
+                        </xs:sequence>
+                        <xs:attribute name="MemberStat_Id" msprop:Generator_ColumnVarNameInTable="columnMemberStat_Id" msprop:Generator_ColumnPropNameInRow="MemberStat_Id" msprop:Generator_ColumnPropNameInTable="MemberStat_IdColumn" msprop:Generator_UserColumnName="MemberStat_Id" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Resource" msprop:Generator_TableClassName="ResourceDataTable" msprop:Generator_TableVarName="tableResource" msprop:Generator_TablePropName="Resource" msprop:Generator_RowDeletingName="ResourceRowDeleting" msprop:Generator_UserTableName="Resource" msprop:Generator_RowChangingName="ResourceRowChanging" msprop:Generator_RowEvHandlerName="ResourceRowChangeEventHandler" msprop:Generator_RowDeletedName="ResourceRowDeleted" msprop:Generator_RowEvArgName="ResourceRowChangeEvent" msprop:Generator_RowChangedName="ResourceRowChanged" msprop:Generator_RowClassName="ResourceRow" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Url" msprop:Generator_ColumnVarNameInTable="columnUrl" msprop:Generator_ColumnPropNameInRow="Url" msprop:Generator_ColumnPropNameInTable="UrlColumn" msprop:Generator_UserColumnName="Url" type="xs:string" minOccurs="0" />
+                          <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                        <xs:attribute name="MemberStat_Id" msprop:Generator_ColumnVarNameInTable="columnMemberStat_Id" msprop:Generator_ColumnPropNameInRow="MemberStat_Id" msprop:Generator_ColumnPropNameInTable="MemberStat_IdColumn" msprop:Generator_UserColumnName="MemberStat_Id" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="MemberStat_Id" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnMemberStat_Id" msprop:Generator_ColumnPropNameInRow="MemberStat_Id" msprop:Generator_ColumnPropNameInTable="MemberStat_IdColumn" msprop:Generator_UserColumnName="MemberStat_Id" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="MemberStats_Id" msprop:Generator_ColumnVarNameInTable="columnMemberStats_Id" msprop:Generator_ColumnPropNameInRow="MemberStats_Id" msprop:Generator_ColumnPropNameInTable="MemberStats_IdColumn" msprop:Generator_UserColumnName="MemberStats_Id" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="MemberStats_Id" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnMemberStats_Id" msprop:Generator_ColumnPropNameInRow="MemberStats_Id" msprop:Generator_ColumnPropNameInTable="MemberStats_IdColumn" msprop:Generator_UserColumnName="MemberStats_Id" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+            <xs:attribute name="MemberStatsWithTeamHistory_Id" msprop:Generator_ColumnVarNameInTable="columnMemberStatsWithTeamHistory_Id" msprop:Generator_ColumnPropNameInRow="MemberStatsWithTeamHistory_Id" msprop:Generator_ColumnPropNameInTable="MemberStatsWithTeamHistory_IdColumn" msprop:Generator_UserColumnName="MemberStatsWithTeamHistory_Id" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MemberStatsByProjects" msprop:Generator_TableClassName="MemberStatsByProjectsDataTable" msprop:Generator_TableVarName="tableMemberStatsByProjects" msprop:Generator_TablePropName="MemberStatsByProjects" msprop:Generator_RowDeletingName="MemberStatsByProjectsRowDeleting" msprop:Generator_UserTableName="MemberStatsByProjects" msprop:Generator_RowChangingName="MemberStatsByProjectsRowChanging" msprop:Generator_RowEvHandlerName="MemberStatsByProjectsRowChangeEventHandler" msprop:Generator_RowDeletedName="MemberStatsByProjectsRowDeleted" msprop:Generator_RowEvArgName="MemberStatsByProjectsRowChangeEvent" msprop:Generator_RowChangedName="MemberStatsByProjectsRowChanged" msprop:Generator_RowClassName="MemberStatsByProjectsRow" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Project" msprop:Generator_TableClassName="ProjectDataTable" msprop:Generator_TableVarName="tableProject" msprop:Generator_TablePropName="Project" msprop:Generator_RowDeletingName="ProjectRowDeleting" msprop:Generator_UserTableName="Project" msprop:Generator_RowChangingName="ProjectRowChanging" msprop:Generator_RowEvHandlerName="ProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectRowDeleted" msprop:Generator_RowEvArgName="ProjectRowChangeEvent" msprop:Generator_RowChangedName="ProjectRowChanged" msprop:Generator_RowClassName="ProjectRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProjectName" msprop:Generator_ColumnVarNameInTable="columnProjectName" msprop:Generator_ColumnPropNameInRow="ProjectName" msprop:Generator_ColumnPropNameInTable="ProjectNameColumn" msprop:Generator_UserColumnName="ProjectName" type="xs:string" minOccurs="0" />
+                    <xs:element name="ProjectShortName" msprop:Generator_ColumnVarNameInTable="columnProjectShortName" msprop:Generator_ColumnPropNameInRow="ProjectShortName" msprop:Generator_ColumnPropNameInTable="ProjectShortNameColumn" msprop:Generator_UserColumnName="ProjectShortName" type="xs:string" minOccurs="0" />
+                    <xs:element name="RunTime" msprop:Generator_ColumnVarNameInTable="columnRunTime" msprop:Generator_ColumnPropNameInRow="RunTime" msprop:Generator_ColumnPropNameInTable="RunTimeColumn" msprop:Generator_UserColumnName="RunTime" type="xs:int" minOccurs="0" />
+                    <xs:element name="Points" msprop:Generator_ColumnVarNameInTable="columnPoints" msprop:Generator_ColumnPropNameInRow="Points" msprop:Generator_ColumnPropNameInTable="PointsColumn" msprop:Generator_UserColumnName="Points" type="xs:int" minOccurs="0" />
+                    <xs:element name="Results" msprop:Generator_ColumnVarNameInTable="columnResults" msprop:Generator_ColumnPropNameInRow="Results" msprop:Generator_ColumnPropNameInTable="ResultsColumn" msprop:Generator_UserColumnName="Results" type="xs:int" minOccurs="0" />
+                  </xs:sequence>
+                  <xs:attribute name="MemberStatsByProjects_Id" msprop:Generator_ColumnVarNameInTable="columnMemberStatsByProjects_Id" msprop:Generator_ColumnPropNameInRow="MemberStatsByProjects_Id" msprop:Generator_ColumnPropNameInTable="MemberStatsByProjects_IdColumn" msprop:Generator_UserColumnName="MemberStatsByProjects_Id" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="MemberStatsByProjects_Id" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnMemberStatsByProjects_Id" msprop:Generator_ColumnPropNameInRow="MemberStatsByProjects_Id" msprop:Generator_ColumnPropNameInTable="MemberStatsByProjects_IdColumn" msprop:Generator_UserColumnName="MemberStatsByProjects_Id" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+            <xs:attribute name="MemberStatsWithTeamHistory_Id" msprop:Generator_ColumnVarNameInTable="columnMemberStatsWithTeamHistory_Id" msprop:Generator_ColumnPropNameInRow="MemberStatsWithTeamHistory_Id" msprop:Generator_ColumnPropNameInTable="MemberStatsWithTeamHistory_IdColumn" msprop:Generator_UserColumnName="MemberStatsWithTeamHistory_Id" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="MemberStatsWithTeamHistory_Id" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnMemberStatsWithTeamHistory_Id" msprop:Generator_ColumnPropNameInRow="MemberStatsWithTeamHistory_Id" msprop:Generator_ColumnPropNameInTable="MemberStatsWithTeamHistory_IdColumn" msprop:Generator_UserColumnName="MemberStatsWithTeamHistory_Id" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="NewDataSet" msprop:Generator_UserDSName="NewDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="MemberStatsWithTeamHistory" />
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="MemberStat_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//MemberStat" />
+      <xs:field xpath="@MemberStat_Id" />
+    </xs:unique>
+    <xs:unique name="MemberStats_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//MemberStats" />
+      <xs:field xpath="@MemberStats_Id" />
+    </xs:unique>
+    <xs:unique name="MemberStatsByProjects_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//MemberStatsByProjects" />
+      <xs:field xpath="@MemberStatsByProjects_Id" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//MemberStatsWithTeamHistory" />
+      <xs:field xpath="@MemberStatsWithTeamHistory_Id" />
+    </xs:unique>
+    <xs:keyref name="MemberStatsWithTeamHistory_MemberStatsByProjects" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="MemberStatsByProjects" msprop:rel_Generator_ChildPropName="GetMemberStatsByProjectsRows" msprop:rel_Generator_ParentPropName="MemberStatsWithTeamHistoryRow" msprop:rel_Generator_UserRelationName="MemberStatsWithTeamHistory_MemberStatsByProjects" msprop:rel_Generator_RelationVarName="relationMemberStatsWithTeamHistory_MemberStatsByProjects" msprop:rel_Generator_UserParentTable="MemberStatsWithTeamHistory">
+      <xs:selector xpath=".//MemberStatsByProjects" />
+      <xs:field xpath="@MemberStatsWithTeamHistory_Id" />
+    </xs:keyref>
+    <xs:keyref name="MemberStatsByProjects_Project" refer="MemberStatsByProjects_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="Project" msprop:rel_Generator_ChildPropName="GetProjectRows" msprop:rel_Generator_ParentPropName="MemberStatsByProjectsRow" msprop:rel_Generator_UserRelationName="MemberStatsByProjects_Project" msprop:rel_Generator_RelationVarName="relationMemberStatsByProjects_Project" msprop:rel_Generator_UserParentTable="MemberStatsByProjects">
+      <xs:selector xpath=".//Project" />
+      <xs:field xpath="@MemberStatsByProjects_Id" />
+    </xs:keyref>
+    <xs:keyref name="MemberStatsWithTeamHistory_MemberStats" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="MemberStats" msprop:rel_Generator_ChildPropName="GetMemberStatsRows" msprop:rel_Generator_ParentPropName="MemberStatsWithTeamHistoryRow" msprop:rel_Generator_UserRelationName="MemberStatsWithTeamHistory_MemberStats" msprop:rel_Generator_RelationVarName="relationMemberStatsWithTeamHistory_MemberStats" msprop:rel_Generator_UserParentTable="MemberStatsWithTeamHistory">
+      <xs:selector xpath=".//MemberStats" />
+      <xs:field xpath="@MemberStatsWithTeamHistory_Id" />
+    </xs:keyref>
+    <xs:keyref name="MemberStats_MemberStat" refer="MemberStats_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="MemberStat" msprop:rel_Generator_ChildPropName="GetMemberStatRows" msprop:rel_Generator_ParentPropName="MemberStatsRow" msprop:rel_Generator_UserRelationName="MemberStats_MemberStat" msprop:rel_Generator_RelationVarName="relationMemberStats_MemberStat" msprop:rel_Generator_UserParentTable="MemberStats">
+      <xs:selector xpath=".//MemberStat" />
+      <xs:field xpath="@MemberStats_Id" />
+    </xs:keyref>
+    <xs:keyref name="MemberStat_Resource" refer="MemberStat_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="Resource" msprop:rel_Generator_ChildPropName="GetResourceRows" msprop:rel_Generator_ParentPropName="MemberStatRow" msprop:rel_Generator_UserRelationName="MemberStat_Resource" msprop:rel_Generator_RelationVarName="relationMemberStat_Resource" msprop:rel_Generator_UserParentTable="MemberStat">
+      <xs:selector xpath=".//Resource" />
+      <xs:field xpath="@MemberStat_Id" />
+    </xs:keyref>
+    <xs:keyref name="MemberStat_StatisticsAverages" refer="MemberStat_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="StatisticsAverages" msprop:rel_Generator_ChildPropName="GetStatisticsAveragesRows" msprop:rel_Generator_ParentPropName="MemberStatRow" msprop:rel_Generator_UserRelationName="MemberStat_StatisticsAverages" msprop:rel_Generator_RelationVarName="relationMemberStat_StatisticsAverages" msprop:rel_Generator_UserParentTable="MemberStat">
+      <xs:selector xpath=".//StatisticsAverages" />
+      <xs:field xpath="@MemberStat_Id" />
+    </xs:keyref>
+    <xs:keyref name="MemberStat_StatisticsTotals" refer="MemberStat_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="StatisticsTotals" msprop:rel_Generator_ChildPropName="GetStatisticsTotalsRows" msprop:rel_Generator_ParentPropName="MemberStatRow" msprop:rel_Generator_UserRelationName="MemberStat_StatisticsTotals" msprop:rel_Generator_RelationVarName="relationMemberStat_StatisticsTotals" msprop:rel_Generator_UserParentTable="MemberStat">
+      <xs:selector xpath=".//StatisticsTotals" />
+      <xs:field xpath="@MemberStat_Id" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

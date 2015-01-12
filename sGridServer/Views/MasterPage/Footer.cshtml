@@ -1,0 +1,9 @@
+﻿@model IEnumerable<sGridServer.Models.MenuItem>
+@{
+    /* The partial Footer view is responsible for rendering the page's footer. */
+}
+
+@foreach (sGridServer.Models.MenuItem m in Model)
+{
+    <a href="@Url.Content(m.LinkUrl)" target="@m.LinkTarget">@m.LinkText</a>
+}

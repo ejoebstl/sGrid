@@ -1,0 +1,23 @@
+﻿@model User
+@using Resource = sGridServer.Resources.Statistics.UserStatistics
+
+@{
+    ViewBag.Title = "UserStatistics";
+    
+    //This View is responsible for showing two tabs for global and user statistics.
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+    //makes tabs in that View
+    $("#controls").tabs();
+    });
+</script>
+
+<h2>@Resource.UserStatisticsText</h2>
+<div id="controls" style="font-size: 11px;">
+<ul>
+    <li><a href="@Url.Action("MyStatistics", new { id = Model.Id })">@Resource.MyStatisticsText</a></li>
+    <li><a href="@Url.Action("GlobalStatistics")">@Resource.GlobalStatisticsText</a></li>
+  </ul>
+</div>

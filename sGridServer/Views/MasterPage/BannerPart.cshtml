@@ -1,0 +1,9 @@
+﻿@model Sponsor
+@using Resource = sGridServer.Resources.MasterPage.BannerPart
+
+@{
+    /* The partial BannerPart view is responsible for showing a sponsor's banner. */
+}
+
+<a href="@Model.Link" id="sg_banner_link"><img src="@Url.Content(Model.Banner)" height="35px" width="150px" alt="@Model.Nickname"/></a> 
+<span><a href="@Model.Link">@Resource.BannerDescription</a></span>

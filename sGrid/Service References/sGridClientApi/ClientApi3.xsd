@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/sGridServer.Code.DataAccessLayer.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/sGridServer.Code.DataAccessLayer.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Account">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttachedProjects" nillable="true" type="tns:ArrayOfAttachedProject" />
+          <xs:element minOccurs="0" name="CalculatedResults" nillable="true" type="tns:ArrayOfCalculatedResult" />
+          <xs:element minOccurs="0" name="DataForGridProvider" nillable="true" type="tns:ArrayOfDataForGridProvider" />
+          <xs:element minOccurs="0" name="ObtainedAchievements" nillable="true" type="tns:ArrayOfObtainedAchievement" />
+          <xs:element minOccurs="0" name="ProjectPerformanceData" nillable="true" type="tns:ArrayOfProjectPerformanceData" />
+          <xs:element minOccurs="0" name="Purchases" nillable="true" type="tns:ArrayOfPurchase" />
+          <xs:element minOccurs="0" name="Ratings" nillable="true" type="tns:ArrayOfRating" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="Account">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthenticationToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CoinAccount" nillable="true" type="tns:CoinAccount" />
+      <xs:element minOccurs="0" name="CoinAccountId" type="xs:int" />
+      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalPrivacy" type="xs:int" />
+      <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotifyOnAchievementReached" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NotifyOnCoinBalanceChanged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NotifyOnProjectChanged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PasswordResetCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Picture" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="Privacy" type="q1:PrivacyLevel" />
+      <xs:element minOccurs="0" name="RegistrationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShowInHighScore" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Account" nillable="true" type="tns:Account" />
+  <xs:complexType name="CoinAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentBalance" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalGrant" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalSpent" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CoinAccount" nillable="true" type="tns:CoinAccount" />
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Account" nillable="true" type="tns:Account" />
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="MessageText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Resolved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:complexType name="ArrayOfAttachedProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttachedProject" nillable="true" type="tns:AttachedProject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachedProject" nillable="true" type="tns:ArrayOfAttachedProject" />
+  <xs:complexType name="AttachedProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Current" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ShortName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AttachedProject" nillable="true" type="tns:AttachedProject" />
+  <xs:complexType name="ArrayOfCalculatedResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CalculatedResult" nillable="true" type="tns:CalculatedResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalculatedResult" nillable="true" type="tns:ArrayOfCalculatedResult" />
+  <xs:complexType name="CalculatedResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ProjectShortName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="Valid" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CalculatedResult" nillable="true" type="tns:CalculatedResult" />
+  <xs:complexType name="ArrayOfDataForGridProvider">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataForGridProvider" nillable="true" type="tns:DataForGridProvider" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataForGridProvider" nillable="true" type="tns:ArrayOfDataForGridProvider" />
+  <xs:complexType name="DataForGridProvider">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthenticationInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProviderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserToken" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataForGridProvider" nillable="true" type="tns:DataForGridProvider" />
+  <xs:complexType name="ArrayOfObtainedAchievement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ObtainedAchievement" nillable="true" type="tns:ObtainedAchievement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfObtainedAchievement" nillable="true" type="tns:ArrayOfObtainedAchievement" />
+  <xs:complexType name="ObtainedAchievement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Achievement" nillable="true" type="tns:Achievement" />
+      <xs:element minOccurs="0" name="AchievementId" type="xs:int" />
+      <xs:element minOccurs="0" name="AchievementTimestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AlreadyShown" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObtainedAchievement" nillable="true" type="tns:ObtainedAchievement" />
+  <xs:complexType name="Achievement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AchievementId" type="xs:int" />
+      <xs:element minOccurs="0" name="AchievementType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BonusCoins" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="tns:MultiLanguageString" />
+      <xs:element minOccurs="0" name="ExtendedParameters" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Icon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="tns:MultiLanguageString" />
+      <xs:element minOccurs="0" name="ObtainedAchievements" nillable="true" type="tns:ArrayOfObtainedAchievement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Achievement" nillable="true" type="tns:Achievement" />
+  <xs:complexType name="MultiLanguageString">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MultiLanguageString" nillable="true" type="tns:MultiLanguageString" />
+  <xs:complexType name="ArrayOfTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Translation" nillable="true" type="tns:Translation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTranslation" nillable="true" type="tns:ArrayOfTranslation" />
+  <xs:complexType name="Translation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageString" nillable="true" type="tns:MultiLanguageString" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Translation" nillable="true" type="tns:Translation" />
+  <xs:complexType name="ArrayOfProjectPerformanceData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectPerformanceData" nillable="true" type="tns:ProjectPerformanceData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProjectPerformanceData" nillable="true" type="tns:ArrayOfProjectPerformanceData" />
+  <xs:complexType name="ProjectPerformanceData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ProjectShortName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProviderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Runtime" type="xs:int" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectPerformanceData" nillable="true" type="tns:ProjectPerformanceData" />
+  <xs:complexType name="ArrayOfPurchase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Purchase" nillable="true" type="tns:Purchase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPurchase" nillable="true" type="tns:ArrayOfPurchase" />
+  <xs:complexType name="Purchase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Reward" nillable="true" type="tns:Reward" />
+      <xs:element minOccurs="0" name="RewardId" type="xs:int" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Purchase" nillable="true" type="tns:Purchase" />
+  <xs:complexType name="Reward">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:int" />
+      <xs:element minOccurs="0" name="Approved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Begin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CoinPartner" nillable="true" type="tns:CoinPartner" />
+      <xs:element minOccurs="0" name="CoinPartnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="Cost" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="tns:MultiLanguageString" />
+      <xs:element minOccurs="0" name="End" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExtendedParameters" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="tns:MultiLanguageString" />
+      <xs:element minOccurs="0" name="Picture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Purchases" nillable="true" type="tns:ArrayOfPurchase" />
+      <xs:element minOccurs="0" name="Ratings" nillable="true" type="tns:ArrayOfRating" />
+      <xs:element minOccurs="0" name="RewardType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="tns:MultiLanguageString" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reward" nillable="true" type="tns:Reward" />
+  <xs:complexType name="CoinPartner">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Partner">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Rewards" nillable="true" type="tns:ArrayOfReward" />
+          <xs:element minOccurs="0" name="SecurityAnswer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecurityQuestion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CoinPartner" nillable="true" type="tns:CoinPartner" />
+  <xs:complexType name="Partner">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Account">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="tns:MultiLanguageString" />
+          <xs:element minOccurs="0" name="Link" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Logo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Partner" nillable="true" type="tns:Partner" />
+  <xs:complexType name="ArrayOfReward">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reward" nillable="true" type="tns:Reward" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReward" nillable="true" type="tns:ArrayOfReward" />
+  <xs:complexType name="ArrayOfRating">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rating" nillable="true" type="tns:Rating" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRating" nillable="true" type="tns:ArrayOfRating" />
+  <xs:complexType name="Rating">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="RatedWith" type="xs:int" />
+      <xs:element minOccurs="0" name="Reward" nillable="true" type="tns:Reward" />
+      <xs:element minOccurs="0" name="RewardId" type="xs:int" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rating" nillable="true" type="tns:Rating" />
+</xs:schema>

@@ -1,0 +1,75 @@
+﻿@model sGridServer.Code.DataAccessLayer.Models.Reward
+@using Resource = sGridServer.Resources.RewardConfiguration.DetailReward
+
+@{
+    /*The DetailRewardView is responsible of showing a detailed reward and the relevant statistic (e.g. spent coins for this reward).
+     * Also, an edit button is shown. The model of the DetailRewardView is a RewardItem object.*/
+    
+    ViewBag.Title = Model.Name;
+
+    int rating = 0;
+    
+    //calculates an average rating of this reward
+    if(Model.Ratings.Count != 0) {
+        foreach(Rating r in Model.Ratings) {
+            rating += r.RatedWith;
+        }
+        rating = rating / Model.Ratings.Count;
+    }
+
+    sGridServer.Code.Rewards.RewardManager manager = new sGridServer.Code.Rewards.RewardManager();
+    IEnumerable<Purchase> allPurchases = manager.GetPurchases().Where(p => p.Reward.Id == Model.Id);
+    int coinsSpent = Model.Cost * allPurchases.Count();
+}
+
+<div style = "width : 600px; display: table;">
+        <h3>@String.Format(Resource.DetailText, Model.Name)</h3>
+
+        <h5><i>@String.Format(Resource.CoinsSpent, coinsSpent)</i></h5>
+
+        <div style="width: 150px; margin-top: 30px; float: left; height: 150px">
+            <img src = "@Url.Content(Model.Picture)" width="200px" height="200px" alt="@Model.Name"/>
+        </div>
+
+        <div style = "width: 300px; margin-top: 44px; padding-left: 250px;">
+            <b> @Resource.Id </b> @Model.Id  <br />
+            <b> @Resource.Name </b> @Model.Name  <br />
+            <b> @Resource.ShortDescription </b> @Model.ShortDescription  <br />
+            <b> @Resource.Description </b> @Model.Description  <br />
+            <b> @Resource.Amount </b> @Model.Amount  <br />
+            <b> @Resource.Begin </b> @Model.Begin  <br />
+            <b> @Resource.End </b> @Model.End  <br />
+            <b> @Resource.Cost </b> @Model.Cost  <br />
+
+            @if (sGridServer.Code.Security.SecurityProvider.Context.UserPermissions == SiteRoles.Admin)
+            {
+                <b> @Resource.ExtendedParameters </b> <input type="text" readonly="readonly" value="@Model.ExtendedParameters" class="sg_styled_input" style="width: 400px"/>  <br />
+            }
+            
+            <b> @Resource.Url </b> @Model.URL  <br />
+            <b> @Resource.TotalCoins </b> @(Model.Purchases.Count * Model.Cost)   <br />
+            <b> @String.Format(Resource.Rating, rating) </b>  <br />
+            @if ((sGridServer.Code.Security.SecurityProvider.CurrentUser.UserPermission == SiteRoles.Admin) || ((sGridServer.Code.Security.SecurityProvider.Context.ID == Model.CoinPartnerId) && !manager.IsActive(Model)))
+                {
+                    <p><a href="@Url.Action("Edit", "RewardConfiguration", new { id = @Model.Id })">@Resource.Edit</a></p>
+                }
+        </div>
+</div>
+
+@if (sGridServer.Code.Security.SecurityProvider.Context.UserPermissions == SiteRoles.Admin)
+{
+    if (!Model.Approved) 
+    {
+        Html.HiddenFor(model => model.Id);
+        using(Html.BeginForm("ApproveReward", "PartnerSupport", new { id = Model.Id })) 
+        {
+            <input type="submit" class="sg_styled_button" value="@Resource.ToApprove" />
+        }
+    }
+    else
+    {
+        <p><span style="color: Green;">@Resource.Approved</span></p>
+    }
+}
+
+@Html.Action("RewardStatistics", new { id = Model.Id, fromDate = DateTime.MinValue, to = DateTime.MaxValue, diagrammSettings = new Statistics() })

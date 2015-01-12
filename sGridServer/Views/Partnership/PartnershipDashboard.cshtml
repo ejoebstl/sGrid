@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;
+    //The PartnershipDashboardView is responsible for showing the dashboard of a coin partner.     
+}
+@model CoinPartner
+@using Resource = sGridServer.Resources.Partnership.PartnershipDashboard
+
+<script type = "text/javascript">
+    $().ready(function () {
+        //Opens dialog on click to edit partner information or logo.
+        $(".openDialog").click(function (e) {
+            e.preventDefault();
+            $('<div>')
+                .appendTo("body")
+                .dialog({
+                    close: function () { $(this).remove() },
+                    modal: true,
+                    width: 600,
+                    height: 320
+                })
+                .load(this.href, {});
+        });
+        //Closes dialog on click.
+        $(".close").on("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+</script>
+
+<div>
+       @Html.ActionLink(@Resource.Edit, "PartnershipInformationEditView", "Partnership", null,
+                new { @class = "openDialog", data_dialog_title = @Resource.Edit }) 
+</div>
+<div>
+    <div style="width: 450px; float: left;">
+        <h3>@Resource.MyLogo</h3>
+        <div>
+            @if (Model.Logo != null && Model.Logo != "")
+            {  
+                <img src = "@Url.Content(Model.Logo)" width="200px" height="200px" alt = "@Resource.Picture" />
+            }
+        </div>
+        <a href = "@Url.Action("EditLogo", "Partnership", new { id = Model.Id})" class = "openDialog">        
+            @Resource.NewLogo
+        </a>
+    </div>
+    <div style="width: 450px; float: left;">
+        <h3>@Resource.Name: @Model.Nickname</h3>
+        <p>@Resource.Description: @Model.Description
+        <br />
+        @Resource.Link: @Model.Link</p> 
+    </div>
+</div>
+
+<div id="rewards_view" style = "padding-top: 50px;">
+    @Html.Action("Rewards", "UserDashboard")
+</div>
+<div id="sGrid_news_view" style = "padding-top: 50px;">
+    @Html.Action("SGridNews", "UserDashboard")
+</div>

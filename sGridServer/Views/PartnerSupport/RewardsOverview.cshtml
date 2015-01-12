@@ -1,0 +1,54 @@
+﻿@using Resource = sGridServer.Resources.PartnerSupport.RewardsOverview
+
+@{
+    ViewBag.Title = Resource.RewardsText;
+
+    /*The RewardsOverviewView is responsible for rendering the partial ListRewardsView 
+     * and for providing controls to change if all or only unapproved rewards should be shown. 
+     * If this setting is changed, the ListRewardsView is reloaded.*/
+}
+
+<script type="text/javascript">
+
+    //function to run by clicking the button with the id 'search_name'
+    bindSubmit({
+        buttonId: "#search_button",
+        //run a ListRewards action with the given data
+        actionUrl: '@Url.Action("ListRewards")',
+        data: function() {
+                return { unapprovedOnly: $("select[name='unapproved']").val() == "unapproved" };
+              },
+        //load a ListRewardsView of rewards with the given data
+        success: function (data) {
+                    $("#list_view").html(data);
+                 }
+    });
+
+    //action by the opening the View
+    $().ready(function() {
+        //action by pressing enter -> bindSubmit
+        $("select[name='unapproved']").keypress(function(key) {
+            if(key.keyCode == 13) {
+                $("#search_button").click();
+            }
+        });
+    });
+</script>
+
+<h2>@Resource.RewardsText</h2>
+<div id = "controls">
+    <select name="unapproved" class="sg_styled_input">
+        <option value="unapproved">@Resource.UnapprovedText</option>
+        <option value="approved">@Resource.ApprovedText</option>
+    </select>
+    <input type="submit" id="search_button" class="sg_styled_button" value="@Resource.SearchText"/>
+</div>
+
+<div id="list_view">
+    @Html.Action("ListRewards", new { unapprovedOnly = true } )
+</div>
+
+@using (Html.BeginForm("Create", "RewardConfiguration", FormMethod.Get))
+{
+    <input type="submit" value="@Resource.AddReward" class="sg_styled_button" />
+}

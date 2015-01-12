@@ -1,0 +1,201 @@
+﻿@using Resource = sGridServer.Resources.MasterPage.ScriptSection
+@{
+    /* The partial ScriptSection view is responsible for scripts. */
+}
+@Html.Action("HelperScripts", "MasterPage")
+
+<!-- Language Script -->
+
+<script type="text/javascript">
+
+    //Language Selection Script
+
+    //Invokes the corresponding SelectLanguage method of the
+    //controller with the given language. 
+    setLanguage = function(lang) {
+                $.ajax({
+                    url: "@Url.Action("SelectLangauge")",
+                    cache: false,
+                    async: true,
+                    type: "POST",
+                    data: {language: lang },
+                    error: function (html) { }, 
+                    success:  function (html) { window.location.reload(); }
+                });
+    }
+
+    //Shows the language selection view.
+    showLanguageSelectionView = function (event) {
+        $("#sg_language_view").dialog("open");
+    }
+
+    //Registeres event handlers.
+    $().ready(function () {
+        $("#sg_language_selection").click(showLanguageSelectionView);
+          $("#sg_language_view").dialog({
+                autoOpen: false,
+                height: 250,
+                width: 350,
+                modal: true
+            });
+
+    });
+
+</script>
+
+@if (sGridServer.Code.Security.SecurityProvider.Context != null)
+{
+    <!-- Refresh status script -->
+    
+    <script type="text/javascript">
+    
+        //Refresh status script for logged in users. 
+
+        var currentCoins = 0;
+        var displayedCoins = -1;
+        var achievementToMark = -1;
+
+        //Refeshes the UI according to the user state. 
+        endGetUserState = function(data) {
+            currentCoins = data.CoinBalance;
+
+            //Invokes a timer for a nice animation in the user interface. 
+            if(currentCoins != displayedCoins) {
+                window.setInterval(function(x) {
+                        
+                    if(displayedCoins == -1) {
+                        displayedCoins = currentCoins;
+                    }
+
+                    if(displayedCoins < currentCoins) {
+                        displayedCoins++;
+                    } else if(displayedCoins > currentCoins) {
+                        displayedCoins--;
+                    } else {
+                        window.clearInterval(x);
+                    }
+
+                    $("#account_balance").html(displayedCoins);
+
+                }, 20);
+            }
+
+            var achievement = data.NextAchievement;
+
+            //Invokes a pop-up notifying the user about the new achievement. 
+            if(achievement != null) {
+                $.jGrowl(@Html.Raw(String.Format(Resource.AchievementObtainedText, "\" + achievement.Name + \"")), {
+					sticky:	false,
+					life: 4000
+				});
+
+                achievementToMark = achievement.AchievementId;
+            }
+        }
+
+        //Notifies the server that the achievement with the id i has been shown. 
+        setAchievementShown = function(i) {
+            $.ajax({
+                url: "@Url.Action("SetAchievementShown")",
+                cache: false,
+                async: false,
+                data: { achievementId: i },
+                type: "POST"
+            });
+        }
+
+        //Gets the user state using ajax. 
+        startGetUserState = function() {
+            
+            if(achievementToMark != -1) {
+                setAchievementShown(achievementToMark);
+                achievementToMark = -1;
+            }
+
+            $.ajax({
+                url: "@Url.Action("GetUserState")",
+                cache: false,
+                async: true,
+                type: "POST",
+                error: function (html) { }, 
+                success: endGetUserState
+            });
+        };
+
+        //Registeres event handlers.
+        $().ready(function () {
+            startGetUserState();
+            window.setInterval(startGetUserState, 5000);
+        });
+    </script>
+}
+else
+{
+    <!-- Login & Registration View script -->
+    
+    <script type="text/javascript">
+
+        //Toggles the visibility of the login view.
+        showLoginView = function (event) {
+            $("#sg_login_view").dialog("open");
+        };
+
+        //Toggles the visibility of the registration view.
+        showRegistrationView = function (event) {
+            $("#sg_register_view").dialog("open");
+        };
+
+        //Registeres event handlers.
+        $().ready(function () {
+            $("#sg_login_view").dialog({
+                autoOpen: false,
+                height: 300,
+                width: 350,
+                modal: true
+            });
+
+            $("#sg_register_view").dialog({
+                autoOpen: false,
+                height: 300,
+                width: 350,
+                modal: true
+            });
+
+            $("#login_link").click(showLoginView);
+            $("#register_link").click(showRegistrationView);
+        });
+    </script>
+}
+
+<!-- JS Pop-Ups start here -->
+
+<div id="sg_language_view" title="@Resource.LanguageCaption" style="display: none">
+    <p>
+        @Resource.LanguageDescription
+    </p>
+    @foreach (sGridServer.Code.Utilities.LanguageItem lang in sGridServer.Code.Utilities.LanguageManager.Languages)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_image">
+                <a href="#" onclick='javascript:setLanguage("@lang.Code")'><img src="@Url.Content(lang.IconUrl)" class="sg_list_image" alt="@lang.Name" /> </a>
+            </div>
+            <div class="sg_list_text"><a href="#" onclick='javascript:setLanguage("@lang.Code")'>@lang.Name</a></div>
+        </div>
+    }
+</div>
+
+@if (sGridServer.Code.Security.SecurityProvider.Context != null)
+{
+
+}
+else
+{
+    
+    <div id="sg_login_view" title="@Resource.LoginCaption" style="display: none">
+        @Html.Action("LoginView", "IdProviderHelper")
+    </div>
+    
+    <div id="sg_register_view" title="@Resource.RegisterCaption" style="display: none">
+        @Html.Action("RegisterView", "IdProviderHelper")
+    </div>
+}

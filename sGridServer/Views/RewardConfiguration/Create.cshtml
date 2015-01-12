@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SelectListItem>
+@using Resource = sGridServer.Resources.RewardConfiguration.Create
+
+@{
+    ViewBag.Title = Resource.CreateText;
+
+    /*The CreateRewardView is responsible for showing the list of the reward types in order to create a new reward. 
+     * The mode of the CreateRewardView is an enumeration of String objects.*/
+}
+
+@using (Html.BeginForm("Create", "RewardConfiguration"))
+{    
+    <fieldset class="sg_editor_form">
+        <legend>@Resource.CreateText</legend>
+        <p>@Resource.ChooseType</p>
+        <div class="sg_editor_row">
+            <label>@Resource.TypeText</label>
+            @Html.DropDownList("type", Model, "", new { @class = "DropDownRewardType" })
+        </div>
+        <div class="sg_submit_row">
+            <input type = "submit" value = "@Resource.Button"/>
+        </div>
+    </fieldset>
+}
+
+@Html.ActionLink(Resource.RequestNewType, "ShowContactForm", "Contact", new { message = "", subject = Resource.RequestSubjectText }, null)

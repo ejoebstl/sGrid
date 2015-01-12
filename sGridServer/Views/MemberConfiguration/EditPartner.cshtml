@@ -1,0 +1,41 @@
+﻿@{
+    //The EditPartnerView shows fields to edit coin partners. It uses the partial EditAccountView to edit basic fields.
+}
+@model PartnerConfigurationModel
+@using Resource = sGridServer.Resources.MemberConfiguration.EditPartner
+
+<fieldset class="sg_editor_form"> 
+    <legend>@Resource.PropertiesText @Model.Account.Nickname</legend>
+    @using (Html.BeginForm("EditPartner", "MemberConfiguration"))
+    { 
+            @Html.Action("EditAccount", new { account = Model.Account }) 
+            <div class="sg_editor_language_row">
+                <label>@Resource.Description</label>
+                @Html.EditorFor(model => model.Account.Description) 
+                @Html.ValidationMessageFor(model => model.Account.Description)            
+            </div>
+            <div class="sg_editor_row">
+                <label>@Resource.Link</label>
+                    @Html.EditorFor(model => model.Account.Link) 
+                @Html.ValidationMessageFor(model => model.Account.Link)
+            </div>
+            <div class="sg_editor_row"> 
+                <label>@Resource.Question</label>
+                @Html.EditorFor(model => model.Account.SecurityQuestion) 
+                @Html.ValidationMessageFor(model => model.Account.SecurityQuestion)
+            </div>
+            <div class="sg_editor_row"> 
+                <label>@Resource.Answer</label>
+                @Html.EditorFor(model => model.Account.SecurityAnswer) 
+                @Html.ValidationMessageFor(model => model.Account.SecurityAnswer)
+            </div>
+            <div class="sg_editor_row"> 
+                <label>@Resource.Logo</label>
+                @Html.EditorFor(model => model.Account.Logo) 
+                @Html.ValidationMessageFor(model => model.Account.Logo)
+            </div>
+            <div class="sg_submit_row">
+                <input type="submit" value="@Resource.Submit" /> 
+            </div>
+    }
+ </fieldset>

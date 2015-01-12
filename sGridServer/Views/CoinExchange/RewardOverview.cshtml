@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;
+    /*The RewardOverviewView is responsible for rendering the partial ListView
+     and for providing controls to change the order or search criteria of the shown rewards.*/    
+}
+@model IEnumerable<CoinPartner>
+@using Resource = sGridServer.Resources.CoinExchange.RewardOverview
+
+<script type="text/javascript">
+    /*Submit a form with value of the search box, partner id, asdending  or descending order and given sorting option as parameter,
+    reload the list view by success.*/    
+    bindSubmit({ 
+        buttonId: "#submit_button",
+        actionUrl: '@Url.Action("List")',
+        data: function () {
+            var selectedOption = $("#sort_option").val();
+            if (selectedOption == 1) {
+                selectedOption = "Rating";
+            } else if (selectedOption == 2) {
+                selectedOption = "Popularity";
+            } else if (selectedOption == 3) {
+                selectedOption = "Cost";
+            } else if (selectedOption == 0) {
+                selectedOption = "Name";
+            }
+            var selectedOrder = $("#sort_order").val();
+            if (selectedOrder == 0) {
+                selectedOrder = "Ascending";
+            } else if (selectedOrder == 1) {
+                selectedOrder = "Descending";
+            }
+            return { searchName: $("#search_box").val(),
+                     partnerId: $("#partner_id").val(),
+                     sortOption: selectedOption,
+                     sortOrder: selectedOrder };
+        },
+        success: function (data) {
+            $('#list_view').html(data);
+        }
+    });
+
+    $().ready(function() {
+        //submit a form if a user presses "Enter" 
+        $('#search_box').keypress(function(e) {
+            if (e.keyCode == 13) {
+            $("#submit_button").click();
+            }
+        });
+        //submit a form if sorting order changes. 
+        $('#sort_order').change(function() {
+            $("#submit_button").click();
+        });
+        //submit a form if sorting option changes.
+        $('#sort_option').change(function() {
+            $("#submit_button").click();
+        });
+        $('#partner_id').change(function () {
+            $("#submit_button").click();
+        });
+        //helps toggle the statistics div visibility.
+        var show = true;
+        //hide statistics div by start
+        $('#statistics').hide();
+        $('#statistics').load("CoinStatistics", {});
+        //show statistics div if not visibie currently, close statistics div otherwise.
+        $(".openDialog").click(function (e) {
+            if (show) {       
+                e.preventDefault();              
+                $('#statistics').show();
+                show = false;
+            } else {            
+                show = true;
+                e.preventDefault();
+                $('#statistics').hide();
+            }          
+        });/*
+        $(".close").on("click", function (e) {
+            show = true;
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });*/
+    });
+</script>
+
+@{
+    Account user = sGridServer.Code.Security.SecurityProvider.CurrentUser;
+    if (user != null && user is User)
+    {
+        @Html.ActionLink(@Resource.MyRewards, "ListMyRewards")
+        <br />
+        @Html.ActionLink(@Resource.Balance, "RewardOverview", "CoinExchange", null, new { @class = "openDialog" })        
+    }
+}
+
+<div id="statistics"></div>
+
+<div id="controls" style="margin-top: 30px; height: 30px;">
+    <input type="text" id="search_box" class="sg_styled_input" />
+    <select id="sort_option" class="sg_styled_input">
+        <option selected="selected" value="0" style="color: #5c6b72">@Resource.Name</option>
+        <option value="1" style="color: #5c6b72">@Resource.Rating</option>
+        <option value="2" style="color: #5c6b72">@Resource.Popularity</option>
+        <option value="3" style="color: #5c6b72">@Resource.Cost</option>
+    </select>
+    <select id="sort_order" class="sg_styled_input">
+        <option selected="selected" value="0" style="color: #5c6b72">@Resource.Ascending</option>
+        <option value="1" style="color: #5c6b72">@Resource.Descending</option>
+    </select>
+    <select id="partner_id" class="sg_styled_input">
+        <option selected="selected" value="-1" style="color: #5c6b72">@Resource.ChoosePartner</option>
+        @foreach (CoinPartner partner in Model)
+        {
+            <option value="@partner.Id" style="color: #5c6b72">@partner.Nickname</option>
+        }
+    </select>
+    <input type="submit" id="submit_button" value="Submit" class="sg_styled_button" />
+</div>
+<div id="list_view">
+    @Html.Action("List")
+</div>
+
+
+

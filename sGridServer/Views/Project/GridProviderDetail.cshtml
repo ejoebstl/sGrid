@@ -1,0 +1,32 @@
+﻿@using Resource = sGridServer.Resources.Project.GridProviderDetail
+@model sGridServer.Code.GridProviders.GridProviderDescription
+           
+@{
+    ViewBag.Title = Resource.GridProvider;
+
+    /*The GridProviderDetailView is responsible for showing details for a specific grid provider.
+     * The model of the GridProviderDetailView is a GridProviderDescription object. */
+}
+
+@if (Model != null)
+{
+    <fieldset class="sg_editor_form">
+        <legend>@Model.Name</legend>
+        <img src = "@Url.Content(Model.IconUrl)" width="150px" height="150px" style="float: left; margin-right: 20px; margin-left: 20px;" alt="@Model.Name"/>
+        <h3>@Model.Slogan</h3>
+        <p>@Model.Description</p>
+    </fieldset>
+    
+    <p>@Resource.ProjectsText</p>
+
+    foreach (sGridServer.Code.GridProviders.GridProjectDescription p in Model.AvailableProjects)
+    {
+        <p>@p.Name</p>
+    }
+    <p>@Resource.WebsiteText <a href="@Model.WebsiteUrl" /> </p>
+    
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px; color:Red;"><b>@ViewBag.Message</b></div>
+}

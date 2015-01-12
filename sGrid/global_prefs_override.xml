@@ -1,0 +1,8 @@
+<global_preferences>
+<run_on_batteries>0</run_on_batteries>
+<run_gpu_if_user_active>0</run_gpu_if_user_active>
+<cpu_usage_limit>92</cpu_usage_limit>
+<disk_max_used_gb>1</disk_max_used_gb>
+<max_cpus>1</max_cpus>
+<max_ncpus_pct>25</max_ncpus_pct>
+</global_preferences>

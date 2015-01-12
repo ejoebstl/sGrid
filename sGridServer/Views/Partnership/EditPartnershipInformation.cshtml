@@ -1,0 +1,37 @@
+﻿@{
+    //The EditPartnershipInformationView is responsible for showing a form to edit coin partner’s information.
+}
+@model Partner
+@using Resource = sGridServer.Resources.Partnership.EditInformation
+<div>
+    <script type="text/javascript">
+        $().ready(function () {
+            $(".sg_editor_row input, .sg_editor_row button, .sg_submit_row input").uniform();
+        });
+    </script>
+    @using (Html.BeginForm("EditPartnershipInformation", "Partnership"))
+    {
+        <fieldset class="sg_editor_form"> 
+            <div class="sg_editor_row" style="width: 400px">
+                <label style="width: 100px">@Resource.Nickname</label> @Html.EditorFor(model => model.Nickname)
+            </div>
+            <div class="sg_editor_row" style="width: 400px">
+                <label style="width: 100px">@Resource.Link</label> @Html.TextBoxFor(model => model.Link)
+           </div>
+            <div class="sg_editor_language_row" style="width: 400px">
+                <label style="width: 100px">@Resource.Description</label> @Html.EditorFor(model => model.Description)
+            </div>
+            @if (Model is CoinPartner) {                
+                <div class="sg_editor_row" style="width: 400px">
+                    <label style="width: 100px">@Resource.Question</label> @Html.EditorFor(model => (model as CoinPartner).SecurityQuestion)
+                </div>
+                <div class="sg_editor_row" style="width: 400px">
+                    <label style="width: 100px">@Resource.Answer</label> @Html.EditorFor(model => (model as CoinPartner).SecurityAnswer)
+                </div>
+            }
+            <div class="sg_submit_row" style="width: 400px">
+                <input type = "submit" id = "submit_button" value = "Submit" /> <span id="loader"></span>
+            </div>
+        </fieldset>
+    }
+</div>

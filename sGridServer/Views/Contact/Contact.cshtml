@@ -1,0 +1,32 @@
+﻿@using Resource = sGridServer.Resources.Contact.Contact
+@model sGridServer.Models.ContactData
+
+@{
+    ViewBag.Title = Resource.ContactText;
+
+    /*The ContactView is responsible for showing a contact dialog and an error or success message after the registered user, 
+     * sponsor or coin partner tried to send a message. The model of the ContactView is a ContactData object.
+     * It has two text boxes to enter the subject and the text of the message and a submit button.*/
+}
+
+@using (Html.BeginForm("Contact", "Contact")) {
+    <fieldset class="sg_editor_form">
+        <legend>@Resource.ContactText</legend>
+        <p>@Resource.DescriptionText</p>
+
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.Subject, Resource.SubjectText)
+            @Html.TextBoxFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject) 
+        </div>
+        <div class="sg_editor_textarea_row">
+            @Html.LabelFor(model => model.Message, Resource.MessageText)
+            @Html.TextAreaFor(model => model.Message) 
+            @Html.ValidationMessageFor(model => model.Message) 
+        </div> 
+
+        <div class="sg_submit_row">
+            <input type="submit" class="SendButton" value="@Resource.SendText" />
+        </div>
+    </fieldset> 
+}

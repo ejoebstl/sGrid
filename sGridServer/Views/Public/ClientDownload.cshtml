@@ -1,0 +1,22 @@
+﻿
+@using Resource = sGridServer.Resources.Public.ClientDownload@{
+    ViewBag.Title = @Resource.TitleText;
+    //The ClientDownloadView shows the download button the user can click to start the download of the client installer.
+}
+
+
+<h2>@Resource.TitleText</h2>
+
+<div style="margin-top: 50px">
+
+</div>
+
+<h4>@Resource.DescriptionTitle</h4>
+
+<p style="text-align: center">
+    <a href = "@Url.Content("~/Content/download/sGrid.application")"><img src="../../Content/images/buttons/download.png" width="200px" height="100px" alt="Download"/></a>
+</p>
+
+<p>
+    @Html.Raw(String.Format(Resource.Description, Url.Action("GridProjectOverview", "Project"), Url.Action("RewardOverview", "CoinExchange")))
+</p>

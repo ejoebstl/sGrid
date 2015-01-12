@@ -1,0 +1,18 @@
+﻿@{
+    //The partial EndMembershipView shows the confirm form to end a membership. It has two buttons, one for confirm and one for cancel.
+}
+@using Resource = sGridServer.Resources.ProfileSettings.Settings
+<script type="text/javascript">
+    $().ready(function () {
+        $(".sg_styled_button").uniform();
+    });
+</script>
+<p>
+    @Resource.EndMembershipConfirm
+    <br />
+    @using(Html.BeginForm("EndMembership", "ProfileSettings", new { confirm = true }))
+    {
+        <input type = "submit" id = "submit_button" value = "@Resource.Yes" style = "float:right"  class="sg_styled_button"/>
+        <input type = "button" class = "close sg_styled_button" value = "@Resource.No" style = "float:right"/>
+    }
+</p>

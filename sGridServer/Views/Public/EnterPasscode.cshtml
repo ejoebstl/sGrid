@@ -1,0 +1,23 @@
+﻿@model String
+@using Resource=sGridServer.Resources.Public.EnterPasscode
+@{
+    Layout = "../Shared/_Passcode.cshtml";
+    ViewBag.Title = @Resource.Title;
+}
+<div style="margin: 50px auto 10px auto; width: 300px; text-align: center;">
+<h4>@Resource.Description</h4>
+@using(Html.BeginForm()) {
+    
+    
+            <input type="text" value="" name="passcode"/>
+            <br />
+            <br />
+            <input type="submit" value="@Resource.SubmitText" />
+            <input type="hidden" value="@Model" name="returnUrl"/>
+}
+</div>
+<script>
+    $().ready(function () {
+        $("input").uniform();
+    });
+</script>

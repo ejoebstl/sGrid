@@ -1,0 +1,37 @@
+﻿@model sGridServer.Models.NewsModel
+@using Resource = sGridServer.Resources.AppConfiguration.ConfigureNews
+
+@{
+    ViewBag.Title = Resource.Title;
+
+    /*The ConfigureNewsView shows a form to enter news. The form has fields for title and text. It's possible to upload a picture for the news.  
+     * The model of the ConfigureNewsView is a NewsModel object.*/
+}
+
+@using (Html.BeginForm("ConfigureNews", "AppConfiguration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    <fieldset class="sg_editor_form">
+        <legend>@Resource.NewsText</legend>
+        <p>@Resource.DescriptionText</p>
+        
+        <div class="sg_editor_row"> 
+            @Html.LabelFor(model => model.Subject, Resource.SubjectText)
+            @Html.EditorFor(model => model.Subject) 
+            @Html.ValidationMessageFor(model => model.Subject) 
+        </div>
+        <div class="sg_editor_textarea_row">
+            @Html.LabelFor(model => model.Text, Resource.MessageText)
+            @Html.TextAreaFor(model => model.Text)
+            @Html.ValidationMessageFor(model => model.Text) 
+        </div>
+
+        <div class="sg_editor_row">
+            <label>@Resource.UploadText</label>
+            <input type="file" name="file" id="file" />
+        </div>
+
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.SendText"/>
+        </div> 
+    </fieldset>
+}

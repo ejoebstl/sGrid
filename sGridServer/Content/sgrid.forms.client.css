@@ -1,0 +1,27 @@
+﻿/* sGrid Client Forms 2.0 Styles */
+
+.sg_editor_row, .sg_submit_row
+{
+    width: 510px;
+    margin: 2px;
+}
+
+.sg_editor_row label, .sg_captcha_row label, .sg_editor_textarea_row label, .sg_editor_language_row label  
+{
+     width: 240px;
+     float: left;
+     margin: 0px;
+}
+
+.sg_editor_row input 
+{
+     width: 140px;
+     float: left;
+     margin: 0px 0px 0px 15px;
+}
+.sg_editor_form
+{
+    margin: 0px;
+    padding: 0px;
+    margin-top: 13px;
+}

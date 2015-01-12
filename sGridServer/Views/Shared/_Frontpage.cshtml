@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "sGrid";
+}
+@using Resource=sGridServer.Resources.Frontpage.Frontpage
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> sGrid </title>
+<link href="~/Content/Frontpage.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/jquery.jgrowl.css")
+    @Styles.Render("~/Content/themes/base/jquery-ui-1.10.0.custom.css")
+    @Styles.Render("~/Content/Form.css")
+    @Styles.Render("~/Content/sgrid.ui.css")
+    @Styles.Render("~/Content/sgrid.layout.css")
+    @Styles.Render("~/Content/sgrid.forms.css")
+    @Styles.Render("~/Content/jPaginator.css")
+    @Styles.Render("~/Content/css/uniform.default.css")
+</head>
+<body>
+    @Scripts.Render("~/Scripts/jquery-1.9.0.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.0.custom.js")
+    @Scripts.Render("~/Scripts/jquery-ui.custom.js")
+    @Scripts.Render("~/Scripts/jquery.ui.accordion.js")
+    @Scripts.Render("~/Scripts/jquery.ui.button.js")
+    @Scripts.Render("~/Scripts/jquery.ui.datepicker.js")
+    @Scripts.Render("~/Scripts/jquery.ui.datepicker-de-DE.js")
+    @Scripts.Render("~/Scripts/jquery.ui.datepicker-en-EN.js")
+    @Scripts.Render("~/Scripts/jquery.ui.menu.js")
+    @Scripts.Render("~/Scripts/jquery.ui.progressbar.js")
+    @Scripts.Render("~/Scripts/jquery.ui.tooltip.js")        
+    @Scripts.Render("~/Scripts/jquery.ui.core.js")
+    @Scripts.Render("~/Scripts/jquery.ui.position.js")
+    @Scripts.Render("~/Scripts/jquery.ui.widget.js")
+    @Scripts.Render("~/Scripts/jquery.ui.tabs.js")
+    @Scripts.Render("~/Scripts/jquery.ui.dialog.js")
+    @Scripts.Render("~/Scripts/jquery-migrate-1.1.0.js")
+    @Scripts.Render("~/Scripts/jquery.jgrowl.js")
+    @Scripts.Render("~/Scripts/jPaginator.js")
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/Scripts/jquery.uniform.js")
+    @Scripts.Render("~/Scripts/bindsubmit.js")
+    @Scripts.Render("~/Scripts/raphael.js")
+    @Scripts.Render("~/Scripts/g.raphael.js")
+    @Scripts.Render("~/Scripts/g.line.js")
+    @Scripts.Render("~/Scripts/g.bar.js")
+    @Scripts.Render("~/Scripts/Highcharts/highstock.js")
+    @Scripts.Render("~/Scripts/Highcharts/modules/exporting.js")
+    @RenderSection("scripts", required: false)
+    @Html.Action("ScriptSection", "MasterPage", null)
+    <div id="sg_frontpage_header_section" style="position: absolute; right: 18px; top: 10px;">
+        <ul>
+            @Html.Action("LoginPart", "MasterPage", null)
+            @Html.Action("LanguageSelection", "MasterPage", null)
+        </ul>
+    </div> 
+    <div id="container" style="margin-top: -334px; position: absolute; top: 50%;">
+        <div id="top_section">        
+            <img src="@Url.Content("~/Content/images/design/logo.png")" alt="" id="frontpage_logo"/>
+        </div>
+        <div id="image_container">
+            <img src="@Url.Content("~/Content/images/design/dots_map.png")" style="height: 305px; z-index: -1;" alt=""/>
+        </div>
+        <div class="horizontal_break">
+        </div>
+        <div id="middle_section">
+            <div id="box_section">
+                <div class="vertical_break">
+                </div>
+                <div class="box_item">
+                    <div style="width:209px; height:168px;">
+                        <p class="box_title">@Resource.Welcome</p>
+                        <p class="box_text">@Resource.WelcomeText</p>
+                    </div>
+                    <div style="width:209px;">
+                        <p class="link_text">
+                            <a href="@Url.Action("About", "About")" class="link_text">@Resource.Explore</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="vertical_break">
+                </div>
+                <div class="box_item">
+                    <div class="box_text_section">
+                        <p class="box_title">@Resource.Speedup</p>
+                        <p class="box_text">@Resource.SpeedUpText</p>
+                        <img src="@Url.Content("~/Content/images/design/meeting.png")" alt="" style="height:101px; margin: 0px; margin-top: 9px;"/>
+                    </div>
+                    <div style="width:209px;">
+                        <p class="link_text">
+                            <a href="@Url.Action("GridProjectOverview", "Project")" class="link_text">@Resource.Explore</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="vertical_break">
+                </div>
+                <div class="box_item">
+                    <div class="box_text_section">
+                        <p class="box_title">@Resource.GetReward</p>
+                        <p class="box_text">@Resource.GetRewardText</p>
+                    </div>
+                    <div style="width:209px;">
+                        <p class="link_text">
+                            <a href="@Url.Action("RewardOverview", "CoinExchange")" class="link_text">@Resource.Explore</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="vertical_break">
+                </div>
+                <div class="box_item">               
+                    
+                        @if (sGridServer.Code.Security.SecurityProvider.Context == null)
+                        {
+                            <a href="javascript:showRegistrationView()">
+                                <img src="@Url.Content(Resource.JoinImage)" alt="" style="vertical-align:middle; margin-top: 62px; margin-left: 46px; width:104px; height: 50px;"/> 
+                            </a>
+                        }
+                        else
+                        {
+                            string url;
+                            if (sGridServer.Code.Security.SecurityProvider.CurrentUser is User)
+                            {
+                                url = Url.Action("UserDashboard", "UserDashboard");
+                            }
+                            else if (sGridServer.Code.Security.SecurityProvider.CurrentUser is CoinPartner)
+                            {
+                                url = Url.Action("PartnershipDashboard", "Partnership");
+                            }
+                            else if (sGridServer.Code.Security.SecurityProvider.CurrentUser is Sponsor)
+                            {
+                                url = Url.Action("SponsorDashboard", "Partnership");
+                            }
+                            else
+                            {
+                                url = Url.Action("AdminDashboard", "AdminDashboard");
+                            }
+                            <a href="@url">
+                                <img src="@Url.Content(Resource.ExploreImage)" alt="" style="vertical-align:middle; margin-top: 62px; margin-left: 46px; width:104px; height: 50px;"/>
+                            </a>
+                            
+                        }                   
+                </div>
+                <div class="vertical_break">
+                </div>
+            </div>
+        </div>
+        <div class="horizontal_break">
+        </div>
+        <div id="body">@RenderBody()</div>
+        <div id="bottom_section">
+            @Html.Action("Footer", "MasterPage", null)
+        </div>
+    </div>
+   
+</body>
+</html>

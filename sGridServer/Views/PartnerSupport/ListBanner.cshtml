@@ -1,0 +1,36 @@
+﻿@model IEnumerable<sGridServer.Code.DataAccessLayer.Models.Sponsor>
+@using Resource = sGridServer.Resources.PartnerSupport.ListBanner
+
+@{
+    /*The partial ListBannerView is responsible for rendering a list of banners. 
+     * The model of the ListBannerView is an enumeration of Sponsor objects.
+     * It shows the banner and the name of each sponsor in the model.
+     * By clicking at the name of a sponsor it redirects to the BannerDetailView.*/
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+        //styles for this PartialView  
+        $(".sg_list_row, .sg_list_image, .sg_list_text").uniform();
+    });
+</script>
+
+@if (Model != null)
+{
+    foreach (sGridServer.Code.DataAccessLayer.Models.Sponsor s in Model)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_image"> 
+                <img src = "@Url.Content(s.Picture)" class="sg_list_image" alt="" /> 
+            </div>
+            <div class="sg_list_text">
+                <a href="@Url.Action("BannerDetail", new { sponsorId = s.Id })">@s.Nickname</a>
+            </div>
+        </div>      
+    }
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}
+

@@ -1,0 +1,76 @@
+﻿@model sGridServer.Models.UserStatistics
+@using Resource = sGridServer.Resources.Statistics.Diagram
+@{
+    int random = new Random().Next();
+    
+}
+<script type="text/javascript">
+$().ready(function () {
+        var diagramData = @Html.JsonArray(Model.StatisticsInfo);
+        Highcharts.setOptions({
+	        lang: {
+		        months : [ '@Resource.January', '@Resource.February', '@Resource.March', '@Resource.April', '@Resource.May', '@Resource.June', 
+			                '@Resource.July', '@Resource.August', '@Resource.September', '@Resource.October', '@Resource.November', '@Resource.December'],
+		        weekdays : ['@Resource.Monday', '@Resource.Tuesday', '@Resource.Wednesday', '@Resource.Thursday', '@Resource.Friday', '@Resource.Saturday', '@Resource.Sunday'],
+                shortMonths : ['@Resource.Jan', '@Resource.Feb', '@Html.Raw(Resource.Mar)', '@Resource.Apr', '@Resource.MayShort', 
+                '@Resource.Jun', '@Resource.Jul', '@Resource.Aug','@Resource.Sep','@Resource.Oct', '@Resource.Nov', '@Resource.Dec'],
+                downloadJPEG : '@Resource.JPEG',
+                downloadPDF : '@Resource.PDF',
+                downloadPNG : '@Resource.PNG',
+                downloadSVG : '@Resource.SVG',
+                exportButtonTitle : '@Resource.Export',
+                loading : '@Resource.Loading',
+                printButtonTitle : '@Resource.Print',
+	            rangeSelectorFrom : '@Resource.From',
+                rangeSelectorTo : '@Resource.To',
+            }
+        });
+
+        window.chart = new Highcharts.StockChart({
+
+			chart : {
+				renderTo : '@Html.Raw(String.Format("container{0}", random))'
+			},
+
+			rangeSelector : {
+				selected : 1
+			},
+
+            marker : {
+					enabled : @Html.Raw(Model.DiagramSettings.Marker ? "true" : "false"),
+					radius : 3
+				},
+		    shadow : true,
+
+            scrollbar : {
+                enabled : @Html.Raw(Model.DiagramSettings.Scrollbar ? "true" : "false")
+            },
+
+            rangeSelector : {
+                enabled : @Html.Raw(Model.DiagramSettings.RangeSelector ? "true" : "false")
+            },
+
+            navigator : {
+                enabled : @Html.Raw(Model.DiagramSettings.Navigator ? "true" : "false")
+            },
+			
+            navigation : {
+                buttonOptions : {
+                    enabled : @Html.Raw(Model.DiagramSettings.ButtonOptions ? "true" : "false")
+                }
+            },
+            
+
+			series : [{
+                name : '@Model.Account.Nickname',
+				data : diagramData,
+				tooltip: {
+					valueDecimals: 2
+				}
+			}]
+		});
+    });
+
+</script>
+
+<div id="@Html.Raw(String.Format("container{0}", random))" style="height: @(Model.DiagramSettings.Height)px; width: @(Model.DiagramSettings.Width)px"></div>

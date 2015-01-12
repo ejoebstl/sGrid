@@ -1,0 +1,143 @@
+﻿@model RewardDetailModel
+@using Resource = sGridServer.Resources.CoinExchange.Detail
+           
+@{
+    ViewBag.Title = @Resource.TitleText;
+    User currentUser = sGridServer.Code.Security.SecurityProvider.CurrentUser as User;
+    /*The DetailView is responsible for showing a detailed reward.
+    If user has rated this reward, his or her ranking for this reward is shown. Otherwise ranking controls are shown*/
+}
+<script type = "text/javascript">
+ 
+    /* Rates the currently shown reward with x and updates the UI accordingly */
+    performRating = function(x) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("RateReward")",
+            data: { id: "@Model.Reward.Id", rating: x },
+            success: function(html) {
+                $("#rating_message").html(html);
+            }
+        });
+        $("#reward_ranking").val(x);
+    }
+
+    /* Initializes the reward rating system */
+    initRewardRating = function() {
+        for(var i = 1; i <= 5; i++) {
+            
+            with({x : i}) {
+                $("#rating_star" + i).mouseenter(function() {
+                    refreshRewardRating(x);
+                }).click(function() {
+                    performRating(x);
+                });
+            }
+        }
+        $("#star_box").mouseout(function() {
+            resetRewardRating();
+        });
+        resetRewardRating();
+    }
+    
+    /* Resets the shown value of the reward rating system */
+    resetRewardRating = function() {
+        var ranking = $("#reward_ranking").val();
+        refreshRewardRating(ranking);
+    }
+    
+    /* Sets the shown value of the reward rating system to x */
+    refreshRewardRating = function(x) {
+        for(var i = 1; i <= 5; i++) {
+
+            var image;
+
+            if(i <= x)
+            {
+                image = "@Url.Content("~/Content/images/buttons/star.gif")";
+            } 
+            else 
+            {
+                image = "@Url.Content("~/Content/images/buttons/star_black.gif")";
+            }
+
+            $(("#rating_star" + i)).attr("src", image);
+        }
+    }
+
+    $().ready(function () {
+
+        //open dialog to checkout a reward by clicking on the button.
+        $("#openDialog").click(function (e) {
+
+            e.preventDefault();
+
+            $('<div>')
+                .appendTo("body")
+                .dialog({
+                    close: function () { $(this).remove() },
+                    modal: true
+                })
+                .load("@Url.Action("Checkout", "CoinExchange", new { id = Model.Reward.Id})", {});
+        });
+        //close dialog by clicking on the "close" button.
+        $(".close").on("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+</script>
+
+<h3 style = "margin-top: 30px; color: #066375">@Model.Reward.Name</h3>
+<div style = "float: left;">
+    @if (Model.Reward.Picture != "")
+    {
+        <img src = "@Url.Content(Model.Reward.Picture)" width="220px" height="220px" alt = "@Resource.RewardPicture"/>
+    }
+</div>
+<div style = "float: left; margin-top: 85px; margin-left: 10px; width: 300px;">
+    <div>
+        <b style = "color: #066375">@Resource.Name </b> <span style="color: #5c6b72">@Model.Reward.Name</span><br />
+        <b style = "color: #066375">@Resource.Partner </b> <span style="color: #5c6b72">@Model.Reward.CoinPartner.Nickname</span><br />
+        <b style = "color: #066375">@Resource.Description </b> <span style="color: #5c6b72">@Model.Reward.Description</span><br />        
+        <b style = "color: #066375">@Resource.Cost </b> <span style="color: #5c6b72">@Model.Reward.Cost</span><br />
+        <b style = "color: #066375">@Resource.Available </b> <span style="color: #5c6b72">@Model.Reward.Amount</span><br /> 
+ 
+        <input type = "button" id = "submit_button" style = "visibility: hidden" />   
+        <div style="clear: both"></div>
+        <div style="float: left; font-size: 0.7em; margin-top: 13px;">
+            @if (sGridServer.Code.Security.SecurityProvider.Context != null)
+            {
+                @Html.ActionLink(@Resource.Report, "ReportReward", new { rewardId = Model.Reward.Id })
+            } 
+        </div>
+        <div style="float: right">
+           <input type="button" class="sg_styled_button" id ="openDialog" value="@Resource.CheckoutButton" />
+        </div>
+    </div>
+</div>
+<div style = "float: right;"id = "top_rated_view">
+        @Html.Action("GetTopRatedRewards", "Statistics")
+</div>
+@if (currentUser != null)
+{
+<div>
+   <div style="width: 200px; text-align: center">
+        <input type="hidden" value="@Model.UserRanking" id="reward_ranking" />
+        <div id="star_box" style="width: 96px; height:19px; margin: auto;">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <img src="@Url.Content("~/Content/images/buttons/star_black.gif")" class=".rating_star" alt="" id="@Html.Raw("rating_star" + i)" 
+                    width="15px" height="15px" style="margin: 0px; padding: 2px; float: left; cursor: pointer;"/>
+            }
+        </div>
+        <span id="rating_message"></span>
+   </div>
+   <script type="text/javascript">
+       $().ready(function () {
+           //initialize reward rating system.
+           initRewardRating();
+       });
+   </script>
+</div>
+}

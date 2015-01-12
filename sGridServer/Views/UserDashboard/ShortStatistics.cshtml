@@ -1,0 +1,33 @@
+﻿@{
+    //The partial ShortStatisticsView is responsible for showing short statistics of the current user.
+}
+@model sGridServer.Code.GridProviders.GridPerformanceData
+@using Resource = sGridServer.Resources.UserDashboard.Dashboard
+
+<b>@Resource.NumberOfResults:</b> <span style="color: #5c6b72">@Model.ResultCount</span>
+
+<p>
+    <b>@Resource.LastResult:</b> 
+    @if (Model.TimeOfLastResult != DateTime.MinValue)
+    {
+        <span style="color: #5c6b72">@Model.TimeOfLastResult.ToShortDateString();</span>
+    }
+    else
+    {
+        <span style="color: #5c6b72">@Resource.NoResults!</span>
+    }
+</p>
+@{
+    TimeSpan runtime = new TimeSpan(0, 0, Model.TotalRuntime);
+}
+<p>
+    <b>@Resource.TotalRuntime:</b> 
+    @if (Html.TimeSpan(runtime).ToString() == "")
+    {
+        <span style="color: #5c6b72">0</span>
+    }
+    else
+    {
+        <span style="color: #5c6b72">@Html.TimeSpan(runtime)</span>
+    }
+</p>

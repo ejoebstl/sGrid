@@ -1,0 +1,23 @@
+﻿@{
+    //The partial SGridNewsView is responsible for showing the latest sGrid news.
+}
+@model News
+@using Resource = sGridServer.Resources.UserDashboard.Dashboard
+
+@if (Model != null)
+{   
+    <div class = "sg_list_row" style="width: 520px;">
+        <div class = "sg_list_image">
+            @if (Model.Image != "")
+            {
+                <img src = "@Url.Content(Model.Image)" class = "sg_list_image" alt = "@Resource.Icon"/>
+            }
+        </div>
+        <div class = "sg_list_text">
+            <b>@Model.Subject </b>
+        </div>
+        <div class = "sg_list_text">
+            <span style="color: #5c6b72">@Model.Text</span>
+        </div> 
+    </div>   
+}

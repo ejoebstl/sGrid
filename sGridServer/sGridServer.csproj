@@ -1,0 +1,3241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE81041E-8824-412C-987E-AA57429EB8FA}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sGridServer</RootNamespace>
+    <AssemblyName>sGridServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\sGridServer.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.1.4\lib\net40-client\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\Client\ClientApi.svc.cs">
+      <DependentUpon>ClientApi.svc</DependentUpon>
+    </Compile>
+    <Compile Include="API\Client\IClientApi.cs" />
+    <Compile Include="API\Client\MessageClasses\Credential.cs" />
+    <Compile Include="API\Client\MessageClasses\ProjectData.cs" />
+    <Compile Include="API\Client\MessageClasses\SerializableGridProjectDescription.cs" />
+    <Compile Include="API\Client\MessageClasses\StatusMessage.cs" />
+    <Compile Include="API\Grid\GridPartnerAPI.svc.cs">
+      <DependentUpon>GridPartnerAPI.svc</DependentUpon>
+    </Compile>
+    <Compile Include="API\Grid\IGridPartnerAPI.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Code\Achievements\AchievementEventArgs.cs" />
+    <Compile Include="Code\Achievements\AchievementItem.cs" />
+    <Compile Include="Code\Achievements\AchievementManager.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\AchievementsObtained.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\BuyRewardFromPartner.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\BuyRewardsGeneral.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\CalculatePackagesForProject.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\CalculatePackagesGeneral.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\CoinAccountBalance.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\CoinsEarned.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\FastCalculator.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\FriendsInvited.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\HighscorePlacing.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\MembershipTime.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\MultipleClients.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\SpendCoins.cs" />
+    <Compile Include="Code\Achievements\ImplementedAchievements\SpendCoinsFast.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Message.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\MultiLanguageString.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Translation.cs" />
+    <Compile Include="Code\GridProviders\BoincProviders\BoincGridProvider.cs" />
+    <Compile Include="Code\GridProviders\BoincProviders\SGridDemoProvider.cs" />
+    <Compile Include="Code\GridProviders\WorldCommunityGrid\Data.cs">
+      <DependentUpon>Data.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\GridProviders\WorldCommunityGrid\Data.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Data.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\GridProviders\WorldCommunityGrid\MockWorldCommunityGridProvider.cs" />
+    <Compile Include="Code\Rewards\DummyReward.cs" />
+    <Compile Include="Code\Security\FriendshipAddedEventArgs.cs" />
+    <Compile Include="Code\Security\IdProviderDescription.cs" />
+    <Compile Include="Code\Security\IdProviderManager.cs" />
+    <Compile Include="Code\Security\MemberManager.cs" />
+    <Compile Include="Code\Security\PrivacyLevel.cs" />
+    <Compile Include="Code\Security\SecurityProvider.cs" />
+    <Compile Include="Code\Security\SGridAuthorizeAttribute.cs" />
+    <Compile Include="Code\Security\SiteRoles.cs" />
+    <Compile Include="Code\Security\UserContext.cs" />
+    <Compile Include="Code\Security\UserCreadedEventArgs.cs" />
+    <Compile Include="Code\Utilities\BlobStorage.cs" />
+    <Compile Include="Code\Utilities\CaptchaGenerator.cs" />
+    <Compile Include="Code\CoinExchange\CoinExchange.cs" />
+    <Compile Include="Code\CoinExchange\CoinTransaction.cs" />
+    <Compile Include="Code\CoinExchange\ICoinTransaction.cs" />
+    <Compile Include="Code\CoinExchange\TransactionEventArgs.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Account.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Achievement.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\AttachedProject.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\CalculatedResult.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\CoinAccount.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\CoinPartner.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\GridProviderAuthenticationData.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Error.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\FriendRequest.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Friendship.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\News.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\ObtainedAchievement.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Partner.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Purchase.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Rating.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Reward.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\SGridTeamMember.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Sponsor.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\Transaction.cs" />
+    <Compile Include="Code\DataAccessLayer\Models\User.cs" />
+    <Compile Include="Code\DataAccessLayer\SGridDbContext.cs" />
+    <Compile Include="Code\GridProviders\GrantParameters.cs" />
+    <Compile Include="Code\GridProviders\GridPerformanceData.cs" />
+    <Compile Include="Code\GridProviders\GridProvider.cs" />
+    <Compile Include="Code\GridProviders\ProjectChangedEventArgs.cs" />
+    <Compile Include="Code\GridProviders\ResultStateChangedEventArgs.cs" />
+    <Compile Include="Code\GridProviders\GridProjectDescription.cs" />
+    <Compile Include="Code\GridProviders\GridProviderDescription.cs" />
+    <Compile Include="Code\GridProviders\GridProviderManager.cs" />
+    <Compile Include="Code\Rewards\RewardItem.cs" />
+    <Compile Include="Code\Rewards\RewardManager.cs" />
+    <Compile Include="Code\Utilities\ErrorLogger.cs" />
+    <Compile Include="Code\Utilities\HighscoreHelper.cs" />
+    <Compile Include="Code\Utilities\HtmlHelperExtensions.cs" />
+    <Compile Include="Code\Utilities\ImageUtil.cs" />
+    <Compile Include="Code\Utilities\LanguageManager.cs" />
+    <Compile Include="Code\Utilities\MessageManager.cs" />
+    <Compile Include="Code\Utilities\NewsManager.cs" />
+    <Compile Include="Code\Utilities\NotificationMailer.cs" />
+    <Compile Include="Code\Utilities\Resources\HtmlHelperExtensions.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HtmlHelperExtensions.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\Utilities\Resources\HtmlHelperExtensions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HtmlHelperExtensions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\Utilities\Resources\NotificationMailer.de-DE.Designer.cs">
+      <DependentUpon>NotificationMailer.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Code\Utilities\Resources\NotificationMailer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotificationMailer.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\Utilities\StatisticsDatesHelper.cs" />
+    <Compile Include="Code\Utilities\Timer.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AchievementConfigurationController.cs" />
+    <Compile Include="Controllers\AchievementController.cs" />
+    <Compile Include="Controllers\AdminDashboardController.cs" />
+    <Compile Include="Controllers\AppConfigurationController.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
+    <Compile Include="Controllers\ClientLoginController.cs" />
+    <Compile Include="Controllers\CoinExchangeController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
+    <Compile Include="Controllers\EMailIdProviderController.cs" />
+    <Compile Include="Controllers\FacebookIdProviderController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\IdProviderController.cs" />
+    <Compile Include="Controllers\IdProviderHelperController.cs" />
+    <Compile Include="Controllers\MasterPageController.cs" />
+    <Compile Include="Controllers\Resources\AppConfiguration.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppConfiguration.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\AppConfiguration.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppConfiguration.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Friends.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Friends.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Friends.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Friends.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\CoinExchange.Designer.cs">
+      <DependentUpon>CoinExchange.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\CoinExchange.de-DE.Designer.cs">
+      <DependentUpon>CoinExchange.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\ProfileSettings.de-DE.Designer.cs">
+      <DependentUpon>ProfileSettings.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\ProfileSettings.Designer.cs">
+      <DependentUpon>ProfileSettings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\MenuText.de-DE.Designer.cs">
+      <DependentUpon>MenuText.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\FacebookIdProvider.Designer.cs">
+      <DependentUpon>FacebookIdProvider.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\EMailIdProvider.de-DE.Designer.cs">
+      <DependentUpon>EMailIdProvider.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\FacebookIdProvider.de-DE.Designer.cs">
+      <DependentUpon>FacebookIdProvider.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\MemberConfiguration.de-DE.Designer.cs">
+      <DependentUpon>MemberConfiguration.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controllers\Resources\MemberConfiguration.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberConfiguration.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\MenuText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Support.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Support.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Support.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Support.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Project.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Project.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Project.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Project.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\RewardConfiguration.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RewardConfiguration.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\RewardConfiguration.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RewardConfiguration.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Statistics.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statistics.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Resources\Statistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statistics.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\RewardConfigurationController.cs" />
+    <Compile Include="Models\AccountConfigurationModel.cs" />
+    <Compile Include="Models\ClientLoginResponse.cs" />
+    <Compile Include="Models\FacebookRegistrationData.cs" />
+    <Compile Include="Models\RewardDetailModel.cs" />
+    <Compile Include="Models\ProfileDetailModel.cs" />
+    <Compile Include="Models\RewardStatisticsClass.cs" />
+    <Compile Include="Models\SponsorConfigurationModel.cs" />
+    <Compile Include="Models\PartnerConfigurationModel.cs" />
+    <Compile Include="Models\Statistics.cs" />
+    <Compile Include="Models\TeamMemberConfigurationModel.cs" />
+    <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Controllers\UserDashboardController.cs" />
+    <Compile Include="Models\GeneralSettingsData.cs" />
+    <Compile Include="Controllers\MemberConfigurationController.cs" />
+    <Compile Include="Controllers\PartnershipController.cs" />
+    <Compile Include="Controllers\PartnerSupportController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ProfileSettingsController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\PublicController.cs" />
+    <Compile Include="Controllers\Resources\EMailIdProvider.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMailIdProvider.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\RewardController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="Controllers\UserAchievementController.cs" />
+    <Compile Include="Controllers\UserHelpController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AchievementModel.cs" />
+    <Compile Include="Models\Captcha.cs" />
+    <Compile Include="Models\CheckOutData.cs" />
+    <Compile Include="Models\ContactInfo.cs" />
+    <Compile Include="Models\ResetPasswordData.cs" />
+    <Compile Include="Models\EMailRegistrationData.cs" />
+    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\PasswordRecoveryMailData.cs" />
+    <Compile Include="Models\RewardModel.cs" />
+    <Compile Include="Models\ContactData.cs" />
+    <Compile Include="Models\SecurityQuestion.cs" />
+    <Compile Include="Models\UserConfigurationModel.cs" />
+    <Compile Include="Models\UserState.cs" />
+    <Compile Include="Models\UserScore.cs" />
+    <Compile Include="Models\UserStatistics.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\AboutUs.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AboutUs.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\AboutUs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AboutUs.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\AwardSystem.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AwardSystem.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\AwardSystem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AwardSystem.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\GridComputing.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridComputing.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\GridComputing.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridComputing.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\SGridHistory.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGridHistory.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\Resources\SGridHistory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGridHistory.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AchievementConfiguration\Resources\AchievementList.de-DE.Designer.cs">
+      <DependentUpon>AchievementList.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AchievementConfiguration\Resources\AchievementList.Designer.cs">
+      <DependentUpon>AchievementList.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Achievement\Resources\AchievementRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AchievementRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AchievementConfiguration\Resources\AchievementDetail.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AchievementDetail.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AchievementConfiguration\Resources\AchievementDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AchievementDetail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AchievementConfiguration\Resources\AchievementOverview.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AchievementOverview.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AchievementConfiguration\Resources\AchievementOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AchievementOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AchievementConfiguration\Resources\CreateAchievement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateAchievement.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Achievement\Resources\AchievementRes.de-DE.Designer.cs">
+      <DependentUpon>AchievementRes.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\AdminDashboard.de-DE.Designer.cs">
+      <DependentUpon>AdminDashboard.de-DE.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\AdminDashboard.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminDashboard.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\UnapprovedRewards.de-DE.Designer.cs">
+      <DependentUpon>UnapprovedRewards.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\UnapprovedRewards.Designer.cs">
+      <DependentUpon>UnapprovedRewards.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\UnapprovedBanners.de-DE.Designer.cs">
+      <DependentUpon>UnapprovedBanners.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\UnapprovedBanners.Designer.cs">
+      <DependentUpon>UnapprovedBanners.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\PerformanceOverview.Designer.cs">
+      <DependentUpon>PerformanceOverview.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\PerformanceOverview.de-DE.Designer.cs">
+      <DependentUpon>PerformanceOverview.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\NewMessages.de-DE.Designer.cs">
+      <DependentUpon>NewMessages.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AdminDashboard\Resources\NewMessages.Designer.cs">
+      <DependentUpon>NewMessages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AppConfiguration\Resources\ConfigureNews.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigureNews.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppConfiguration\Resources\ConfigureNews.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigureNews.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppConfiguration\Resources\NewsConfirm.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsConfirm.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppConfiguration\Resources\NewsConfirm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsConfirm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppConfiguration\Resources\ShowErrors.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShowErrors.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppConfiguration\Resources\ShowErrors.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShowErrors.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClientLogin\Resources\Login.de-DE.Designer.cs">
+      <DependentUpon>Login.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\ClientLogin\Resources\Index.de-DE.Designer.cs">
+      <DependentUpon>Index.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\ClientLogin\Resources\Index.Designer.cs">
+      <DependentUpon>Index.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\ClientLogin\Resources\Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\Detail.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Detail.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\Detail.Designer.cs">
+      <DependentUpon>Detail.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\Checkout.Designer.cs">
+      <DependentUpon>Checkout.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\Checkout.de-DE.Designer.cs">
+      <DependentUpon>Checkout.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\CoinsOverview.Designer.cs">
+      <DependentUpon>CoinsOverview.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\CoinsOverview.de-DE.Designer.cs">
+      <DependentUpon>CoinsOverview.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\MyRewardList.de-DE.Designer.cs">
+      <DependentUpon>MyRewardList.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\MyRewardList.Designer.cs">
+      <DependentUpon>MyRewardList.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\List.de-DE.Designer.cs">
+      <DependentUpon>List.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\List.Designer.cs">
+      <DependentUpon>List.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\RewardOverview.de-DE.Designer.cs">
+      <DependentUpon>RewardOverview.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\RewardOverview.Designer.cs">
+      <DependentUpon>RewardOverview.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\ReportReward.de-DE.Designer.cs">
+      <DependentUpon>ReportReward.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CoinExchange\Resources\ReportReward.Designer.cs">
+      <DependentUpon>ReportReward.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Contact\Resources\ContactConfirm.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactConfirm.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contact\Resources\ContactConfirm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactConfirm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contact\Resources\Contact.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contact.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contact\Resources\Contact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contact.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\SendPasswordResetMail.de-DE.Designer.cs">
+      <DependentUpon>SendPasswordResetMail.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\SecurityQuestionUnset.de-DE.Designer.cs">
+      <DependentUpon>SecurityQuestionUnset.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\SecurityQuestion.de-DE.Designer.cs">
+      <DependentUpon>SecurityQuestion.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\ResetPassword.de-DE.Designer.cs">
+      <DependentUpon>ResetPassword.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\MailSent.de-DE.Designer.cs">
+      <DependentUpon>MailSent.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\SecurityQuestionUnset1.Designer.cs">
+      <DependentUpon>SecurityQuestionUnset.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\SecurityQuestion.Designer.cs">
+      <DependentUpon>SecurityQuestion.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\Login.de-DE.Designer.cs">
+      <DependentUpon>Login.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\Register.de-DE.Designer.cs">
+      <DependentUpon>Register.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\Register.Designer.cs">
+      <DependentUpon>Register.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\SendPasswordResetMail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SendPasswordResetMail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EMailIdProvider\Resources\MailSent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MailSent.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friends\Resource\FriendsOverview.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FriendsOverview.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friends\Resource\FriendsOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FriendsOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friends\Resource\Invite.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Invite.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friends\Resource\Invite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Invite.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friends\Resource\RemoveFriend.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RemoveFriend.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friends\Resource\RemoveFriend.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RemoveFriend.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\Impressum.Designer.cs">
+      <DependentUpon>Impressum.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Help\Resources\Impressum.de-DE.Designer.cs">
+      <DependentUpon>Impressum.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\Inactive.de-DE.Designer.cs">
+      <DependentUpon>Inactive.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\Inactive.Designer.cs">
+      <DependentUpon>Inactive.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\InvitationLanding.de-DE.Designer.cs">
+      <DependentUpon>InvitationLanding.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\InvitationLanding.Designer.cs">
+      <DependentUpon>InvitationLanding.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\FacebookIdProvider\Resources\ImportFriends.de-DE.Designer.cs">
+      <DependentUpon>ImportFriends.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\FacebookIdProvider\Resources\Register.de-DE.Designer.cs">
+      <DependentUpon>Register.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\FacebookIdProvider\Resources\ImportFriends.Designer.cs">
+      <DependentUpon>ImportFriends.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\FacebookIdProvider\Resources\Register.Designer.cs">
+      <DependentUpon>Register.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Help\Resources\Contact.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contact.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\Contact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contact.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\FAQ.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FAQ.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\FAQ.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FAQ.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\HelpContactConfirm.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpContactConfirm.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\HelpContactConfirm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpContactConfirm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\Help.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Help.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help\Resources\Help.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Help.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\RegisterView.de-DE.Designer.cs">
+      <DependentUpon>RegisterView.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\LoginView.de-DE.Designer.cs">
+      <DependentUpon>LoginView.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\RegisterView.Designer.cs">
+      <DependentUpon>RegisterView.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IdProviderHelper\Resources\LoginView.Designer.cs">
+      <DependentUpon>LoginView.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\AccountBalance.Designer.cs">
+      <DependentUpon>AccountBalance.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\AccountBalance.de-DE.Designer.cs">
+      <DependentUpon>AccountBalance.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\BannerPart.Designer.cs">
+      <DependentUpon>BannerPart.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\BannerPart.de-DE.Designer.cs">
+      <DependentUpon>BannerPart.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\ScriptSection.de-DE.Designer.cs">
+      <DependentUpon>ScriptSection.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\ScriptSection.Designer.cs">
+      <DependentUpon>ScriptSection.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\LoginPart.de-DE.Designer.cs">
+      <DependentUpon>LoginPart.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MasterPage\Resources\LoginPart.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginPart.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\Details.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\Details.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditAccount.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditAccount.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditAccount.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditAccount.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditUser.Designer.cs">
+      <DependentUpon>EditUser.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditUser.de-DE.Designer.cs">
+      <DependentUpon>EditUser.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditPartner.Designer.cs">
+      <DependentUpon>EditPartner.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditPartner.de-DE.Designer.cs">
+      <DependentUpon>EditPartner.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditSponsor.Designer.cs">
+      <DependentUpon>EditSponsor.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditSponsor.de-DE.Designer.cs">
+      <DependentUpon>EditSponsor.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditTeamMember.Designer.cs">
+      <DependentUpon>EditTeamMember.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\EditTeamMember.de-DE.Designer.cs">
+      <DependentUpon>EditTeamMember.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\List.de-DE.Designer.cs">
+      <DependentUpon>List.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\List.Designer.cs">
+      <DependentUpon>List.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MemberConfiguration\Resources\MemberOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\EditImage.Designer.cs">
+      <DependentUpon>EditImage.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\EditImage.de-DE.Designer.cs">
+      <DependentUpon>EditImage.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\EditInformation.Designer.cs">
+      <DependentUpon>EditInformation.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\EditInformation.de-DE.Designer.cs">
+      <DependentUpon>EditInformation.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\SponsorDashboard.de-DE.Designer.cs">
+      <DependentUpon>SponsorDashboard.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\SponsorDashboard.Designer.cs">
+      <DependentUpon>SponsorDashboard.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\PartnershipDashboard.de-DE.Designer.cs">
+      <DependentUpon>PartnershipDashboard.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\PartnershipDashboard.Designer.cs">
+      <DependentUpon>PartnershipDashboard.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\PartnershipHelp.de-DE.Designer.cs">
+      <DependentUpon>PartnershipHelp.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Partnership\Resources\PartnershipHelp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartnershipHelp.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\BannerDetail.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BannerDetail.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\BannerDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BannerDetail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\BannerOverview.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BannerOverview.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\BannerOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BannerOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\EditBanner.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditBanner.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\EditBanner.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditBanner.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\ListBanner.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListBanner.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\ListBanner.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListBanner.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\ListRewards.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListRewards.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\ListRewards.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListRewards.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\RewardsOverview.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RewardsOverview.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PartnerSupport\Resources\RewardsOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RewardsOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfileSettings\Resources\Settings.de-DE.Designer.cs">
+      <DependentUpon>Settings.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\ProfileSettings\Resources\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Settings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ProfileOverview.de-DE.Designer.cs">
+      <DependentUpon>ProfileOverview.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ProfileError.de-DE.Designer.cs">
+      <DependentUpon>ProfileError.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ProfileDetail.de-De.Designer.cs">
+      <DependentUpon>ProfileDetail.de-De.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ListProfile.de-DE.Designer.cs">
+      <DependentUpon>ListProfile.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ListProfile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListProfile.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ProfileDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileDetail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ProfileError.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileError.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile\Resources\ProfileOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\ListProjectStatistics.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListProjectStatistics.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\ListProjectStatistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListProjectStatistics.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\ProjectStatistics.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectStatistics.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\ProjectStatistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectStatistics.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Public\Resources\ClientDownload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientDownload.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Public\Resources\ClientDownload.de-DE.Designer.cs">
+      <DependentUpon>ClientDownload.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Public\Resources\EnterPasscode.Designer.cs">
+      <DependentUpon>EnterPasscode.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\RewardConfiguration\Resource\Create.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RewardConfiguration\Resource\Create.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RewardConfiguration\Resource\DetailReward.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetailReward.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RewardConfiguration\Resource\DetailReward.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetailReward.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RewardConfiguration\Resource\RewardsOverview.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RewardsOverview.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RewardConfiguration\Resource\RewardsOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RewardsOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reward\Resources\RewardRes.de-DE.Designer.cs">
+      <DependentUpon>RewardRes.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Reward\Resources\RewardRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RewardRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\GridProjectOverview.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridProjectOverview.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\GridProjectOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridProjectOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\GridProviderDetail.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridProviderDetail.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\GridProviderDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridProviderDetail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\ProjectDetail.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectDetail.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Project\Resources\ProjectDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectDetail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\Frontpage.de-De.Designer.cs">
+      <DependentUpon>Frontpage.de-De.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\Frontpage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Frontpage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\Diagram.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Diagram.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\Diagram.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Diagram.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\GlobalStatistics.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalStatistics.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\GlobalStatistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalStatistics.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListTopProjects.de-De.Designer.cs">
+      <DependentUpon>ListTopProjects.de-De.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListTopProjects.Designer.cs">
+      <DependentUpon>ListTopProjects.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListTopRatedRewards.de-De.Designer.cs">
+      <DependentUpon>ListTopRatedRewards.de-De.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListTopRatedRewards.Designer.cs">
+      <DependentUpon>ListTopRatedRewards.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListTopRanked.de-De.Designer.cs">
+      <DependentUpon>ListTopRanked.de-De.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListStatistics.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListStatistics.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListStatistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListStatistics.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\Ranking.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ranking.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\Ranking.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ranking.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\ListTopRanked.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListTopRanked.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\UserStatistics.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserStatistics.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\Resource\UserStatistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserStatistics.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Support\Resources\DetailMessage.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetailMessage.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Support\Resources\DetailMessage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetailMessage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Support\Resources\List.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Support\Resources\List.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Support\Resources\MessageOverview.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageOverview.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Support\Resources\MessageOverview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageOverview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserAchievement\Resources\UserAchievement.de-DE.Designer.cs">
+      <DependentUpon>UserAchievement.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\UserAchievement\Resources\UserAchievement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserAchievement.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserDashboard\Resources\Dashboard.de-DE.Designer.cs">
+      <DependentUpon>Dashboard.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\UserDashboard\Resources\Dashboard.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dashboard.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserHelp\Resources\UserFAQ.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserFAQ.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserHelp\Resources\UserFAQ.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserFAQ.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserHelp\Resources\UserHelp.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserHelp.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserHelp\Resources\UserHelp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserHelp.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="API\Client\ClientApi.svc" />
+    <Content Include="API\Grid\GridPartnerAPI.svc" />
+    <Content Include="Code\GridProviders\WorldCommunityGrid\Data.xml" />
+    <Content Include="Content\images\achievements\default.jpg" />
+    <Content Include="Content\images\buttons\ExploreDe.png" />
+    <Content Include="Content\images\buttons\ExploreFrontpage.png" />
+    <Content Include="Content\images\buttons\ExploreFrontpageDe.png" />
+    <Content Include="Content\images\buttons\download.png" />
+    <Content Include="Content\images\buttons\join.png" />
+    <Content Include="Content\images\buttons\JoinFrontpage.png" />
+    <Content Include="Content\images\buttons\JoinFrontpageDe.png" />
+    <Content Include="Content\images\buttons\share.png" />
+    <Content Include="Content\images\design\Background_top.png" />
+    <Content Include="Content\images\design\dots_map.png" />
+    <Content Include="Content\images\design\logo.png" />
+    <Content Include="Content\images\design\main_menu.png" />
+    <Content Include="Content\images\design\meeting.png" />
+    <Content Include="Content\images\design\menu_upper.png" />
+    <Content Include="Content\images\design\sGrid.png" />
+    <Content Include="Content\images\diagrams\sGrid.png" />
+    <Content Include="Content\images\gridProviders\globe.jpg" />
+    <Content Include="Content\images\gridProviders\wcg.jpg" />
+    <Content Include="Content\images\rewards\default.jpg" />
+    <Content Include="Content\images\users\default.jpg" />
+    <Content Include="Content\sgrid.layout.client.css" />
+    <Content Include="Content\sgrid.forms.client.css" />
+    <Content Include="Content\images\bg-input-focus.png" />
+    <Content Include="Content\images\bg-input.png" />
+    <Content Include="Content\images\bgr2.png" />
+    <Content Include="Content\images\bgr4.png" />
+    <Content Include="Content\images\bg_front.png" />
+    <Content Include="Content\images\bg_front_current.png" />
+    <Content Include="Content\images\bg_front_join.png" />
+    <Content Include="Content\images\bg_front_reward.png" />
+    <Content Include="Content\images\bg_front_welcome.png" />
+    <Content Include="Content\images\buttons\accept_friend_request.png" />
+    <Content Include="Content\images\buttons\decline_friend_request.png" />
+    <Content Include="Content\images\buttons\star.gif" />
+    <Content Include="Content\images\buttons\star_black.gif" />
+    <Content Include="Content\images\fb.png" />
+    <Content Include="Content\images\menu.png" />
+    <Content Include="Content\images\menu2.png" />
+    <Content Include="Content\images\menu_break.png" />
+    <Content Include="Content\images\menu_break_s.png" />
+    <Content Include="Content\images\openid.png" />
+    <Content Include="Content\images\Renren.png" />
+    <Content Include="Content\images\sprite.png" />
+    <Content Include="Content\images\Twitter.jpg" />
+    <Content Include="Content\images\vk.png" />
+    <Content Include="Content\sgrid.forms.css" />
+    <Content Include="Content\css\uniform.default.css" />
+    <Content Include="Content\images\ajax\finished.gif" />
+    <Content Include="Content\images\ajax\loader.gif" />
+    <Content Include="Content\images\buttons\add_friend.png" />
+    <Content Include="Content\images\buttons\edit_button.png" />
+    <Content Include="Content\images\design\content_back.gif" />
+    <Content Include="Content\images\design\footer_back.gif" />
+    <Content Include="Content\images\design\header_back.gif" />
+    <Content Include="Content\images\design\menu_box.png" />
+    <Content Include="Content\images\design\menu_inner_back.gif" />
+    <Content Include="Content\images\design\menu_inner_left.png" />
+    <Content Include="Content\images\design\menu_inner_right.png" />
+    <Content Include="Content\images\design\menu_logo.gif" />
+    <Content Include="Content\images\design\menu_outer_back.png" />
+    <Content Include="Content\images\design\menu_outer_left.png" />
+    <Content Include="Content\images\design\menu_outer_right.png" />
+    <Content Include="Content\jPaginator.css" />
+    <Content Include="Content\sgrid.layout.css" />
+    <Content Include="Content\sgrid.ui.css" />
+    <Content Include="Content\Form.css" />
+    <Content Include="Content\Frontpage.css" />
+    <Content Include="Content\images\BrainsOff.png" />
+    <Content Include="Content\images\coins.png" />
+    <Content Include="Content\images\flags\de.png" />
+    <Content Include="Content\images\flags\us.png" />
+    <Content Include="Content\images\idProviders\email.png" />
+    <Content Include="Content\images\ajax\error.gif" />
+    <Content Include="Content\images\idProviders\facebook.png" />
+    <Content Include="Content\images\sgrid_logo.png" />
+    <Content Include="Content\images\sgrid_logo_small.png" />
+    <Content Include="Content\jquery.jgrowl.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_827d7d_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_f8da4e_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_gloss-wave_45_e14f1c_500x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_gloss-wave_50_49ac3e_500x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_gloss-wave_75_2191c0_500x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_0078ae_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_056b93_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_f5e175_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui-1.10.0.custom.css" />
+    <Content Include="Content\themes\base\jquery-ui-1.10.0.custom.min.css" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bindsubmit.js" />
+    <Content Include="Scripts\g.bar-min.js" />
+    <Content Include="Scripts\g.bar.js" />
+    <Content Include="Scripts\g.dot-min.js" />
+    <Content Include="Scripts\g.dot.js" />
+    <Content Include="Scripts\g.line-min.js" />
+    <Content Include="Scripts\g.line.js" />
+    <Content Include="Scripts\g.pie-min.js" />
+    <Content Include="Scripts\g.pie.js" />
+    <Content Include="Scripts\g.raphael-min.js" />
+    <Content Include="Scripts\g.raphael.js" />
+    <Content Include="Scripts\Highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\Highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\Highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\Highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\Highcharts\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts\highcharts-more.src.js" />
+    <Content Include="Scripts\Highcharts\highcharts.js" />
+    <Content Include="Scripts\Highcharts\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts\highstock.js" />
+    <Content Include="Scripts\Highcharts\highstock.src.js" />
+    <Content Include="Scripts\Highcharts\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts\modules\data.js" />
+    <Content Include="Scripts\Highcharts\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts\themes\gray.js" />
+    <Content Include="Scripts\Highcharts\themes\grid.js" />
+    <Content Include="Scripts\Highcharts\themes\skies.js" />
+    <Content Include="Scripts\jPaginator.js" />
+    <Content Include="Scripts\jquery-1.9.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.0.js" />
+    <Content Include="Scripts\jquery-1.9.0.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.1.0.js" />
+    <Content Include="Scripts\jquery-ui-1.10.0.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.0.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery-ui.custom.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.jgrowl.js" />
+    <Content Include="Scripts\jquery.ui.accordion.js" />
+    <Content Include="Scripts\jquery.ui.autocomplete.js" />
+    <Content Include="Scripts\jquery.ui.button.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-de-DE.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-en-EN.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.js" />
+    <Content Include="Scripts\jquery.ui.dialog.js" />
+    <Content Include="Scripts\jquery.ui.draggable.js" />
+    <Content Include="Scripts\jquery.ui.droppable.js" />
+    <Content Include="Scripts\jquery.ui.effect-blind.js" />
+    <Content Include="Scripts\jquery.ui.effect-bounce.js" />
+    <Content Include="Scripts\jquery.ui.effect-clip.js" />
+    <Content Include="Scripts\jquery.ui.effect-drop.js" />
+    <Content Include="Scripts\jquery.ui.effect-explode.js" />
+    <Content Include="Scripts\jquery.ui.effect-fade.js" />
+    <Content Include="Scripts\jquery.ui.effect-fold.js" />
+    <Content Include="Scripts\jquery.ui.effect-highlight.js" />
+    <Content Include="Scripts\jquery.ui.effect-pulsate.js" />
+    <Content Include="Scripts\jquery.ui.effect-scale.js" />
+    <Content Include="Scripts\jquery.ui.effect-shake.js" />
+    <Content Include="Scripts\jquery.ui.effect-slide.js" />
+    <Content Include="Scripts\jquery.ui.effect-transfer.js" />
+    <Content Include="Scripts\jquery.ui.effect.js" />
+    <Content Include="Scripts\jquery.ui.menu.js" />
+    <Content Include="Scripts\jquery.ui.mouse.js" />
+    <Content Include="Scripts\jquery.ui.position.js" />
+    <Content Include="Scripts\jquery.ui.progressbar.js" />
+    <Content Include="Scripts\jquery.ui.resizable.js" />
+    <Content Include="Scripts\jquery.ui.selectable.js" />
+    <Content Include="Scripts\jquery.ui.slider.js" />
+    <Content Include="Scripts\jquery.ui.sortable.js" />
+    <Content Include="Scripts\jquery.ui.spinner.js" />
+    <Content Include="Scripts\jquery.ui.tabs.js" />
+    <Content Include="Scripts\jquery.ui.tabs.js" />
+    <Content Include="Scripts\jquery.ui.tooltip.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <Content Include="Scripts\jquery.uniform.js" />
+    <Content Include="Scripts\jquery.uniform.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\raphael-min.js" />
+    <Content Include="Scripts\raphael.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Code\DataAccessLayer\Models\EntityDB\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Frontpage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Public\ClientDownload.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Achievement\AchievementCreateForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\About\AboutUs.cshtml" />
+    <Content Include="Views\About\AwardSystem.cshtml" />
+    <Content Include="Views\About\GridComputing.cshtml" />
+    <Content Include="Views\About\SGridHistory.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\Contact\ContactConfirm.cshtml" />
+    <Content Include="Views\Help\Contact.cshtml" />
+    <Content Include="Views\Help\FAQ.cshtml" />
+    <Content Include="Views\Help\Help.cshtml" />
+    <Content Include="Views\Help\HelpContactConfirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Captcha\CaptchaTest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\AccountBalance.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\Footer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\LanguageSelection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\LoginPart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\MainMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\ScriptSection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\SubMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\ListProfile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\ProfileDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\ProfileError.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\ProfileOverview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserHelp\UserHelp.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserHelp\UserFAQ.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\GridProjectOverview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\ListProjects.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\GridProviderDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\ProjectDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\ProjectStatistics.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\ListProjectStatistics.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AchievementConfiguration\AchievementOverview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AchievementConfiguration\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AchievementConfiguration\AchievementDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AchievementConfiguration\CreateAchievement.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Code\Utilities\Resources\HtmlHelperExtensions.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HtmlHelperExtensions.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Utilities</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Utilities\Resources\HtmlHelperExtensions.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HtmlHelperExtensions.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Utilities</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Utilities\Resources\NotificationMailer.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationMailer.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Utilities</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Utilities\Resources\NotificationMailer.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationMailer.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Utilities</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\AppConfiguration.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppConfiguration.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\AppConfiguration.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppConfiguration.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Friends.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Friends.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Friends.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Friends.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\CoinExchange.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoinExchange.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\CoinExchange.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoinExchange.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\ProfileSettings.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileSettings.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ProfileSettings</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\ProfileSettings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileSettings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ProfileSettings</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\MenuText.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuText.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\FacebookIdProvider.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FacebookIdProvider.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviders</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\EMailIdProvider.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EMailIdProvider.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviders</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\FacebookIdProvider.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FacebookIdProvider.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviders</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\EMailIdProvider.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EMailIdProvider.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviders</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\MemberConfiguration.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MemberConfiguration.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\MemberConfiguration.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MemberConfiguration.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\MenuText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MenuText.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Support.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Support.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Support.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Support.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Project.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Project.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Project.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Project.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\RewardConfiguration.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardConfiguration.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\RewardConfiguration.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardConfiguration.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Statistics.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Statistics.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\Resources\Statistics.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Statistics.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\AboutUs.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutUs.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\AboutUs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutUs.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\AwardSystem.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AwardSystem.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\AwardSystem.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AwardSystem.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\GridComputing.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GridComputing.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\GridComputing.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GridComputing.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\SGridHistory.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SGridHistory.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About\Resources\SGridHistory.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SGridHistory.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.About</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\AchievementList.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementList.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\AchievementList.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementList.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Achievement\Resources\AchievementRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Achievements</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\AchievementDetail.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementDetail.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\AchievementDetail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementDetail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\AchievementOverview.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementOverview.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\AchievementOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\CreateAchievement.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AchievementConfiguration\Resources\CreateAchievement.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateAchievement.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AchievementConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Achievement\Resources\AchievementRes.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AchievementRes.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Achievements</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\AdminDashboard.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminDashboard.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\AdminDashboard.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminDashboard.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\UnapprovedRewards.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UnapprovedRewards.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\UnapprovedRewards.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UnapprovedRewards.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\UnapprovedBanners.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UnapprovedBanners.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\UnapprovedBanners.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UnapprovedBanners.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\PerformanceOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PerformanceOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\PerformanceOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PerformanceOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\NewMessages.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewMessages.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard\Resources\NewMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewMessages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AdminDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppConfiguration\Resources\ConfigureNews.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigureNews.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppConfiguration\Resources\ConfigureNews.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigureNews.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppConfiguration\Resources\NewsConfirm.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewsConfirm.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppConfiguration\Resources\NewsConfirm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NewsConfirm.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppConfiguration\Resources\ShowErrors.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ShowErrors.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppConfiguration\Resources\ShowErrors.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ShowErrors.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.AppConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ClientLogin\Resources\Login.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ClientLogin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ClientLogin\Resources\Index.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ClientLogin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ClientLogin\Resources\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ClientLogin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ClientLogin\Resources\Login.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ClientLogin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\Detail.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Detail.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\Detail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Detail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\Checkout.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Checkout.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\Checkout.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Checkout.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\CoinsOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoinsOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\CoinsOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoinsOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\MyRewardList.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyRewardList.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\MyRewardList.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyRewardList.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\List.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\List.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\RewardOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\RewardOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\ReportReward.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportReward.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CoinExchange\Resources\ReportReward.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportReward.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.CoinExchange</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Contact\Resources\ContactConfirm.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactConfirm.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Contact</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Contact\Resources\ContactConfirm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactConfirm.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Contact</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Contact\Resources\Contact.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Contact.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Contact</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Contact\Resources\Contact.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Contact.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Contact</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\SendPasswordResetMail.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SendPasswordResetMail.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\SecurityQuestionUnset.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityQuestionUnset.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\SecurityQuestion.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityQuestion.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\ResetPassword.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassword.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\MailSent.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MailSent.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\SecurityQuestionUnset.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityQuestionUnset1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\SecurityQuestion.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityQuestion.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\ResetPassword.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassword.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\Login.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\Register.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\Register.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\Login.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\SendPasswordResetMail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SendPasswordResetMail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EMailIdProvider\Resources\MailSent.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MailSent.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.EMailIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Friends\Resource\FriendsOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FriendsOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Friends\Resource\FriendsOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FriendsOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Friends\Resource\Invite.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Invite.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Friends\Resource\Invite.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Invite.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Friends\Resource\RemoveFriend.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemoveFriend.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Friends\Resource\RemoveFriend.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemoveFriend.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Friends</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\Impressum.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Impressum.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\Impressum.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Impressum.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\Inactive.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Inactive.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\Inactive.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Inactive.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\InvitationLanding.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InvitationLanding.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\InvitationLanding.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InvitationLanding.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FacebookIdProvider\Resources\ImportFriends.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImportFriends.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FacebookIdProvider\Resources\Register.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FacebookIdProvider\Resources\ImportFriends.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImportFriends.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FacebookIdProvider\Resources\Register.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.FacebookIdProvider</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\Contact.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Contact.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\Contact.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Contact.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\FAQ.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FAQ.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\FAQ.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FAQ.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\HelpContactConfirm.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HelpContactConfirm.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\HelpContactConfirm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HelpContactConfirm.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\Help.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Help.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Help\Resources\Help.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Help.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Help</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\RegisterView.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterView.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviderHelper</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\LoginView.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginView.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviderHelper</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\RegisterView.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterView.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviderHelper</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdProviderHelper\Resources\LoginView.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginView.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.IdProviderHelper</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\AccountBalance.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountBalance.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\AccountBalance.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountBalance.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\BannerPart.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BannerPart.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\BannerPart.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BannerPart.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\ScriptSection.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ScriptSection.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\ScriptSection.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ScriptSection.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\LoginPart.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginPart.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterPage\Resources\LoginPart.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginPart.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MasterPage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\Details.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguartion</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Details.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\Details.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Details.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditAccount.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditAccount.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditAccount.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditAccount.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditUser.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditUser.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditUser.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditUser.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditPartner.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditPartner.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditPartner.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditPartner.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditSponsor.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditSponsor.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditSponsor.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditSponsor.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditTeamMember.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditTeamMember.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\EditTeamMember.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditTeamMember.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\List.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\List.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\MemberOverview.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MemberConfiguration\Resources\MemberOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MemberOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.MemberConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\EditImage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditImage.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\EditImage.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditImage.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\EditInformation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditInformation.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\EditInformation.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditInformation.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\SponsorDashboard.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SponsorDashboard.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\SponsorDashboard.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SponsorDashboard.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\PartnershipDashboard.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PartnershipDashboard.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\PartnershipDashboard.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PartnershipDashboard.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\PartnershipHelp.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PartnershipHelp.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Partnership\Resources\PartnershipHelp.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PartnershipHelp.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Partnership</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\BannerDetail.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BannerDetail.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\BannerDetail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BannerDetail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\BannerOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BannerOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\BannerOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BannerOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\EditBanner.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditBanner.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\EditBanner.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditBanner.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\ListBanner.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListBanner.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\ListBanner.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListBanner.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\ListRewards.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListRewards.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\ListRewards.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListRewards.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\RewardsOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardsOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PartnerSupport\Resources\RewardsOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardsOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.PartnerSupport</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProfileSettings\Resources\Settings.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Settings.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ProfileSettings</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProfileSettings\Resources\Settings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.ProfileSettings</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ProfileOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ProfileError.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileError.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ProfileDetail.de-De.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileDetail.de-De.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ListProfile.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListProfile.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ListProfile.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListProfile.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ProfileDetail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileDetail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ProfileError.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileError.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Profile\Resources\ProfileOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\ListProjectStatistics.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListProjectStatistics.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\ListProjectStatistics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListProjectStatistics.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\ProjectStatistics.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectStatistics.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\ProjectStatistics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectStatistics.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Public\Resources\ClientDownload.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClientDownload.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Public\Resources\ClientDownload.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClientDownload.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Public\Resources\EnterPasscode.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnterPasscode.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RewardConfiguration\Resource\Create.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RewardConfiguration\Resource\Create.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RewardConfiguration\Resource\DetailReward.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DetailReward.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RewardConfiguration\Resource\DetailReward.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DetailReward.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RewardConfiguration\Resource\RewardsOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardsOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RewardConfiguration\Resource\RewardsOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardsOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.RewardConfiguration</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reward\Resources\RewardRes.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardRes.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Rewards</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reward\Resources\RewardRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RewardRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Rewards</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\GridProjectOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GridProjectOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\GridProjectOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GridProjectOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\GridProviderDetail.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GridProviderDetail.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\GridProviderDetail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GridProviderDetail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\ProjectDetail.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectDetail.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Project\Resources\ProjectDetail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectDetail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Project</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\Frontpage.de-De.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Frontpage.de-De.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Frontpage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\Frontpage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Frontpage.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Frontpage</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\Diagram.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Diagram.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\Diagram.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Diagram.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\GlobalStatistics.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalStatistics.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\GlobalStatistics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalStatistics.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListTopProjects.de-De.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListTopProjects.de-De.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListTopProjects.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListTopProjects.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListTopRatedRewards.de-De.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListTopRatedRewards.de-De.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListTopRatedRewards.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListTopRatedRewards.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListTopRanked.de-De.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListTopRanked.de-De.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListStatistics.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListStatistics.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListStatistics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListStatistics.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\Ranking.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Ranking.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\Ranking.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Ranking.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\ListTopRanked.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ListTopRanked.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\UserStatistics.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserStatistics.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Statistics\Resource\UserStatistics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserStatistics.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Statistics</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Support\Resources\DetailMessage.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DetailMessage.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Support\Resources\DetailMessage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DetailMessage.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Support\Resources\List.de-DE.resx">
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Support\Resources\List.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Support\Resources\MessageOverview.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageOverview.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Support\Resources\MessageOverview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageOverview.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.Support</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserAchievement\Resources\UserAchievement.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserAchievement.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserAchievement</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserAchievement\Resources\UserAchievement.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserAchievement.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserAchievement</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserDashboard\Resources\Dashboard.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Dashboard.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserDashboard\Resources\Dashboard.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Dashboard.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserDashboard</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserHelp\Resources\UserFAQ.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserFAQ.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserHelp</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserHelp\Resources\UserFAQ.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserFAQ.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserHelp</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserHelp\Resources\UserHelp.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserHelp.de-DE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserHelp</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserHelp\Resources\UserHelp.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserHelp.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>sGridServer.Resources.UserHelp</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reward\RewardCreateForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AppConfiguration\ConfigureNews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AppConfiguration\ShowErrors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Support\MessageOverview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Support\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Support\DetailMessage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\MultiLanguageString.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DisplayTemplates\MultiLanguageString.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MasterPage\MultiLanguageTest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\Captcha.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberConfiguration\MemberOverview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberConfiguration\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberConfiguration\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberConfiguration\EditAccount.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberConfiguration\EditUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberConfiguration\EditPartner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberConfiguration\EditTeamMember.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AppConfiguration\NewsConfirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PartnerSupport\BannerOverview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PartnerSupport\ListBanner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PartnerSupport\RewardsOverview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PartnerSupport\ListRewards.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PartnerSupport\BannerDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PartnerSupport\EditBanner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EMailIdProvider\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EMailIdProvider\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Code\GridProviders\WorldCommunityGrid\Data.xsc">
+      <DependentUpon>Data.xsd</DependentUpon>
+    </None>
+    <None Include="Code\GridProviders\WorldCommunityGrid\Data.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Data.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Code\GridProviders\WorldCommunityGrid\Data.xss">
+      <DependentUpon>Data.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\PublishProfiles\sgrid - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\sgrid - Web Deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\UserAchievement\Achievements.cshtml" />
+    <Content Include="Views\UserAchievement\AchievementsList.cshtml" />
+    <Content Include="Views\UserAchievement\AchievementDetail.cshtml" />
+    <Content Include="Views\Partnership\PartnershipHelp.cshtml" />
+    <Content Include="Views\Partnership\PartnershipFAQ.cshtml" />
+    <Content Include="Views\Partnership\EditPartnershipInformation.cshtml" />
+    <Content Include="Views\Partnership\PartnershipDashboard.cshtml" />
+    <Content Include="Views\Partnership\SponsorHelp.cshtml" />
+    <Content Include="Views\Partnership\SponsorDashboard.cshtml" />
+    <Content Include="Views\Friends\List.cshtml" />
+    <Content Include="Views\Friends\FriendsOverview.cshtml" />
+    <Content Include="Views\Friends\Requests.cshtml" />
+    <Content Include="Views\Friends\Invite.cshtml" />
+    <Content Include="Views\Friends\RemoveFriend.cshtml" />
+    <Content Include="Views\Statistics\Ranking.cshtml" />
+    <Content Include="Views\Statistics\ListRanking.cshtml" />
+    <Content Include="Views\EMailIdProvider\SendPasswordResetMail.cshtml" />
+    <Content Include="Views\EMailIdProvider\MailSent.cshtml" />
+    <Content Include="Views\EMailIdProvider\ResetPassword.cshtml" />
+    <Content Include="Views\Debug\Index.cshtml" />
+    <Content Include="Views\ProfileSettings\EndMembership.cshtml" />
+    <Content Include="Views\AdminDashboard\AdminDashboard.cshtml" />
+    <Content Include="Views\AdminDashboard\NewMessages.cshtml" />
+    <Content Include="Views\AdminDashboard\UnapprovedBanners.cshtml" />
+    <Content Include="Views\AdminDashboard\UnapprovedRewards.cshtml" />
+    <Content Include="Views\AdminDashboard\PerformanceOverview.cshtml" />
+    <Content Include="Views\Statistics\UserStatistics.cshtml" />
+    <Content Include="Views\Statistics\ListStatistics.cshtml" />
+    <None Include="Scripts\jquery-1.9.0.min.map" />
+    <Content Include="Views\Friends\Friends.cshtml" />
+    <Content Include="Views\EMailIdProvider\SecurityQuestion.cshtml" />
+    <Content Include="Views\EMailIdProvider\SecurityQuestionUnset.cshtml" />
+    <Content Include="Views\Statistics\GlobalStatistics.cshtml" />
+    <Content Include="Views\Statistics\MyStatistics.cshtml" />
+    <Content Include="Views\UserDashboard\UserDashboard.cshtml" />
+    <Content Include="Views\UserDashboard\Achievements.cshtml" />
+    <Content Include="Views\UserDashboard\ShortStatistics.cshtml" />
+    <Content Include="Views\UserDashboard\Rewards.cshtml" />
+    <Content Include="Views\UserDashboard\SGridNews.cshtml" />
+    <Content Include="Views\UserDashboard\Placement.cshtml" />
+    <Content Include="Views\UserDashboard\EditProfilePicture.cshtml" />
+    <Content Include="Views\FacebookIdProvider\FinishFacebookRegistration.cshtml" />
+    <Content Include="Views\FacebookIdProvider\ImportFriends.cshtml" />
+    <Content Include="Views\About\About.cshtml" />
+    <Content Include="Views\Partnership\EditImage.cshtml" />
+    <Content Include="Views\CoinExchange\RewardOverview.cshtml" />
+    <Content Include="Views\CoinExchange\List.cshtml" />
+    <Content Include="Views\CoinExchange\CoinStatistics.cshtml" />
+    <Content Include="Views\CoinExchange\Detail.cshtml" />
+    <Content Include="Views\CoinExchange\Checkout.cshtml" />
+    <Content Include="Views\ClientLogin\Index.cshtml" />
+    <Content Include="Views\ClientLogin\Login.cshtml" />
+    <Content Include="Views\RewardConfiguration\RewardsOverview.cshtml" />
+    <Content Include="Views\MemberConfiguration\EditSponsor.cshtml" />
+    <Content Include="Views\IdProviderHelper\LoginView.cshtml" />
+    <Content Include="Views\IdProviderHelper\RegisterView.cshtml" />
+    <Content Include="Views\Shared\_Client.cshtml" />
+    <Content Include="Views\MasterPage\HelperScripts.cshtml" />
+    <Content Include="Views\IdProviderHelper\InvitationLanding.cshtml" />
+    <Content Include="Views\IdProviderHelper\Inactive.cshtml" />
+    <Content Include="Views\RewardConfiguration\Create.cshtml" />
+    <Content Include="Views\RewardConfiguration\DetailReward.cshtml" />
+    <Content Include="Views\EMailIdProvider\SecurityQuestionInvalid.cshtml" />
+    <Content Include="Views\MasterPage\BannerPart.cshtml" />
+    <Content Include="Views\CoinExchange\MyRewardList.cshtml" />
+    <Content Include="Views\Public\Index.cshtml" />
+    <Content Include="Views\Statistics\Diagram.cshtml" />
+    <Content Include="Views\Statistics\ListTopRanked.cshtml" />
+    <Content Include="Views\Statistics\ListTopRatedRewards.cshtml" />
+    <Content Include="Views\RewardConfiguration\Diagram.cshtml" />
+    <Content Include="Views\Statistics\ListTopProjects.cshtml" />
+    <Content Include="Views\Public\Join.cshtml" />
+    <Content Include="Views\Public\EnterPasscode.cshtml" />
+    <Content Include="Views\Shared\_Passcode.cshtml" />
+    <Content Include="Views\Help\Impressum.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProfileSettings\Settings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProfileSettings\General.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProfileSettings\Privacy.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProfileSettings\Notifications.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3753</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,31 @@
+﻿@{
+    //The EditSponsorView shows fields to edit sponsors. It uses the partial EditAccountView to edit basic fields.
+}
+@model SponsorConfigurationModel
+@using Resource = sGridServer.Resources.MemberConfiguration.EditSponsor
+
+<fieldset class="sg_editor_form"> 
+    <legend>@Resource.PropertiesText @Model.Account.Nickname</legend>
+    @using (Html.BeginForm("EditSponsor", "MemberConfiguration"))
+    {
+        @Html.Action("EditAccount", new { account = Model.Account }) 
+        <div class="sg_editor_language_row">
+            <label>@Resource.Description</label>
+            @Html.EditorFor(model => model.Account.Description) 
+            @Html.ValidationMessageFor(model => model.Account.Description)            
+        </div>
+        <div class="sg_editor_row">
+            <label>@Resource.Link</label>
+            @Html.EditorFor(model => model.Account.Link) 
+            @Html.ValidationMessageFor(model => model.Account.Link)
+        </div>
+        <div class="sg_editor_row">
+            <label>@Resource.Logo</label>
+            @Html.EditorFor(model => model.Account.Logo) 
+            @Html.ValidationMessageFor(model => model.Account.Logo)
+        </div>
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.Submit" /> 
+        </div> 
+    }
+</fieldset>

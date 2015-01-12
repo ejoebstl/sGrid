@@ -1,0 +1,30 @@
+﻿@{
+    /* The partial UnapprovedBannersView is responsible for showing the newest banners pending validation.*/
+}
+@model IEnumerable<Sponsor>
+@using Resource = sGridServer.Resources.AdminDashboard.UnapprovedBanners
+
+<script type = "text/javascript">
+    //add jQuery accordion style to the generated divs.
+    $().ready(function () {
+        $("#accordion3").accordion();
+    });
+</script>
+
+<div id="accordion3" style = "font-size: 11px; width : 300px;">
+@foreach (sGridServer.Code.DataAccessLayer.Models.Sponsor item in Model)
+{
+    if (item.Banner != null && item.Banner != "")
+    {
+        <h3>@item.Nickname</h3>
+        <div>
+            <p>
+               <img src = "@Url.Content(item.Banner)" alt = ""/>
+            </p>
+             <a href = "@Url.Action("BannerDetail", "PartnerSupport", new { sponsorId = item.Id })">
+                 <button>@Resource.ToMessage</button>
+             </a>
+        </div>
+    }
+}
+</div>

@@ -1,0 +1,44 @@
+﻿@model sGridServer.Models.ContactInfo
+@using Resource = sGridServer.Resources.Help.Contact
+
+@{
+    ViewBag.Title = Resource.ContactText;
+
+    /*The ContactView is responsible for showing a contact dialog. The model of the ContactView is a ContactInfo object,
+     * which contains three text fields for an email address of sender, subject and text of a message.
+     * This View is for unregistred users and they have to enter the captcha correct.*/
+}
+
+@using (Html.BeginForm()) {
+    <fieldset class="sg_editor_form"> 
+        <legend>@Resource.ContactText</legend>
+        <p>@Resource.PageDescriptionText</p>
+
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.From, Resource.FromText)
+            @Html.TextBoxFor(model => model.From) 
+            @Html.ValidationMessageFor(model => model.From) 
+        </div> 
+        <div class="sg_editor_row"> 
+            @Html.LabelFor(model => model.Subject, Resource.SubjectText)
+            @Html.TextBoxFor(model => model.Subject) 
+            @Html.ValidationMessageFor(model => model.Subject) 
+        </div>
+        <div class="sg_editor_textarea_row"> 
+            @Html.LabelFor(model => model.Message, Resource.MessageText) 
+            @Html.TextAreaFor(model => model.Message) 
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+         
+        
+        <div class="sg_captcha_row"> 
+            <label>@Resource.CaptchaText</label> 
+            @Html.EditorFor(model => model.Captcha) 
+            <span style="color: red;">@ViewBag.Message</span>
+        </div> 
+
+        <div class="sg_submit_row">
+            <input type="submit" class="SendButton" value="@Resource.SendText" />
+        </div> 
+    </fieldset>
+}

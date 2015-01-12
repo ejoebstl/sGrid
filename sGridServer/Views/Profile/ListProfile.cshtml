@@ -1,0 +1,33 @@
+﻿@{
+    //The partial ListProfileView is responsible for rendering a user list.
+}
+@model IEnumerable<UserScore>
+@using Resource = sGridServer.Resources.Profile.ListProfile
+<div style = "width : 280px">
+@{
+  foreach (sGridServer.Models.UserScore userScore in Model)
+  {
+      <div class="sg_list_row">
+        <div class="sg_list_image">
+            @if (userScore.Account.Picture != null && userScore.Account.Picture != "")
+            {
+                <a href="@Url.Action("ProfileDetail", new { id = userScore.Account.Id })">
+                    <img src="@Url.Content(userScore.Account.Picture)" class = "sg_list_image" alt = ""/>
+                </a>
+            }        
+        </div>
+        <div class="sg_list_text">
+            <div>
+                <a href="@Url.Action("ProfileDetail", new { id = userScore.Account.Id })">
+                    @Html.DisplayFor(model => userScore.Account.Nickname)
+                </a>
+            </div>    
+        </div>       
+      </div> 
+      <hr style="display: block; height: 1px;
+    border: 0; border-top: 1px solid #d8e7ee;
+    margin: 0 0; padding: 0;"/>
+  }
+}
+</div>
+  

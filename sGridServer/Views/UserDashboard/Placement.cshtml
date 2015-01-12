@@ -1,0 +1,10 @@
+﻿@{
+    /*The partial PlacementView is responsible for showing the user’s placement in the high score rankings
+     between user’s friends and all users.*/
+}
+@model Tuple<int, int>
+@using Resource = sGridServer.Resources.UserDashboard.Dashboard
+
+<b>@Resource.PlacementAll:</b> <span style="color: #5c6b72">@Model.Item1</span>
+<br />
+<b>@Resource.PlacementFriends:</b> <span style="color: #5c6b72">@Model.Item2</span>

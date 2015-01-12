@@ -1,0 +1,62 @@
+﻿@using Resource = sGridServer.Resources.Support.MessageOverview
+
+@{
+    ViewBag.Title = Resource.Messages;
+
+    /*The MessageOverviewView is responsible for rendering the partial ListView and for providing controls 
+     * to show messages only from specific user type or show only unresolved messages.*/
+}
+
+<script type="text/javascript">
+
+    //function to run by clicking the button with the id 'search_button'
+    bindSubmit({
+        buttonId: "#search_button",
+        //run a List action with the given data, such are the search option and resolve status
+        actionUrl: '@Url.Action("List")',
+        data: function() {
+                return { userType: $("select[name='user_type']").val(),
+                        unresolvedOnly: $("select[name='unresolved']").val() == "unresolved"
+                };
+        },
+        //load a ListView with the given data
+        success: function (data) {
+                    $("#list_view").html(data);
+                 }
+    });
+
+    //action by the opening the PartialView
+    $().ready(function() {
+        //action by pressing enter -> bindSubmit
+        $("select[name='user_type']").keypress(function(key) {
+            if(key.keyCode == 13) {
+                $("#search_button").click();
+            }
+        });
+        $("select[name='unresolved']").keypress(function(key) {
+            if(key.keyCode == 13) {
+                $("#search_button").click();
+            }
+        });
+    });
+</script>
+
+<div id="controls">
+    <select name="user_type" class="sg_styled_input">
+        <option value="All">@Resource.AllText</option>
+        <option value="@SupportController.SearchOptionAdmins">@Resource.AdminText</option>
+        <option value="@SupportController.SearchOptionCoinPartners">@Resource.CoinPartnerText</option>
+        <option value="@SupportController.SearchOptionSponsors">@Resource.SponsorText</option>
+        <option value="@SupportController.SearchOptionRegistredUsers">@Resource.RegistredUserText</option>
+        <option value="@SupportController.SearchOptionUnregistredUsers">@Resource.UnregistredUserText</option>
+    </select>
+    <select name="unresolved" class="sg_styled_input">
+        <option value="unresolved">@Resource.UnresolvedText</option>
+        <option value="resolved">@Resource.ResolvedText</option>
+    </select>
+    <input type="submit" class="sg_styled_button" id="search_button" value = "@Resource.SearchText" />
+</div>
+
+<div id="list_view">
+        @Html.Action("List", new { unresolvedOnly = true, userType = "All" })
+    </div>

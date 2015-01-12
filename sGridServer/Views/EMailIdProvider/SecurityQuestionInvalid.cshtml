@@ -1,0 +1,13 @@
+﻿@using Resource = sGridServer.Resources.EMailIdProvider.SecurityQuestion;
+@{
+    ViewBag.Title = Resource.QuestionInvalidTitle;
+
+    /* The EMailIdProvider SecurityQuestionInvalid view shows a message if the security question was invalid. */
+    
+    if (Session["ClientLayout"] != null)
+    {
+        Layout = "~/Views/Shared/_Client.cshtml";
+    }
+}
+
+@Resource.QuestionInvalidDescription

@@ -1,0 +1,16 @@
+﻿@using Resource = sGridServer.Resources.EMailIdProvider.SecurityQuestionUnset
+
+@{
+    ViewBag.Title = Resource.Title;
+        
+    /* The EMailIdProvider SecurityQuestionUnset view shows a message if the security question is not set. */
+    
+    if (Session["ClientLayout"] != null)
+    {
+        Layout = "~/Views/Shared/_Client.cshtml";
+    }
+}
+
+<p>
+    @Resource.Message
+</p>

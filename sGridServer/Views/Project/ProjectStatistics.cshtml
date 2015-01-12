@@ -1,0 +1,83 @@
+﻿@model String
+@using Resource = sGridServer.Resources.Project.ProjectStatistics
+
+@{
+    ViewBag.Title = Resource.StatisticsText;
+
+    /*The ProjectStatisticsView is responsible for rendering the partial ListProjectStatisticsView 
+     * and for providing controls to change the time span of the shown statistics. 
+     * If the time span is changed, the ListProjectStatisticsView is reloaded. */
+}
+
+<script type="text/javascript">
+    //function to run by clicking the button with the id 'search_name'
+        bindSubmit({
+            buttonId: "#statistics_button",
+            //run a ListProjectStatistics action with the given data, such are searchName and the id of the user
+            actionUrl: '@Url.Action("ListProjectStatistics")',
+            data: function() {
+                return { from: $("#datepicker_from").val(), to: $("#datepicker_to").val(), project: "@Model" };
+            },
+            //load a ListProjectStatisticsView with the given data
+            success: function (data) {
+                        $("#list_view").html(data);
+                    }
+        });
+
+    //action by the opening the View
+    $().ready(function() {
+        //action by pressing enter -> bindSubmit
+        $("#datepicker_from").keypress(function(key) {
+            if(key.keyCode == 13) {
+                $("#statistics_button").click();
+            }
+        });
+        $("#datepicker_to").keypress(function (key) {
+            if (key.keyCode == 13) {
+                $("#statistics_button").click();
+            }
+        });
+
+        //initializes and sets a default language for the datepicker elements 
+        $.datepicker.setDefaults($.datepicker.regional["@LanguageManager.CurrentLanguage.Code"]);
+        $("#datepicker_from").datepicker({
+            dateFormat: "yy-MM-dd",
+            defaultDate: "+1d",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#datepicker_from").datepicker("option", "minDate", selectedDate);
+            },
+            onSelect: function () {
+                $("#datepicker_from").datepicker("option", "minDate", null);
+            },
+            hideIfNoPrevNext: false
+        });
+        $("#datepicker_to").datepicker({
+            dateFormat: "yy-MM-dd",
+            defaultDate: "+1d",
+            maxDate: "+0d",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#datepicker_to").datepicker("option", "minDate", selectedDate);
+            },
+            onSelect: function () {
+                $("#datepicker_to").datepicker("option", "minDate", null);
+            },
+            hideIfNoPrevNext: false
+        });
+    });
+</script>
+
+<h3>@Resource.StatisticsText</h3>
+<p>@Resource.Text</p>
+<div id="controls">
+    @Resource.FromText <input type="text" id="datepicker_from" class="sg_styled_input" /> 
+    @Resource.ToText <input type="text" id="datepicker_to" class="sg_styled_input" />
+    <input type='button' id="statistics_button" value = "@Resource.ButtonText" class="sg_styled_button" />
+</div>
+
+<div id="list_view">
+    @Html.Action("ListProjectStatistics", new { from = DateTime.MinValue, to = DateTime.Today, project = Model })
+</div>

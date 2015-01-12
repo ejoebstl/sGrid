@@ -1,0 +1,36 @@
+﻿    <Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="sGridClientUI.Settings"
+	x:Name="Window"
+	Title="Settings"
+	Width="555" Height="326" Icon="/sGrid;component/Images/sGrid.png" ResizeMode="NoResize">
+
+    <Grid x:Name="LayoutRoot">
+        <CheckBox x:Name="Autostart" Margin="19.229,20,0,0" VerticalAlignment="Top" Height="23.826" FontFamily="Calibri" Content="Begin with work automatically when my computer starts&#xd;&#xa;" FontSize="14" HorizontalAlignment="Left" Width="495.199" />
+        <CheckBox x:Name="Gpu" Content="Use the graphics card for acceleration even when I am currently using it" Margin="19.229,68,0,0" Height="26.701" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Left" Width="495.199" />
+        <CheckBox x:Name="BatteryMode" Content="Do work when my computer runs on battery" Height="23.993" Margin="19.229,44,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Left" Width="495.199" />
+        <Label x:Name="AllowedPerformanceText" Content="Allowed Performance:" HorizontalAlignment="Left" Margin="19.229,97,0,0" VerticalAlignment="Top" Width="155.039" FontFamily="Calibri" FontSize="14"/>
+        <Slider x:Name="Performance" Height="29.479" Margin="58,125,68,0" VerticalAlignment="Top" Maximum="100" SmallChange="10" ValueChanged="Performance_ValueChanged" LargeChange="10" IsSnapToTickEnabled="True" TickFrequency="1" />
+        <Label x:Name="PerformanceMin" Content="0%" HorizontalAlignment="Left" Margin="10,124,0,0" Width="46.163" Height="28.343" VerticalAlignment="Top" FontStyle="Italic" FontFamily="Calibri" HorizontalContentAlignment="Right" />
+        <Label x:Name="PerformanceMax" Content="100%" Margin="0,124,19,0" Height="28.343" VerticalAlignment="Top" FontFamily="Calibri" FontStyle="Italic" HorizontalAlignment="Right" Width="46" />
+        <Label x:Name="SpaceMin" Content="0.1 GB" HorizontalAlignment="Left" Height="31.596" Margin="1,194,0,0" VerticalAlignment="Top" Width="55.163" FontFamily="Calibri" FontStyle="Italic" HorizontalContentAlignment="Right" />
+        <Label x:Name="SpaceMax" Content="2.0 GB" Height="30.227" Margin="0,193,15,0" VerticalAlignment="Top" FontStyle="Italic" FontFamily="Calibri" RenderTransformOrigin="0.725,0.404" HorizontalAlignment="Right" Width="50" />
+        <Label x:Name="AllowedSpaceText" Content="Allowed Space:" HorizontalAlignment="Left" Height="27.994" Margin="19.229,170,0,0" VerticalAlignment="Top" Width="155.039" FontFamily="Calibri" FontSize="14"/>
+        <Label x:Name="AboutPerformanceText" Content=" " Margin="19,150,0,0" FontFamily="Calibri" FontStyle="Italic" HorizontalAlignment="Left" Width="495" Height="24" VerticalAlignment="Top" FontSize="12" />
+        <Button x:Name="Ok" Content="OK" Margin="320,0,0,15" FontFamily="Calibri" FontSize="14.667" HorizontalAlignment="Left" Width="93" Click="Ok_Click" Focusable="False" Height="24" VerticalAlignment="Bottom" Background="{x:Null}"></Button>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,12,15" Width="93" FontFamily="Calibri" FontSize="14.667" Height="24" VerticalAlignment="Bottom" Click="Cancel_Click" Focusable="False" Background="{x:Null}"></Button>
+        <Slider Margin="58,194,68,0" LargeChange="0.1" Maximum="2" Minimum="0.1" ValueChanged="Space_ValueChanged" Name="Space" IsSnapToTickEnabled="True" TickFrequency="0.001" Height="31" VerticalAlignment="Top" />
+        <Label Content=" " FontFamily="Calibri" FontSize="12" FontStyle="Italic" Height="25" HorizontalAlignment="Left" Margin="19,219,0,0" Name="AboutSpaceText" VerticalAlignment="Top" Width="495" />
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0.82" />
+                <GradientStop Color="#FF146286" Offset="0.831" />
+                <GradientStop Color="#FF00547B" Offset="0.82" />
+                <GradientStop Color="White" Offset="0" />
+                <GradientStop Color="#FFCEEEF1" Offset="1" />
+                <GradientStop Color="#FFE0F4F6" Offset="0.837" />
+            </LinearGradientBrush>
+        </Grid.Background>
+    </Grid>
+</Window>

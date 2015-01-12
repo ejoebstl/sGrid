@@ -1,0 +1,84 @@
+﻿@using Resource = sGridServer.Resources.ClientLogin.Index
+@{
+    Layout = "../Shared/_Client.cshtml";
+    ViewBag.Title = @Resource.Title;
+    /* The client login view provides a landing page for a client which wishes to login
+    and also conducts authentication or redirects the client to a appropriate login method */
+}
+
+<script type="text/javascript">
+
+    //Todo - Move ajaxLoader and ajaxError to global helpers
+    ajaxLoader = function () {
+        return "<img src='@Url.Content("~/Content/images/ajax/loader.gif")' class='sg_ajax_icon' alt='' width='15px' height='15px' />"
+    }
+
+    ajaxError = function () {
+        return "<img src='@Url.Content("~/Content/images/ajax/error.gif")' class='sg_ajax_icon' alt='' width='15px' height='15px' />"
+    }
+
+    //Notifies the user about an error. 
+    reportError = function(xqr, status, text) {
+                $("#proceedLinkContainer").html(ajaxError());
+    }
+
+    $().ready(function () {
+        //If the proceed-link is clicked...
+        $("#proceedLink").click(function () {
+
+                //...show our ajax loading graphic...
+                $("#proceedLinkContainer").html(ajaxLoader());
+
+                //...then make an ajax call to gather the auth-token.
+                $.ajax({
+                url: "@Url.Action("GetAuthToken")",
+                cache: false,
+                async: true,
+                type: "POST",
+                data: { },
+                error: reportError, 
+                success:  function (authData) { 
+
+                    //If we got the auth token, check whether it was valid.
+                    if(authData.Expired) {
+                        reportError();
+                        return;
+                    }
+
+                    //If yes, send it to the client which invoked the login
+                    //in the first place. 
+                    $.ajax({
+                        type: "GET",
+                        dataType: 'jsonp',
+                        url: "http://localhost:" + authData.Port,
+                        data: {
+                            action: "auth",
+                            credentialId: authData.Id,
+                            credentialAuthToken: authData.AuthToken,
+                            antiForgeryToken: authData.AntiForgeryToken
+                        },
+                        success: function() { },
+                        error: reportError
+                    });
+                }
+            });
+
+        });
+    });
+</script>
+
+@{ User user = sGridServer.Code.Security.SecurityProvider.CurrentUser as User; }
+<div style="height: 35px">
+    &nbsp;
+</div>
+<div id="content">
+    <p style="text-align: center;">
+        <img alt="@Resource.ProfilePicture" src="@Url.Content(user.Picture)" width="150px" height="150px" />
+    </p>
+    <p style="text-align: center;">
+        @String.Format(Resource.WelcomeText, user.Nickname)
+    </p>
+    <p id="proceedLinkContainer" style="text-align: center;">
+        <a href="#" id="proceedLink">@Resource.ProceedLinkText</a>
+    </p>
+</div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<sGridServer.Code.DataAccessLayer.Models.Error>
+@using Resource = sGridServer.Resources.AppConfiguration.ShowErrors
+
+@{
+    ViewBag.Title = Resource.ShowErrorsText;
+
+    /*The ErrorView shows a list of system errors. The model of the ErrorView is an enumeration of the Error objects.
+     * If the model is null, so appers a message that there are no errors.*/
+}
+
+<h2>Errors</h2>
+
+@if (Model != null)
+{
+    foreach (sGridServer.Code.DataAccessLayer.Models.Error e in Model)
+    {
+            <div class="sg_list_row">
+                <div class="sg_list_text">
+                    @e.Id) @e.Description
+                    <p>@e.Stacktrace</p>
+                    <p>@Resource.TimestampText @e.Timestamp</p>
+                </div>
+            </div>
+    }
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}
+

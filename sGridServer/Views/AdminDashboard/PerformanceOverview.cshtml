@@ -1,0 +1,32 @@
+﻿@{
+    //The partial PerformanceOverviewView is responsible for showing the performance overview of the entire grid.
+}
+@model sGridServer.Code.GridProviders.GridPerformanceData
+@using Resource = sGridServer.Resources.AdminDashboard.PerformanceOverview
+
+@Resource.TotalRuntime:
+@{
+    TimeSpan runtime = new TimeSpan(0, 0, Model.TotalRuntime);
+    if (Html.TimeSpan(runtime).ToString() == "")
+    {
+        <span style="color: #5c6b72">0</span>
+    }
+    else
+    {
+        <span style="color: #5c6b72">@Html.TimeSpan(runtime)</span>
+    }
+}
+<br />
+@Resource.LastResultTime:
+@if (Model.TimeOfLastResult != DateTime.MinValue)
+{
+    <span style="color: #5c6b72">@Model.TimeOfLastResult.ToShortDateString()</span>
+}
+else
+{
+    <span style="color: #5c6b72">@Resource.NoResults!</span>
+}
+<br />
+@Resource.ResultCount: <span style="color: #5c6b72">@Model.ResultCount</span>
+<br />
+@Resource.DeviceCount: <span style="color: #5c6b72">@(Model.DeviceCount < 0 ? 0 : @Model.DeviceCount)</span> 

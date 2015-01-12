@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7c6bcacb-d611-4d3e-bf4f-31112b60b5da" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:5469/API/Client/ClientApi.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ClientApi.xsd" MetadataType="Schema" ID="2eb62e1e-f68e-4c6d-af00-466154ef106a" SourceId="1" SourceUrl="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd1" />
+    <MetadataFile FileName="ClientApi.disco" MetadataType="Disco" ID="aebfd1f7-8342-494c-8f0f-a9adf94167ca" SourceId="1" SourceUrl="http://localhost:5469/API/Client/ClientApi.svc?disco" />
+    <MetadataFile FileName="ClientApi.wsdl" MetadataType="Wsdl" ID="c0bc8bd4-01a9-46c7-9591-97588d9f0b5b" SourceId="1" SourceUrl="http://localhost:5469/API/Client/ClientApi.svc?wsdl" />
+    <MetadataFile FileName="ClientApi1.xsd" MetadataType="Schema" ID="7cd952d2-47c5-44ce-b1ce-4d6236175d28" SourceId="1" SourceUrl="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd4" />
+    <MetadataFile FileName="ClientApi2.xsd" MetadataType="Schema" ID="821ecc01-b31e-42ac-80d7-ee088f099ef2" SourceId="1" SourceUrl="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd0" />
+    <MetadataFile FileName="ClientApi3.xsd" MetadataType="Schema" ID="776a6a06-f060-411e-90cb-ab4767b39f3e" SourceId="1" SourceUrl="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd3" />
+    <MetadataFile FileName="ClientApi4.xsd" MetadataType="Schema" ID="e6a11d01-1ba8-41be-aab2-c8ad62d47e5c" SourceId="1" SourceUrl="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

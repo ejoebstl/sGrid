@@ -1,0 +1,23 @@
+﻿@{
+    //The AchievementDetailView is responsible for showing a detailed achievement.
+}
+@model Tuple<Achievement, bool>
+@using Resource = sGridServer.Resources.UserAchievement.UserAchievement
+
+<div style = "margin-top: 25px;">
+    @if (Model.Item1.Icon != "")
+    {
+        <img src = "@Url.Content(Model.Item1.Icon)" alt = "@Resource.Icon" class = "sg_list_image"/>
+    }
+</div>
+<div style = "margin-top: 25px;">
+    <b style = "color: #066375">@Resource.Name :</b> <span style="color: #5c6b72">@Model.Item1.Name </span><br />
+    <b style = "color: #066375">@Resource.Description :</b> <span style="color: #5c6b72">@Model.Item1.Description </span><br />
+    <b style = "color: #066375">@Resource.GotAchievement:</b> <span style="color: #5c6b72">@if (Model.Item2)
+                                                                                           {
+                                                                                               @Resource.Yes
+                                                                                           } else
+                                                                                           {
+                                                                                               @Resource.No
+                                                                                           }</span>
+</div>

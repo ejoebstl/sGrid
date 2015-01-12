@@ -1,0 +1,1103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity name="sGrid.exe" version="0.1.0.22" publicKeyToken="9c0b424b64308e39" language="neutral" processorArchitecture="x86" type="win32" />
+  <description asmv2:iconFile="Images\sGrid.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="sGrid" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <commandLine file="sGrid.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BoincGuiRpc.Net.dll" size="47104">
+      <assemblyIdentity name="BoincGuiRpc.Net" version="0.1.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>DumZp0JjKr8SjffwdIeaug78yY4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sGrid.exe" size="199680">
+      <assemblyIdentity name="sGrid" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>pxqqxDiWcZJWzo6GORGRXubS5BM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\sGrid.resources.dll" size="6656">
+      <assemblyIdentity name="sGrid.resources" version="1.0.0.0" language="de-DE" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>uGuY0pWZPpQDs/SvYm7IxeDYJcE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Boinc\boinc.exe" size="930992">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>IIErJlTVBwHbsJyqFylpLn9w2EU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\boinc_logo_black.jpg" size="36235">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>tTKXKXAzdaPUSquFgdw7zHNZnlY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\boinccmd.exe" size="427184">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>HazwRXii0pZzFnx0ca4C/umBdqI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\BOINCGUIApp.ico" size="284646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>5Ov5l5uyDomhAAMYXD9ZER5629o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\boincmgr.exe" size="3663024">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>7B9WmLtg7dwRDU31pZuj1JhZjYE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\boincscr.exe" size="1086640">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>pwptM60UtYbdAfd+gt3mN6aRrro=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\boincsvcctrl.exe" size="14000">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BdM0+DJHaExy1ypA+mKHGIKOckw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\boinctray.exe" size="70832">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0ZTa642GJpNgDETcghLN6i6tt14=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\ca-bundle.crt" size="242471">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>O54H5i5kP/Uh1z8Maev63odviEE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\COPYING" size="35821">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>dxOhdTzojyx+awVOzI5MeG33YwA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\COPYRIGHT" size="1882">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Ih2PrMLApejPno0QcOzQSHilfoM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\dbghelp.dll" size="1045128">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FrXZSO14Q1dngdxPKjkWB6wBIKQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\dbghelp95.dll" size="163088">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>rySXvZo4mGds2diFAbwVjOam8+w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\Helvetica.txf" size="66708">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>eQbROaNllbL4lrKFYBt573Newyo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\libcurl.dll" size="282624">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>fPdP3hSXnsYxTNYA0pVy21Tsdfw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\libeay32.dll" size="1159168">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>AjBS3q5MUUYwxBVEND/9OuCVUpY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ar\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ojWUCi4IMULYNEXPnrkVOf8582g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ar\BOINC-Manager.mo" size="45205">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>31d5wKifabRwWjwB/gzfxmHuMuU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\be\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>xM3kCyz0j0vPqp2gvGpZQHLFnio=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\be\BOINC-Manager.mo" size="42422">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>d40DVcsuv6UJB85RjpdJvJV+1hE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\bg\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BssaVDq8eH3ckpgGhZT9V+LuMOs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\bg\BOINC-Manager.mo" size="30521">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>JaFxuSGO1VPjTK9OVhMaM2p8zGI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ca\BOINC-Client.mo" size="5724">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FnUIy/ZsbjDTKj4T0eo5YqlTLnk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ca\BOINC-Manager.mo" size="81100">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/EPUBOPupJp7fPEC0vpAYlBTxms=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\cs\BOINC-Client.mo" size="5525">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lh4EFCLW61FSYFXRS5OclgoV71c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\cs\BOINC-Manager.mo" size="80256">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Dz4XLVlmBFsYST2vEaAgyjfHz9Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\cy\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>wyxOQ9HPguwhHb0mH4Jhz9H6hl4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\cy\BOINC-Manager.mo" size="683">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/B2E3AEuwJI1nnZ3qFiv6P2WsGA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\da\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>k+9FxKEWqEHKNCyiFY4bR3IrPj8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\da\BOINC-Manager.mo" size="40956">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jXFE4/WFpMJBgyU4KjZFuE/3dJw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\de\BOINC-Client.mo" size="5521">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>3vuTvbSYPDqiRPyeybiOXCPaMzE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\de\BOINC-Manager.mo" size="81624">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lDlbQ+l5z9g/rOmhvLLtRtUdJJ4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\el\BOINC-Client.mo" size="7202">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>QCYaFkLo31HTjr9wL4O44i/F7Sk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\el\BOINC-Manager.mo" size="77163">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>G6l1Dt7lUyDqn2GvlYJu9ron6+8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\es\BOINC-Client.mo" size="5644">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>7WDZuWJVeP4JKEEWl4Vug+6RZA4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\es\BOINC-Manager.mo" size="63717">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>5XUcFlRgiHWLrRgiH5243+41lYo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\fa\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0Z+8eZQ2SUuzEiQjz4Z52i6aegE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\fa\BOINC-Manager.mo" size="683">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1/6Y/xTfXSJ1aK4zHbGc+aQY3AQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\fi\BOINC-Client.mo" size="5218">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>xLGFWhAWEaw4nP+ecYOmfo6KH3o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\fi\BOINC-Manager.mo" size="76938">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>XdkZpiFxiMI2D4tqm6+G+ZsNhxQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\fr\BOINC-Client.mo" size="5496">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>z+ObLkMS7wsDeY1TbeQ3+wss3W8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\fr\BOINC-Manager.mo" size="81854">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>AvSbdCXfcPlJDp/gPcB9+E9DQhs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\gl\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>HdRlzuiZGIf7eJDA+cKHtbiNcEI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\gl\BOINC-Manager.mo" size="46312">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BEH3p1qsFGFOguowE7K6Ba4kV7I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\he\BOINC-Client.mo" size="5670">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ZB18w0w/DwYiPXTmCyZ7KzAScKQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\he\BOINC-Manager.mo" size="79454">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FxZvFgQlt506JGgE7fkVFjd5oN4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\hr\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>JqnBdukmrmnNqripALGzmo4Fzv0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\hr\BOINC-Manager.mo" size="8514">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>zIb0HXXurAtBtRL0ULePd+uQfvM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\hu\BOINC-Client.mo" size="5778">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>wTL1WusTaX8CAoBEkvREi1qk3I0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\hu\BOINC-Manager.mo" size="80852">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ACidTnwgfDgj25XWEnVn+78E1L8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\it\BOINC-Client.mo" size="5338">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>blwGWD/k/xEBFVg8tRAvZyFF5bg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\it\BOINC-Manager.mo" size="71995">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BKk6vIErvDy7K+CPM6DECZMRZ6k=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ja\BOINC-Client.mo" size="6718">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>waaKMbP8rerQtBJzy2a0kzPr7ww=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ja\BOINC-Manager.mo" size="83152">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>DPeyZkluR3MVrQ7+A/sJfEeR3Ag=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ko\BOINC-Client.mo" size="5862">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>K6RJkbNeI4uxtIEY5idQR+BR63g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ko\BOINC-Manager.mo" size="83506">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>vQypeLNhhyPq0xo60BiW/m9pUFY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\lt\BOINC-Client.mo" size="5315">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>52LDgiY/QHEpGEWqspBlTlwktSY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\lt\BOINC-Manager.mo" size="46252">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lfZoLRiK1xDvTcMyFwaxaWdBeeU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\lv\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/oatU7qIo1VLhRQ52gbfCzJ2qkE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\lv\BOINC-Manager.mo" size="55248">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1PW2S/6ABwBY+1fOBYJ6qefqsUs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\nb\BOINC-Client.mo" size="5227">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>RKDcMWkpkAMrPECvta+DXTqEJgw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\nb\BOINC-Manager.mo" size="44871">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>I2eDIOCx4etOA3gaFZ2HHcg3+QM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\nl\BOINC-Client.mo" size="5561">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>MrJgcTIjYyt9w5PHSUfrPanlwTY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\nl\BOINC-Manager.mo" size="78474">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0/RwRZCpw9LVXhJ03Gh7Jg9SbLE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\nn\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jcpghbmasdQdh2uYW268i8Avz98=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\nn\BOINC-Manager.mo" size="683">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>3henqB8HMIzH00hoXNJ9inwryok=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\pl\BOINC-Client.mo" size="944">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>MQJJ9c5hkfF2tBtY9OiouMtMtxM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\pl\BOINC-Manager.mo" size="57899">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>OMs2rbH86WpZw0McYfPFWE3siVs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\pt_BR\BOINC-Client.mo" size="4076">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>iA51Gv+FhtiJZPBjaVpPP9U5dlg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\pt_BR\BOINC-Manager.mo" size="34117">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>A6AdFnkXvtCRY7Elf/K80tqIJ7c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\pt_PT\BOINC-Client.mo" size="5638">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>owRQAK2RElunHZnG13Pilb9pW64=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\pt_PT\BOINC-Manager.mo" size="79842">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>qUmMa6ubvEDRMCjIv3wnVGIZXWk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ro\BOINC-Client.mo" size="417">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>21KmcmZkNGuTHj64aiZAOHsN6fs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ro\BOINC-Manager.mo" size="12039">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>4Y1oTGGStXs4i4slYtBv4Y7j7Nc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ru\BOINC-Client.mo" size="7399">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>8AaWoT3uRiw2gM8XDdnFXdY2+go=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\ru\BOINC-Manager.mo" size="107127">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>IiXUM5yMZOXR1IfEUP1O9DDKByQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\sk\BOINC-Client.mo" size="5578">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>p+MoO1lPOTiolJK6IzfeAzPTb2M=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\sk\BOINC-Manager.mo" size="79947">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ZJBVw8LmO/XhVZQ0iDqlx1CTuBM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\sl\BOINC-Client.mo" size="4113">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>4G6KO/uovSTNzf2k7xSBTBKfKcs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\sl\BOINC-Manager.mo" size="62153">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jhbbM/Ya1urV7OcY+5lLGdO7cKM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\sv_SE\BOINC-Client.mo" size="5175">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lUgXHEDAkURk0jrHnmWEO2jKQQM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\sv_SE\BOINC-Manager.mo" size="4879">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>uUHGHgBeUxOSCgsY81XLGxFxMiE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\tr\BOINC-Client.mo" size="5368">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>67cHCtTGtUvFECsh5UxmFe7OlCY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\tr\BOINC-Manager.mo" size="73105">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>nAI88i4e/XvKaS6xCEtyT9SCHqE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\uk\BOINC-Client.mo" size="6724">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jA67yv+ECNdJ5ZMSb+wNJS6JwO0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\uk\BOINC-Manager.mo" size="683">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>l8JfE6ZiKfljw6Ex5iiWcYQUxsc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\zh_CN\BOINC-Client.mo" size="5466">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>3zcQ6zpWjcqFUnS4Js2XAitlTbo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\zh_CN\BOINC-Manager.mo" size="75213">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lYnsGWwiw2Y83Ekq6VKexFgpqR4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\zh_TW\BOINC-Client.mo" size="420">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Hjevnl4Q8UriOU4S38ykxxavGqo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\locale\zh_TW\BOINC-Manager.mo" size="37414">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Fj0iJQuE/BMVdoED9h3tfKSiw4U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\Microsoft.VC80.CRT.manifest" size="1870">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>UutrJJCh1goNv5+SM0k3uhlrrkQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\msvcm80.dll" size="479232">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BMaQ6zIuI2qb7Sk3oEQwxv2jsT0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\msvcp80.dll" size="554832">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lzYUrJYi1eqc3Wj+vOMljRlkCLY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\msvcr80.dll" size="632656">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Q4Uf5GRMCh6zH+gPQnd38fABXvo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\Skins\Default\background_image.png" size="755154">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>d08S4fm9We3jFBdAjQO+Sv5Jehs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\Skins\Default\skin.xml" size="1214" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Gpk1+YAcsbQuw9RgovOvbb9w0PA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\Skins\Default\workunit_running_image.png" size="233">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>gzVAMgLg+eJtYprnWC0RIZG76tI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\Skins\Default\workunit_suspended_image.png" size="510">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>EPxmtBC8dPLJWci3JAoJAliogCM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\Skins\Default\workunit_waiting_image.png" size="206">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>F5+UBgEf+TyNby4Cu5j+z/H8jPg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\sqlite3.dll" size="516096">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>pSFCv4P10mbqAfLy4R+i0lNQ5Vw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\srcsrv.dll" size="94944">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>2IhoRa2XtfhdamA2fnuALqhGfnI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\ssleay32.dll" size="278528">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>GKIGH/W5r6L+CQhLbo5R/4tfadY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\symsrv.dll" size="133048">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>A2dIB7OrFiCiksqrGiObQC/yDqk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\symsrv.yes" size="1">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>uFjLKCYX+wlW2WAhXI6E0cz5CcY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Boinc\zlib1.dll" size="81920">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>amsJKpHDFNv/FpT7bgPyo5uZ6dQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BoincApplicationData\all_projects_list.xml" size="38604" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>M0dDB7fUjjgWJlFqkK+hCYQhiNU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BoincApplicationData\placeholder.txt" size="101">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>yVBMVUyZGKysVc2Rx8vhZEeJHE0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BoincApplicationData\projects\placeholder.txt" size="101">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>yVBMVUyZGKysVc2Rx8vhZEeJHE0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BoincApplicationData\slots\placeholder.txt" size="101">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>yVBMVUyZGKysVc2Rx8vhZEeJHE0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BoincGuiRpc.Net.pdb" size="91648">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>u+XO44yOPXagBDSOJLjZ3L+MgHA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Images\sGrid.ico" size="14574">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0sDcbviQENCW22kjsrDoZlVgMFo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sGrid.exe.config" size="2419">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>D54n4iLleAbE1U5qSBSad/muqD0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sGrid.pdb" size="261632">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>41bHx6D0hBcwqzfYgOsQ6Nyke0M=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Alpenpunk\Emi" issuerKeyHash="258dd07f93d94d9e305cc02e3cf3eed49dbc4d9d" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>VoSI5eEg/c/gyYozyzDxaCz0uNY=</DigestValue></Reference></SignedInfo><SignatureValue>QKhKUrOw7to6KdkhQaESjXBL69CL23DD+Jp4dV+Pi00PZR0Ch+MByKRzc8ymJ7X7hGYUgIXOmqz/M49boIq2VsbFoHuoK7kTpg0BnR67x7shsILGlJ8BEwgzZfSa+n4JdH3M3RNBptBpvNrzSVi8KG8CAjbP6nf44J4sPZ3boCw=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>wbGBWxhbnT8MlZBpQooRUanUsfWjK3KoRPDLFPoFlC5PLuBM6wqQys4/hO9jx8D1A6Vzy+TpQssZfrLapk62mdlOBc+P8bphmWdXqLPTlZBt8Rrsnpv788yrCuGRXxAz49sSnGdSWttyGosZfEnrcK1u+Xc1FxNa1kkuiSnHQ5U=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="d6b8f42c68f130cb338ac9e0cffd20e1e5888456" Description="" Url=""><as:assemblyIdentity name="sGrid.exe" version="0.1.0.22" publicKeyToken="9c0b424b64308e39" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Alpenpunk\Emi</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>Wz4G089rkdCEFz/VCywICXa/bzs=</DigestValue></Reference></SignedInfo><SignatureValue>OFXWEF58BLaWooySM7BnMAtgIbOi2VYM6JB65A/o39Xo4YE/zabmIuV0P7TRXru0mD/xfGw0bCqD7gT/S/4gY4t3WWT+p2/A/NYVuaW4RMGqh/m2zRQ1NRfkMzHmB9ml5ndGoo8NPuuC42fqIUhmw/3Xz+EWoKJzcnia1sN87ps=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>wbGBWxhbnT8MlZBpQooRUanUsfWjK3KoRPDLFPoFlC5PLuBM6wqQys4/hO9jx8D1A6Vzy+TpQssZfrLapk62mdlOBc+P8bphmWdXqLPTlZBt8Rrsnpv788yrCuGRXxAz49sSnGdSWttyGosZfEnrcK1u+Xc1FxNa1kkuiSnHQ5U=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQEp9KcbqCAItGrdqTtRta5jANBgkqhkiG9w0BAQUFADAlMSMwIQYDVQQDHhoAQQBsAHAAZQBuAHAAdQBuAGsAXABFAG0AaTAeFw0xMzAyMjMxODI5MzVaFw0xNDAyMjQwMDI5MzVaMCUxIzAhBgNVBAMeGgBBAGwAcABlAG4AcAB1AG4AawBcAEUAbQBpMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBsYFbGFudPwyVkGlCihFRqdSx9aMrcqhE8MsU+gWULk8u4EzrCpDKzj+E72PHwPUDpXPL5OlCyxl+stqmTraZ2U4Fz4/xumGZZ1eos9OVkG3xGuyem/vzzKsK4ZFfEDPj2xKcZ1Ja23Iaixl8SetwrW75dzUXE1rWSS6JKcdDlQIDAQABMA0GCSqGSIb3DQEBBQUAA4GBACK1e148eKg8X5e7KCrlQad8eks+oQwBmWdJQ2Huzqc+3hswdz20P1f5adYBWjQ3e04yi/+lCNRC0Sha6ZyEr4I1aujA0sLvIw2Sy2SgMMSczbIUuWlCTGgCK/w0yTG7iWMbKeRGxIe3GOFoMENioDAzaB/MwKTCNsJh7PweEmNx</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

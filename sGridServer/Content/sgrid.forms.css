@@ -1,0 +1,103 @@
+﻿/* sGrid Forms 2.0 Styles */
+
+.sg_editor_form
+{
+    border: 0px none white;
+    padding-top: 20px;
+}
+.sg_editor_form legend
+{
+    font-size: 1.3em;
+    color: #00547b;
+}
+.sg_editor_row, .sg_captcha_row, .sg_editor_textarea_row, .sg_editor_language_row  
+{
+    margin: 10px auto 10px auto;
+    width: 520px;
+    height: 30px;
+}
+
+.sg_editor_row input 
+{
+     width: 190px;
+}
+
+.sg_editor_language_row 
+{
+    height: 56px;
+}
+
+.sg_language_string_container
+{
+     width: 190px;
+     height: 55px;
+     display: block;
+     float: left;
+}
+
+.sg_language_string_container input
+{
+    width: 150px;
+}
+
+.sg_language_string_container img
+{
+    width: 20px;
+    height: 20px;
+}
+
+.sg_editor_textarea_row 
+{
+    height: 230px;
+}
+
+.sg_editor_textarea_row textarea 
+{
+     width: 190px;
+     height: 200px;
+     resize: none;
+}
+
+.sg_editor_row label, .sg_captcha_row label, .sg_editor_textarea_row label, .sg_editor_language_row label  
+{
+     float: left;
+     width: 170px;
+     text-align: right;
+     margin-right: 70px;
+}
+
+.sg_submit_row 
+{
+    margin: 30px 0px 10px 40px;
+    text-align: right;
+}
+
+.sg_captcha_box
+{
+    float: left;
+    width: 198px;
+    height: 69px;
+    text-align: right;
+    padding: 0px;
+    margin-right: 0px;
+}
+.sg_captcha_box input 
+{
+    width: 144px;
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.sg_captcha_image
+{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #88A;
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.sg_editor_form p
+{
+    margin: 10px 2px 30px 2px;
+}

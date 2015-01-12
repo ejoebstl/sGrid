@@ -1,0 +1,44 @@
+﻿@model IEnumerable<sGridServer.Code.DataAccessLayer.Models.User>
+@using Resource = sGridServer.Resources.Friends.FriendsOverview
+
+@{
+    /*The partial ListView is responsible for rendering a list of friends. 
+     * The partial ListView will be dynamically reloaded if a search term is changed by the user. 
+     * The model of the ListView is an enumeration of User objects.
+     * Each friend can be deleted by user whom friends are shown, admins don't see the button to delete a friend of this user.*/  
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+        //styles for this view  
+        $(".sg_styled_button, .sg_styled_input, .sg_list_row, .sg_list_image, .sg_list_text").uniform();
+    });
+</script>
+
+@if (Model != null)
+{
+    foreach (sGridServer.Code.DataAccessLayer.Models.User u in Model)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_image"> 
+                <img src = "@Url.Content(u.Picture)" class="sg_list_image" alt="" /> 
+            </div>
+            <div class="sg_list_text">
+                <a href="@Url.Action("ProfileDetail", "Profile", new { id = u.Id })">@u.Nickname</a>
+            </div>
+
+            @if(sGridServer.Code.Security.SecurityProvider.Context.UserPermissions != SiteRoles.Admin)
+            {
+                <div class="sg_list_button">
+                    <a href="javascript:showRemoveFriendView(@u.Id, '@u.Nickname');">
+                        <img src="@Url.Content("~/Content/images/buttons/decline_friend_request.png")" alt="remove" class="sg_list_button" />
+                    </a>
+                </div>
+            }
+        </div>  
+    }
+}
+else
+{
+    <div style="margin-top:10px">@ViewBag.Message</div>
+}

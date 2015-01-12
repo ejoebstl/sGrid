@@ -1,0 +1,11 @@
+﻿@using Resource = sGridServer.Resources.ClientLogin.Login
+@{
+    Layout = "../Shared/_Client.cshtml";
+    ViewBag.Title = @Resource.Title;
+    /* The client login view renders a login page for clients */
+}
+
+<div style="margin-top: 40px">&nbsp;</div>
+<div style="width: 300px; margin: 10px auto 10px auto;">
+    @Html.Action("LoginView", "IdProviderHelper", new { returnUrl = @Url.Action("Index") })
+</div>

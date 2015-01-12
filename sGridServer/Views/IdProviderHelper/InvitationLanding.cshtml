@@ -1,0 +1,10 @@
+﻿@model Account
+@using Resource = sGridServer.Resources.FacebookIdProvider.InvitationLanding
+
+@{
+    ViewBag.Title = Resource.Title;
+}
+
+@String.Format(Resource.Description, Model.Nickname)
+
+@Html.Action("RegisterView")

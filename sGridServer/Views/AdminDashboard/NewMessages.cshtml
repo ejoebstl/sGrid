@@ -1,0 +1,33 @@
+﻿@{
+    /*The partial NewMessagesView is responsible for showing the newest messages to sGrid team. */
+}
+@model IEnumerable<Message>
+@using Resource = sGridServer.Resources.AdminDashboard.NewMessages
+
+<script type = "text/javascript">
+    //add jQuery accordion style to the generated divs.
+    $().ready(function () {
+        $("#accordion").accordion();
+    });
+</script>
+
+<div id="accordion" style = "font-size: 11px; width : 300px;">
+@foreach (Message item in Model)
+{
+    String from = Resource.Unregistered;
+    if (item.Account != null) { from = item.Account.Nickname; }
+    <h3>@item.Subject</h3>
+    <div>
+        <p>
+            @Resource.From @from
+            <br /> 
+            @Resource.EMail @item.EMail
+            <br />
+            @Resource.Message @item.MessageText
+            <a href = "@Url.Action("DetailMessage", "Support", new { id = item.Id })">
+                <button>@Resource.ToMessage</button>
+            </a>
+        </p>
+    </div>
+}
+</div>

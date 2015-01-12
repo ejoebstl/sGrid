@@ -1,0 +1,72 @@
+﻿@{
+    /*The EditUserView shows fields to edit users. It uses the partial EditAccountView to edit basic fields.
+     It also provides buttons to change the user type: a user can be elevated to a sponsor, a coin partner or a sGrid team member.*/
+}
+@model UserConfigurationModel
+@using Resource = sGridServer.Resources.MemberConfiguration.EditUser
+<script type = "text/javascript">
+    //set the value of the SiteRole div depending on the choosen value of the drop down list. 
+    changeRole = function () {
+        var selectedOption = $("#user_role").val();
+        if (selectedOption == 1) {
+            $('#SiteRole').val("user");
+        } else if (selectedOption == 2) {
+            $('#SiteRole').val("sgridteammember");
+        } else if (selectedOption == 3) {
+            $('#SiteRole').val("sponsor");
+        } else if (selectedOption == 4) {
+            $('#SiteRole').val("coinpartner");
+        }
+    }    
+</script>
+<fieldset class="sg_editor_form"> 
+    <legend>@Resource.PropertiesText @Model.Account.Nickname</legend>
+    @using (Html.BeginForm("EditUser", "MemberConfiguration"))
+    {
+        if (Model.Account.Id > 0)
+        {
+            <p>
+                <a href = "@Url.Action("UserStatistics", "Statistics", new { id = Model.Account.Id })">
+                    @Resource.Statistics
+                </a>
+                <br />
+                <a href = "@Url.Action("Ranking", "Statistics", new { id = Model.Account.Id })">
+                    @Resource.Ranking
+                </a>
+                <br />
+                <a href = "@Url.Action("FriendsOverview", "Friends", new { id = Model.Account.Id })">
+                    @Resource.Friends
+                </a>  
+            </p>
+        }        
+        @Html.Action("EditAccount", new { account = Model.Account })
+        @Html.ValidationSummary(true)        
+        @Html.HiddenFor(model => model.ShowPasswordField)
+        <div class="sg_editor_row" style = "height: 50px;">
+        <label>@String.Format(Resource.EditRoleText, Model.Account.UserPermission)</label>
+            <select id="user_role" onchange = "javascript:changeRole()">
+                    <option value = "1">@Resource.User</option>
+                    <option value = "2">@Resource.Administrator</option>
+                    <option value = "3">@Resource.Sponsor</option>
+                    <option value = "4">@Resource.CoinPartner</option>
+            </select> 
+        </div>        
+        if (Model.ShowPasswordField)
+        {            
+            <div class="sg_editor_row" style = "height: 50px;">
+                <label>@Resource.NewPassword</label>
+                @Html.PasswordFor(model => model.NewPassword)
+            </div>
+            <div class="sg_editor_row" style = "height: 50px;">            
+                <label>@Resource.ConfirmPassword</label>
+                @Html.PasswordFor(model => model.NewPasswordConfirm)
+            </div>
+        }        
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.Submit" /> 
+        </div>
+        <span style = "visibility:hidden">
+                @Html.EditorFor(model => model.SiteRole)
+        </span>
+    }
+</fieldset> 

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;
+    /*The AchievementOverviewView is responsible for rendering the partial ListView and for providing controls
+     to change the search criteria of the shown achievements.*/
+}
+@using Resource = sGridServer.Resources.AchievementConfiguration.AchievementOverview
+<script type="text/javascript">
+    //Submit a form with name to search for as parameter, load a list view by success.
+    bindSubmit({ 
+        buttonId: "#submit_button",
+        actionUrl: '@Url.Action("List")',
+        data: function () {
+            return { searchName: $("#search_box").val() };
+        },
+        success: function (data) {
+            $("#list_view").html(data);
+        }
+    });
+
+    $().ready(function () {
+        //submit a form if a user presses "Enter"  
+        $('#search_box').keypress(function (e) {
+                if (e.keyCode == 13) {
+                    $("#submit_button").click();
+                }
+        });
+    });    
+</script>
+
+<h2>@Resource.TitleText</h2>
+<div style = "width : 800px">
+    <input type="button" class="sg_styled_button" value="@Resource.Create" style="float:right" onclick="location.href = '@Url.Action("CreateAchievement", "AchievementConfiguration")'" />
+    <input type="submit" id="submit_button" style="visibility:hidden" />
+    <input type="text" class="sg_styled_input sg_search_box" id="search_box" style="float:right"/>
+</div>
+<br />
+<div id="list_view">
+    @Html.Action("List")
+</div>
+

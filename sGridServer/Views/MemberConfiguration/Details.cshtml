@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;
+    //The DetailsView shows a detailed account.
+}
+@model Account
+@using Resource = sGridServer.Resources.MemberConfiguration.Details
+
+<div>
+    <h3>@Resource.PropertiesText @Model.Nickname</h3>
+    <div style = "float: left; margin: 20px;">
+        @if (Model.Picture != null && Model.Picture != "")
+        {
+            <img src = "@Url.Content(Model.Picture)" width="200px" height="200px" alt = "@Resource.Icon"/>
+        }
+    </div>
+    <div style = "margin-top: 42px; margin-left: 20px;">
+        <b>@Resource.Nickname</b> @Model.Nickname <br />
+        <b>@Resource.EMail</b> @Model.EMail <br />
+        <b>@Resource.Active</b> @Model.Active <br />
+        <b>@Resource.Id</b> @Model.Id <br />
+        <b>@Resource.Culture</b> @Model.Culture <br />
+        <b>@Resource.RegistrationDate</b> @Model.RegistrationDate <br />
+        <b>@Resource.Picture</b> @Model.Picture  <br />
+    </div>
+</div>

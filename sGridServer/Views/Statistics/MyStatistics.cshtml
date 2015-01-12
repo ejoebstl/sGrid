@@ -1,0 +1,21 @@
+﻿@model User
+@using Resource = sGridServer.Resources.Statistics.GlobalStatistics
+
+@{
+    //This PartialView is responsible for choosing and transfering the timestamps for the statistik
+    
+    Statistics userStatistics = new Statistics(900, 100, false, false, false, false, false);
+}
+    
+<div>
+    <h3 style="text-align:center">@Resource.Packages</h3>
+    @Html.Action("CalculatedPackages", "Statistics", new { userId = Model.Id, fromDate = DateTime.MinValue, to = DateTime.MaxValue.AddDays(-1), diagramSettings = userStatistics })
+</div>
+<div>
+    <h3 style="text-align:center">@Resource.Uptime</h3>
+    @Html.Action("Uptime", "Statistics", new { userId = Model.Id, fromDate = DateTime.MinValue, to = DateTime.MaxValue.AddDays(-1), diagramSettings = userStatistics })
+</div>
+<div>    
+    <h3 style="text-align:center">@Resource.Achievements</h3>
+    @Html.Action("ObtainedAchievements", "Statistics", new { userId = Model.Id, fromDate = DateTime.MinValue, to = DateTime.MaxValue.AddDays(-1), diagramSettings = userStatistics })
+</div>

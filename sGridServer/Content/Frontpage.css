@@ -1,0 +1,127 @@
+﻿/* Frontpage style
+-----------------------------------------------------------*/
+body
+{
+    padding: 0px;
+    margin: 0px;
+}
+#container {
+	width: 100%;
+	height: 668px;
+	background-color: transparent;
+}
+#top_section {
+    width: 100%;
+    height: 116px;
+}
+#image_container {
+    width: 100%;
+    height: 305px;
+    background-color: #1a171b;
+    text-align: center;
+}
+#frontpage_logo {
+    margin-left: 18px;
+    width: 275px;
+    height: 115px;
+    margin-top: 16px;
+}
+.horizontal_break {
+    width: 100%;
+    height: 14px;
+}
+.vertical_break {
+    width:1px;
+    background-color:#858486;
+    height:174px;
+    float: left;
+}
+#middle_section {
+    width: 100%;
+    height: 174px;
+}
+#box_section {
+    width:925px;
+    height: 174px;
+    margin: 0 auto;
+}
+.box_item {
+    width: 209px;
+    height: 174px;
+    float: left;
+    padding: 0px 7px 0px 14px;
+}
+.box_text_section {
+    width: 209px;
+    height: 166px;
+}
+.box_title {
+    font-family: 'Segoe UI';
+    font-size: 24px;
+    color: #00bdff;
+    margin: 0px;
+    margin-top: -9px;
+}
+.link_text {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    color: #00bdff;
+    float: right;
+    margin: 0px;
+}
+#bottom_section {
+    width: 100%;
+    height: 33px;
+    background-color: #1a171b;
+    text-align: center;
+    padding-top: 12px;
+}
+.box_text {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    margin: 0px;
+    margin-top: 4px;
+}
+#bottom_section a 
+{
+	text-decoration: none;
+	text-align: center;
+	line-height: 20px;
+	font-size: 12px;
+	color: #cfe6f1;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#bottom_section a:hover
+{
+    color: #fff;
+}
+#sg_frontpage_header_section ul
+{
+	float: right;
+	width: 600px;
+	height: 35px;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+#sg_frontpage_header_section li
+{
+	float: right;
+	position: relative;
+	z-index: 3;
+	margin-top: 8px;
+}
+#sg_frontpage_header_section li a
+{
+	padding-left: 10px;
+	padding-right: 10px;
+	display:block;
+	height: 35px;
+	text-decoration: none;
+	color: #00547b;
+}
+#sg_frontpage_header_section li a:hover
+{
+	color: #37b3c2;
+}

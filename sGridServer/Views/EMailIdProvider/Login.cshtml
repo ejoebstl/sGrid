@@ -1,0 +1,40 @@
+﻿@model Tuple<string, string>
+@using Resource=sGridServer.Resources.EMailIdProvider.Login
+@{
+    ViewBag.Title = Resource.LoginTitle;
+    
+    /* The EMailIdProvider Login view handles login attempts using username and passwort authentication */
+    
+    if(Session["ClientLayout"] != null) 
+    {
+        Layout = "~/Views/Shared/_Client.cshtml";
+    }
+}
+@using(Html.BeginForm("Login", "EMailIdProvider")) {
+    
+    <fieldset class="sg_editor_form"> 
+        <legend>@Resource.LoginTitle</legend>
+
+        <span class="field-validation-error">@ViewBag.LoginMessage</span>
+        <div class="sg_editor_row">
+            <label>@Resource.Username</label>
+            <input type="text" value="@Model.Item1" name="username"/>
+        </div> 
+        
+        <div class="sg_editor_row">
+             <label>@Resource.Password</label>
+             <input type="password" value="" name ="password"/>
+        </div> 
+        
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.SubmitText" />
+        </div>
+        
+        @if (Session["ClientLayout"] == null)
+        {
+            <p style="font-size: .9em">
+                @Html.ActionLink(Resource.ForgotPassword, "ResetPassword", new { returnUrl = Model.Item2 })
+            </p>
+        }
+    </fieldset>
+}

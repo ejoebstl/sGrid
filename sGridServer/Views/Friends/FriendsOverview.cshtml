@@ -1,0 +1,34 @@
+﻿@model User
+@using Resource = sGridServer.Resources.Friends.FriendsOverview
+           
+@{
+    ViewBag.Title = Resource.Friends;
+    
+    /*This View is responsible for showing the friends of the user, the friendship requests sent to him and an InvitatePartialView to send a friend an invitation.
+     * The model of this View is an object of type User.
+     * If an admin is a current user, so he can only see friends of the given user (no requests and InvitePartialView)*/
+}
+
+@Html.Action("RemoveFriend")
+@Html.HiddenFor(model => model.Id)
+
+<script type="text/javascript">
+    //makes tabs in that View
+    $().ready(function() {
+        $("#friends_controls").tabs();
+    });
+</script>
+
+<h2>@Resource.Friends</h2>
+
+<div id = "friends_controls" style="font-size: 11px">
+    <ul>
+        <li><a href="@Url.Action("Friends", new { id = Model.Id })">@Resource.MyFriends</a></li>
+
+        @if(sGridServer.Code.Security.SecurityProvider.Context.UserPermissions != SiteRoles.Admin)
+        {
+            <li><a href="@Url.Action("Requests")">@Resource.Requests</a></li>
+            <li><a href="@Url.Action("Invite")">@Resource.Invite</a></li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,59 @@
+﻿@model sGridServer.Models.EMailRegistrationData
+@using Resource = sGridServer.Resources.EMailIdProvider.Register
+
+@{
+    ViewBag.Title = @Resource.RegisterTitle;
+    
+    /* The EMailIdProvider Register view handles registration attempts using username and passwort authentication */
+}
+
+@using (Html.BeginForm("Register", "EMailIdProvider", FormMethod.Post))
+{
+
+    <fieldset class="sg_editor_form"> 
+        <legend>@Resource.RegisterTitle</legend>
+
+        <p>
+            @Resource.Description
+        </p>
+
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.UserData.Nickname, Resource.Nickname)
+            @Html.TextBoxFor(model => model.UserData.Nickname) 
+            @Html.ValidationMessageFor(model => model.UserData.Nickname)
+            <span class="field-validation-error">@ViewBag.UsernameMessage</span>
+        </div> 
+        
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.UserData.EMail, Resource.EMailAddress)
+            @Html.TextBoxFor(model => model.UserData.EMail) 
+            @Html.ValidationMessageFor(model => model.UserData.EMail)
+            <span class="field-validation-error">@ViewBag.EMailMessage</span>
+        </div> 
+        
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.Password, Resource.Password)
+            @Html.PasswordFor(model => model.Password) 
+            @Html.ValidationMessageFor(model => model.Password)
+        </div> 
+
+        
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.PasswordConfirmation, Resource.ConfirmPassword)
+            @Html.PasswordFor(model => model.PasswordConfirmation) 
+            @Html.ValidationMessageFor(model => model.PasswordConfirmation)
+            <span class="field-validation-error">@ViewBag.PasswordMessage</span>
+        </div> 
+        
+        <div class="sg_captcha_row">
+            @Html.LabelFor(model => model.Captcha, Resource.CaptchaText)
+            @Html.EditorFor(model => model.Captcha)
+            <span class="field-validation-error">@ViewBag.CaptchaMessage</span>
+        </div> 
+        
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.SubmitText" class="SendButton"/>
+        </div> 
+
+    </fieldset>
+}

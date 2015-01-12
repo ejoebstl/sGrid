@@ -1,0 +1,47 @@
+﻿@{
+    //The partial PrivacyView is responsible for showing the user’s privacy settings. This settings can be changed by the user.
+}
+@model Account
+@using Resource = sGridServer.Resources.ProfileSettings.Settings
+
+<script type = "text/javascript">
+    $().ready(function () {
+        $("#submit_button_privacy").click(function (data) {
+            //start loader animation.
+            $("#loader_privacy").html(ajaxLoader());
+            //send data to the server, change loader by success or error.
+            $.ajax({                
+                    url: "@Url.Action("Privacy")",
+                    cache: false,
+                    async: true,
+                    data: { showInHighScore: $('#show_highscore').attr("checked") == "checked",
+                            privacyLevel: $('#privacy_level').val() != "" ? $('#privacy_level').val() : -1},
+                    type: "POST",
+                    error: function (result) { 
+                        $("#loader_privacy").html(ajaxError());
+                    }, 
+                    success: function(result) { 
+                        $("#loader_privacy").html(ajaxSuccess());
+                    }
+            });
+         });
+         
+         $(".sg_editor_row select, .sg_editor_row input, .sg_submit_row input").uniform();
+     });
+</script>
+@using (Html.BeginForm())
+{
+        <fieldset class="sg_editor_form"> 
+        <div class="sg_editor_row"> 
+            <label>@Resource.ShowOnHighscore</label>
+            <input type="checkbox" id = "show_highscore" @(Model.ShowInHighScore ? "checked=\"checked\"" : "")/>
+        </div>
+        <div class="sg_editor_row"> 
+            <label>@Resource.ProfilePrivacy</label>
+            @Html.DropDownList("privacy_level", typeof(PrivacyLevel), Model.Privacy)
+        </div>
+        <div class="sg_submit_row">
+            <input type="button" id = "submit_button_privacy" value="@Resource.Submit"/><span id="loader_privacy"></span>
+        </div>
+    </fieldset>
+}

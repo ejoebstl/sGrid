@@ -1,0 +1,25 @@
+﻿@{
+    //The partial RewardsView is responsible for showing the newest rewards available.
+}
+@model IEnumerable<Reward>
+@using Resource = sGridServer.Resources.UserDashboard.Dashboard
+
+@foreach (sGridServer.Code.DataAccessLayer.Models.Reward item in Model)
+{
+    <div class = "sg_list_row" style="width: 520px;">
+        <div class = "sg_list_image">
+            <a href = "@Url.Action("Detail", "CoinExchange", new { id = item.Id })">
+                @if (item.Picture != "")
+                {
+                <img src = "@Url.Content(item.Picture)" class = "sg_list_image" alt = "@Resource.Icon"/>
+                }
+            </a>
+        </div>
+        <div class = "sg_list_text">
+            <b>@item.Name</b>
+        </div>
+        <div class = "sg_list_text">
+             <span style="color: #5c6b72">@item.ShortDescription</span> 
+        </div>
+    </div>   
+}

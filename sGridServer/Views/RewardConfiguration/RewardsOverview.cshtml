@@ -1,0 +1,44 @@
+﻿@model IEnumerable<sGridServer.Code.DataAccessLayer.Models.Reward>
+@using Resource = sGridServer.Resources.RewardConfiguration.RewardsOverview
+           
+@{
+    ViewBag.Title = Resource.YourRewards;
+
+    /*The RewardsOverviewView is responsible for showing the overview of the coin partner rewards.
+     * Shows the count of coins spent for all rewards of this partner. 
+     * The model of the RewardsOverviewView is an enumeration of the RewardItem objects.*/
+}
+
+<h2>@Resource.YourRewards:</h2>
+
+<div>
+@if(Model != null)
+{
+    //gets the amount of coins grant by the coin partner of rewards in the model
+    int coins = Model.FirstOrDefault().CoinPartner.CoinAccount.TotalGrant;
+    
+    /*<h3><i>@String.Format(Resource.CoinsGrant, coins)</i></h3>*/
+    
+    foreach (sGridServer.Code.DataAccessLayer.Models.Reward r in Model)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_image"> 
+                <img src = "@Url.Content(r.Picture)" class="sg_list_image" alt="" /> 
+            </div>
+            <div class="sg_list_text">
+                <a href="@Url.Action("DetailReward", new { id = r.Id })">@r.Name</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}
+</div>
+
+@using(Html.BeginForm("Create", "RewardConfiguration", FormMethod.Get)) 
+{
+    <input style="margin-top: 20px" class="sg_styled_button" type="submit" id="add_reward" value="@Resource.AddReward" />
+}
+

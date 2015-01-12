@@ -1,0 +1,37 @@
+﻿@model sGridServer.Code.DataAccessLayer.Models.Sponsor
+@using Resource = sGridServer.Resources.PartnerSupport.EditBanner
+
+@{
+    ViewBag.Title = Resource.EditText;
+
+    /*The EditBannerView is shows a form to edit a banner. 
+     * The model of the EditBannerView is a Sponsor object. 
+     * The show frequency can be changed and a new banner can be uploaded for the given sponsor.*/
+}
+
+@using (Html.BeginForm("UploadBanner", "PartnerSupport", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset class="sg_editor_form">
+        <legend>@Resource.SponsorText @Model.Nickname</legend>
+        
+        <div class="sg_editor_row">
+            <label>@Resource.Picture</label>
+            <img src="@Url.Content(Model.Banner)" width="150px" height="35px" alt="" />
+        </div>
+        
+        <div class="sg_editor_row">
+            <label>@Resource.FrequencyText</label>
+            @Html.TextBoxFor(model => model.ShowFrequency)
+        </div>
+
+        <div class="sg_editor_row">
+            <label>@Resource.UploadText</label>
+            <input type="file" name="file" id="file" />
+            @Html.HiddenFor(model => model.Id)
+        </div>
+
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.SubmitText" />
+        </div>
+    </fieldset>                  
+}

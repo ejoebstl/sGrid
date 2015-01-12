@@ -1,0 +1,27 @@
+﻿@{
+    //The partial ListView is responsible for rendering a list of accounts.
+}
+@model IEnumerable<Account>
+@using Resource = sGridServer.Resources.MemberConfiguration.List
+@foreach (Account member in Model)
+{
+    <div class = "sg_list_row">    
+        <div class = "sg_list_image">
+            @if (member.Picture != null && member.Picture != "")
+             {
+                <a href = "@Url.Action("Details", new { id = member.Id })">
+                    <img src = "@Url.Content(member.Picture)" class = "sg_list_image" alt = "@Resource.Icon"/>
+                </a>
+             }
+        </div>        
+        <div class = "sg_list_text">
+            <div><b>@member.Nickname</b></div>
+            <div style = "margin-top: -32px;">@member.EMail</div>
+        </div>
+        <div class = "sg_list_button">
+            <a href = "@Url.Action("Edit", new { id = member.Id })" class="sg_list_button">
+                <img src="@Url.Content("~/Content/images/buttons/edit_button.png")" alt="@Resource.Edit" class="sg_list_button"/>
+            </a>
+        </div>      
+    </div>      
+}

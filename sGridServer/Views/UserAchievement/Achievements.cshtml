@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = @Resource.ListTitleText;
+    /*The AchievementsView is responsible for rendering the two partial AchievementsListViews
+     (one for the achievements gained by the current user, another one for all the achievements that can be gained).*/
+}
+@using Resource = sGridServer.Resources.UserAchievement.UserAchievement
+
+<div style = "">
+    <div id="my_list_view" style = "width: 400px; float:left; text-align: center">
+        <b style = "color: #066375">@Resource.MyAchievements:</b>
+        @Html.Action("GetMyAchievements")
+    </div>
+    <div id="all_list_view" style = "width: 400px; margin-left: 400px; text-align: center">
+        <b style = "color: #066375">@Resource.AllAchievements:</b>
+        @Html.Action("GetAllAchievements")
+    </div>
+    <div style = "height: 20px; margin-top: 10px;">    
+        @Html.ShareButton(Url.Action("ProfileDetail", "Profile", new { id = sGridServer.Code.Security.SecurityProvider.Context.ID }, "http"), 
+        global::sGridServer.Properties.Settings.Default.SGridLogo, "sGrid", Resource.MyAchievements, Resource.ShareText)
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@using Resource = sGridServer.Resources.Statistics.GlobalStatistics
+
+@{
+    //This PartialView is responsible for choosing and transfering the timestamps for the statistic
+}
+
+<script type="text/javascript">
+    //function to run by clicking the button with the id 'global_submit_button'
+    bindSubmit({
+        buttonId: "#global_submit_button",
+        //run a ListGlobalStatistics action with the given data, such are searchName and the id of the user
+        actionUrl: '@Url.Action("ListGlobalStatistics")',
+        data: function() {
+            return { from: $("#global_stat_from").val(), to: $("#global_stat_to").val() };
+        },
+        //load a ListGlobalStatistic partial View with the given data
+        success: function (data) {
+                    $("#list_view").html(data);
+                 }
+    });
+
+    //action by the opening the PartialView
+    $().ready(function() {
+        //action by pressing enter -> bindSubmit
+        $("#global_stat_from").keypress(function (key) {
+            if(key.keyCode == 13) {
+                $("#global_submit_button").click();
+            }
+        });
+        $("#global_stat_to").keypress(function (key) {
+            if (key.keyCode == 13) {
+                $("#global_submit_button").click();
+            }
+        });
+
+        //initializes and sets a default language for the datepicker elements 
+        $.datepicker.setDefaults($.datepicker.regional["@LanguageManager.CurrentLanguage.Code"]);
+        $("#global_stat_from").datepicker({
+            dateFormat: "yy-MM-dd",
+            defaultDate: "+1d",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#global_stat_from").datepicker("option", "minDate", selectedDate);
+            },
+            onSelect: function() {
+                $("#global_stat_from").datepicker("option", "minDate", null);
+            },
+            hideIfNoPrevNext: false
+        });
+        $("#global_stat_to").datepicker({
+            dateFormat: "yy-MM-dd",
+            maxDate: "+0d",
+            defaultDate: "+1d",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#global_stat_to").datepicker("option", "minDate", selectedDate);
+            },
+            onSelect: function () {
+                $("#global_stat_to").datepicker("option", "minDate", null);
+            },
+            hideIfNoPrevNext: false
+        });
+        
+        //styles for this PartialView  
+        $(".sg_styled_button, .sg_styled_input").uniform();
+    });
+</script>
+
+<div id="controls">
+    @Resource.FromText <input type="text" id="global_stat_from" class="sg_styled_input" /> 
+    @Resource.ToText <input type="text" id="global_stat_to" class="sg_styled_input" />
+    <input type='button' id="global_submit_button" value = "@Resource.ButtonText" class="sg_styled_button" />
+</div>
+
+<div id="list_view">
+    @Html.Action("ListGlobalStatistics", new { from = DateTime.MinValue, to = DateTime.Today  })
+</div>

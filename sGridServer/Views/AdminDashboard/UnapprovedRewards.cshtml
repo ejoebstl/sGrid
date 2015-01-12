@@ -1,0 +1,32 @@
+﻿@{
+    //The UnapprovedRewardsView is responsible for showing the newest rewards pending validation.
+}
+@model IEnumerable<Reward>
+@using Resource = sGridServer.Resources.AdminDashboard.UnapprovedRewards
+
+<script type = "text/javascript">
+    $().ready(function () {
+        $("#accordion2").accordion();
+    });
+</script>
+
+<div id="accordion2" style = "font-size: 11px; width : 300px;">
+@foreach (sGridServer.Code.DataAccessLayer.Models.Reward item in Model)
+{
+    <h3>@item.Name</h3>
+    <div>
+        <p>
+            @Resource.Partner
+            @item.CoinPartner.Nickname
+            <br />
+            <img src = "@Url.Content(item.Picture)" class = "sg_list_image" alt = "@Resource.Picture"/>
+            <br />
+            @item.Description
+            <br />
+            <a href = "@Url.Action("DetailReward", "RewardConfiguration", new { id = item.Id })">
+                <button>@Resource.ToMessage</button>
+            </a>
+        </p>
+    </div>
+}
+</div>

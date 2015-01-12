@@ -1,0 +1,32 @@
+﻿@model Tuple<IEnumerable<UserScore>, int, String>
+
+@{
+    /*The partial ListRankingView is responsible for rendering a high score table.
+     * The ListRankingView will be dynamically reloaded when the user switches from all users ranking to friends only ranking or vice versa. 
+     * The model of the ListRankingView is an enumeration of UserScore objects.*/
+     
+}
+<div style="width: 445px;">
+@if (Model.Item1 != null)
+{
+    <h3>@Model.Item3</h3>
+    int i = 1 + (@Model.Item2 - 1)*6;
+    <hr style="display: block; height: 1px; border: 0; border-top: 2px solid #d8e7ee; margin: 0 0; padding: 0;"/>
+
+    foreach (sGridServer.Models.UserScore u in Model.Item1)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_text" style="width:25px;">@(i).</div>
+            <div class="sg_list_image"><img src="@Url.Content(u.Account.Picture)" class="sg_list_image" alt="" /></div>
+            <div class="sg_list_text" style="width:250px;">@u.Account.Nickname</div>
+            <div class="sg_list_text" style="width:80px; background-color: #f3f8fa; text-align:center">@u.CalculatedPackages</div>
+        </div>
+        <hr style="display: block; height: 1px; border: 0; border-top: 1px solid #d8e7ee; margin: 0 0; padding: 0;"/>
+        i++;
+    }
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}
+</div>

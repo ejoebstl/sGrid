@@ -1,0 +1,52 @@
+﻿@model IEnumerable<UserScore>
+@using Resource = sGridServer.Resources.Statistics.ListTopRanked
+<table border = "1px;" style = "border: 1px solid #d8e7ee; padding: 0px 0px 0px 0px; border-spacing: 0px; border-collapse: collapse;" cellspacing="0px" cellpadding="0px">
+    <tr style="height: 2em;">
+    <th colspan="3" style = "color: #066375">@Resource.TopRanked</th>
+    </tr>
+    <tr style="height: 1.7em;">
+        <td style = "width: 25px; text-align:center"><span><b style="color: #5c6b72">#</b></span></td>
+        <td style = "width: 120px; text-align:center"><span><b style="color: #5c6b72">@Resource.Name</b></span></td>
+        <td style = "width: 100px; text-align:center"><span><b style="color: #5c6b72">@Resource.Calculated</b></span></td>
+    </tr>
+@if (Model != null)
+{
+    int i = 1;
+    
+    foreach (sGridServer.Models.UserScore u in Model)
+    {
+        if (i % 2 == 0)
+        {
+            <tr style="height: 1.7em;">
+                <td style = "width: 25px; text-align:center">
+                    <span style="color: #5c6b72">@i</span>
+                </td>
+                <td style = "width: 120px; text-align:center">
+                    <span style="color: #e87851">@u.Account.Nickname</span>
+                </td>
+                <td style = "width: 100px; text-align:center">
+                    <span style="color: #5c6b72">@u.CalculatedPackages</span>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr style="height: 1.7em; background-color: #f3f8fa">
+                <td style = "width: 25px; text-align:center">
+                    <span style="color: #5c6b72">@i</span>
+                </td>
+                <td style = "width: 120px; text-align:center">
+                    <span style="color: #e87851">@u.Account.Nickname</span>
+                </td>
+                <td style = "width: 100px; text-align:center">
+                    <span style="color: #5c6b72">@u.CalculatedPackages</span>
+                </td>
+            </tr>
+        }
+        i++;
+    }
+}
+    <tr style="height: 1.7em;">
+        <td colspan="3"><a href="@Url.Action("Ranking", "Statistics")" style="font-size: 0.8em; float: right; margin-right: 10px;">@Resource.ViewAll</a></td>
+    </tr>
+</table>

@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;
+    /*
+     The UserDashboardView is responsible for showing the user dashboard and rendering the partial AchievementsView,
+     ShortStatisticsView, PlacementView, RewardsView and SGridNewsView. It is also responsible for providing controls
+     to change the user’s profile information and user’s profile picture.
+    */
+}
+@model User
+@using Resource = sGridServer.Resources.UserDashboard.Dashboard
+
+<script type = "text/javascript">
+    $().ready(function () {
+        //shows a pop up to change a profile picture
+        $(".openDialog").click(function (e) {
+            e.preventDefault();
+            $('<div>')
+                .appendTo("body")
+                .dialog({
+                    close: function () { $(this).remove() },
+                    modal: true
+                })
+                .load(this.href, {});
+        });
+        //close a pop with a click on a closing button.
+        $(".close").on("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+</script>
+ @if (Model != null)
+{
+    <h3 style = "color: #066375">@Model.Nickname</h3>
+}  
+<div style = "height: 200px;">
+    <div style="float:left;">
+        <div id="picture" style = "float:left">
+                <a href = "@Url.Action("EditProfilePicture", "UserDashboard",
+                    new { id = Model.Id})" class = "openDialog">
+                @if (Model != null && Model.Picture != null && Model.Picture != "")
+                {  
+                    <img src = "@Url.Content(Model.Picture)" id="profile_picture" class = "profile_picture_big" title="@Resource.Picture" alt = "@Resource.Picture" />
+                }
+            </a>
+        </div>
+        <div id = "profile_information_view" style = "float:left; width: 200px; margin-left: 10px;">
+                 
+            @if (Model != null)
+            {
+                <div id="placement_view" style="margin-top: 140px;">
+                    @Html.Action("Placement", new { id = Model.Id })
+                </div>
+            }
+        </div>
+        <div style = "float: left; margin-left: 30px; width: 520px;">
+            <h3 style="color: #5c6b72">@Resource.RewardsAndNews</h3>
+            <div id="rewards_view" style="width: 520px;">
+                @Html.Action("Rewards")
+            </div>
+            <div id="sGrid_news_view" style="width: 520px;">
+                @Html.Action("SGridNews")
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model != null)
+{
+    <div id="short_statistics_view" style = "width: 400px; float: left; padding-top: 10px;">
+        <h3 style="color: #5c6b72">@Model.Nickname's @Resource.Statisics:</h3>
+        <div style = "padding-top: 10px;">
+        @Html.Action("ShortStatistics", new { id = Model.Id })
+        </div>
+    </div>
+}    
+@if (Model != null) {    
+    <div id="achievements_view" style = "float: left; margin-left: 10px; padding-top: 10px; width: 520px;">
+        <h3 style="color: #5c6b72">@Model.Nickname's @Resource.Achievements</h3>
+        @Html.Action("Achievements", new { id = Model.Id })
+    </div>
+}

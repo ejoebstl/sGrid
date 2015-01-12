@@ -1,0 +1,72 @@
+﻿@{
+    /*The partial EditAccountView shows fields to edit properties which all accounts have in common.
+     It is used by all other edit views of the MemberConfiguration controller.*/
+}
+@using Resource = sGridServer.Resources.MemberConfiguration.EditAccount
+@model AccountConfigurationModel
+
+
+@if (Model.Account.Picture!= null && Model.Account.Picture != "")
+{
+    <div class="sg_editor_row">
+        <label>@Resource.Picture</label>
+        <img src = "@Url.Content(Model.Account.Picture)" class = "profile_picture_big" alt = "@Resource.Icon"/> 
+    </div>
+}
+<div class="sg_editor_row">
+    <label>@Resource.Id</label>
+    @Html.DisplayFor(model => model.Account.Id) 
+    @Html.HiddenFor(model => model.Account.Id) 
+    @Html.ValidationMessageFor(model => model.Account.Id)  
+</div>         
+<div class="sg_editor_row">
+    <label>@Resource.Active</label>
+    @Html.EditorFor(model => model.Account.Active) 
+    @Html.ValidationMessageFor(model => model.Account.Active)            
+</div>
+<div class="sg_editor_row">
+    <label>@Resource.Language</label>
+    @Html.EditorFor(model => model.Account.Culture) 
+    @Html.ValidationMessageFor(model => model.Account.Culture)
+</div>
+<div class="sg_editor_row"> 
+    <label>@Resource.EMail</label>
+    @Html.EditorFor(model => model.Account.EMail) 
+    @Html.ValidationMessageFor(model => model.Account.EMail)
+</div>
+@Html.HiddenFor(model => model.Account.IdType)
+<div class="sg_editor_row">
+    <label>@Resource.Nickname</label>
+    @Html.EditorFor(model => model.Account.Nickname) 
+    @Html.ValidationMessageFor(model => model.Account.Nickname)
+</div>
+<div class="sg_editor_row" style = "height: 50px;">
+    <label>@Resource.NotifyOnAchievementReached</label>
+    @Html.EditorFor(model => model.Account.NotifyOnAchievementReached) 
+    @Html.ValidationMessageFor(model => model.Account.NotifyOnAchievementReached)            
+</div>
+<div class="sg_editor_row" style = "height: 50px;">
+    <label>@Resource.NotifyOnProjectChanged</label>
+    @Html.EditorFor(model => model.Account.NotifyOnProjectChanged) 
+    @Html.ValidationMessageFor(model => model.Account.NotifyOnProjectChanged)            
+</div>
+<div class="sg_editor_row" style = "height: 50px;">
+    <label>@Resource.NotifyOnCoinBalanceChanged</label>
+    @Html.EditorFor(model => model.Account.NotifyOnCoinBalanceChanged) 
+    @Html.ValidationMessageFor(model => model.Account.NotifyOnCoinBalanceChanged)            
+</div>
+<div class="sg_editor_row">
+    <label>@Resource.Picture</label>
+    @Html.EditorFor(model => model.Account.Picture) 
+    @Html.ValidationMessageFor(model => model.Account.Picture)
+</div>
+<div class="sg_editor_row">
+    <label>@Resource.Privacy</label>
+    @Html.EditorFor(model => model.Account.Privacy) 
+    @Html.ValidationMessageFor(model => model.Account.Privacy)
+</div>
+<div class="sg_editor_row">
+    <label>@Resource.ShowInHighScore</label>
+    @Html.EditorFor(model => model.Account.ShowInHighScore) 
+    @Html.ValidationMessageFor(model => model.Account.ShowInHighScore)
+</div>

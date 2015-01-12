@@ -1,0 +1,25 @@
+﻿@using Resource = sGridServer.Resources.AchievementConfiguration.CreateAchievement
+@{
+    ViewBag.Title = @Resource.CreateAchievementText;
+    //The CreateAchievementView shows all the achievement types. One of them has to be selected to create a new achievement.
+}
+@model IEnumerable<SelectListItem>
+
+@using (Html.BeginForm("CreateAchievement", "AchievementConfiguration"))
+{    
+    <fieldset class="sg_editor_form"> 
+        <legend>@Resource.CreateAchievementText</legend>
+        
+        <p>
+            @Resource.AchievementPickDescription
+        </p>
+
+        <div class="sg_editor_row">
+            <label>@Resource.AchievementPickText</label>
+            @Html.DropDownList("achievementType", Model, "", new { @class = "DropDownAchievementType" })  
+        </div> 
+        <div class="sg_submit_row">
+            <input type = "submit" value = "@Resource.ButtonText"/>
+        </div>
+    </fieldset>
+}

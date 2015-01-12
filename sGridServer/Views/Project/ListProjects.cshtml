@@ -1,0 +1,21 @@
+﻿@model IEnumerable<sGridServer.Code.GridProviders.GridProjectDescription>
+
+@{
+    /*The partial ListProjectsView is responsible for rendering a List of projects. 
+     * The model of the ListProjectsView is an enumeration of GridProjectDescription objects.*/
+}
+
+@foreach (sGridServer.Code.GridProviders.GridProjectDescription project in Model)
+{
+    <div class="sg_list_row">
+        <div class="sg_list_image">
+            <img src="@Url.Content(project.IconUrl)" class="sg_list_image" alt="" /> 
+        </div>
+        <div class="sg_list_text">
+            <a href="@Url.Action("ProjectDetail", new { name = project.ShortName })">@project.Name</a>
+        </div>
+    </div>
+    <hr style="display: block; height: 1px;
+    border: 0; border-top: 1px solid #d8e7ee;
+    margin: 0 0; padding: 0;"/>
+}

@@ -1,0 +1,49 @@
+﻿@using Resource = sGridServer.Resources.Friends.RemoveFriend
+
+@{
+    /*The partial RemoveFriendView shows the message which has to be confirmed by the user 
+     * in order to remove the friendship relationship with the selected user. 
+     * The model of the RemoveFriendView is a User object. 
+     * This PartialView shows a pop-up and the user has to confirm or cancel the remowing of his friend.*/
+}
+
+<script type="text/javascript">
+
+    //shows a pop-up to remove a friend with the given id and name
+    showRemoveFriendView = function (id, name) {
+        //the context of the pop-up
+        $("#remove_friend").html("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin: 0 7px 20px 0;\"></span>@Html.Raw(String.Format(Resource.PopUp, "\" + name + \""))</p>");
+        //the properties of the window for the pop-up
+        $("#remove_friend").dialog({ 
+            resizable: false,
+            height: 200,
+            modal: true,
+            buttons: {
+                //removes a friend with the given id, closes the pop-up and reloads the FriendsOverviewView by clicking the "Yes"-button  
+                "Yes": function (model) {
+                    $(this).dialog("close");
+                     $.ajax({
+                            url: "@Url.Action("RemoveFriendAction")",
+                            cache: false,
+                            async: true,
+                            type: "POST",
+                            data: { userId: id },
+                            success: function () {
+                                window.location.reload();
+                            }
+                    });
+                },
+                //closes the pop-up by clicking the "No"-button
+                "No": function () {
+                    $(this).dialog("close");
+                    }
+                }
+            });
+         };
+  </script>
+
+<div id="remove_friend" title="Remove" style="display: none;"></div>
+
+
+
+

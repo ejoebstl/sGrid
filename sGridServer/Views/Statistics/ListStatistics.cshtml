@@ -1,0 +1,19 @@
+﻿@model sGridServer.Code.GridProviders.GridPerformanceData
+@using Resource = sGridServer.Resources.Statistics.ListStatistics
+
+@{
+    /*The partial ListStatisticsView is responsible for rendering a basic statistic. 
+     * The ListStatisticsView can be dynamically reloaded when the user switches from all users’ statistics to user only statistic or vice versa. 
+     * The model of the ListStatisticsView is an enumeration of ProjectPerformanceData objects.*/ 
+}
+@if (Model != null)
+{
+   
+    <div><b>@Resource.ResultsText</b> @Model.ResultCount</div>
+    <div><b>@Resource.UptimeText</b> @Html.TimeSpan(new TimeSpan(0, 0, Model.TotalRuntime)) </div>
+    <div><b>@String.Format(Resource.LastResult, Model.TimeOfLastResult)</b></div>
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}

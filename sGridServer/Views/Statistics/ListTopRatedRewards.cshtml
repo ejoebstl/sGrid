@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Reward>
+@using Resource = sGridServer.Resources.Statistics.ListTopRatedRewards
+<table border = "1px;" style = "border: 1px solid #d8e7ee; padding: 0px 0px 0px 0px; border-spacing: 0px; border-collapse: collapse;" cellspacing="0px" cellpadding="0px">
+    <tr style="height: 2em;">
+    <th colspan="3" style = "color: #066375">@Resource.TopRewards</th>
+    </tr>
+    <tr style="height: 1.7em;">
+        <td style = "width: 25px; text-align:center"><span><b style="color: #5c6b72">#</b></span></td>
+        <td style = "width: 120px; text-align:center"><span><b style="color: #5c6b72">@Resource.Name</b></span></td>
+        <td style = "width: 100px; text-align:center"><span><b style="color: #5c6b72">@Resource.Rating</b></span></td>
+    </tr>
+@if (Model != null)
+{
+    int i = 1;
+    
+    foreach (Reward u in Model)
+    {
+        if (i % 2 == 0)
+        {
+            <tr style="height: 1.7em;">
+                <td style = "width: 25px; text-align:center">
+                    <span style="color: #5c6b72">@i</span>
+                </td>
+                <td style = "width: 120px; text-align:center">
+                    <span style="color: #e87851">@u.Name</span>
+                </td>
+                <td style = "width: 100px; text-align:center">
+                    <span style="color: #5c6b72">
+                    @if (u.Ratings.Count != 0)
+                    {
+                        double Ranking = u.Ratings.Average(x => x.RatedWith);
+                        for (int j = 1; j <= Ranking; j++)
+                        {
+                            <img src = "@Url.Content("~/Content/images/buttons/star.gif")" alt = "ranking" style = "width: 10px; height: 10px;"/>
+                        }
+                    }
+                    </span>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr style="height: 1.7em; background-color: #f3f8fa">
+                <td style = "width: 25px; text-align:center">
+                    <span style="color: #5c6b72">@i</span>
+                </td>
+                <td style = "width: 120px; text-align:center">
+                    <span style="color: #e87851">@u.Name</span>
+                </td>
+                <td style = "width: 100px; text-align:center">
+                    <span style="color: #5c6b72">
+                    @if (u.Ratings.Count != 0)
+                    {
+                        double Ranking = u.Ratings.Average(x => x.RatedWith);
+                        for (int j = 1; j <= Ranking; j++)
+                        {
+                            <img src = "@Url.Content("~/Content/images/buttons/star.gif")" alt = "ranking" style = "width: 10px; height: 10px;"/>
+                        }
+                    }
+                    </span>
+                </td>
+            </tr>
+        }
+        i++;
+    }
+}
+    <tr style="height: 1.7em;">
+        <td colspan="3"><a href="@Url.Action("RewardOverview", "CoinExchange")" style="font-size: 0.8em; float: right; margin-right: 10px;">@Resource.ViewAll</a></td>
+    </tr>
+</table>

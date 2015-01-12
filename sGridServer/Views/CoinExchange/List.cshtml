@@ -1,0 +1,45 @@
+﻿@{
+    //The ListView is responsible for rendering a List of rewards.
+}
+@model IEnumerable<Reward>
+@using Resource = sGridServer.Resources.CoinExchange.List
+
+<div class = "sg_list_row">
+    <div class = "sg_list_text" style = "width: 50px;"></div>
+    <div class = "sg_list_text" style = "width: 100px;"><b style="color: #5c6b72">@Resource.Name</b></div> 
+    <div class = "sg_list_text" style = "width: 100px;"><b style="color: #5c6b72">@Resource.Cost</b></div>
+    <div class = "sg_list_text" style = "width: 100px;"><b style="color: #5c6b72">@Resource.Availiable</b></div>            
+    <div class = "sg_list_text" style = "width: 100px;"><b style="color: #5c6b72">@Resource.Popularity</b></div>
+    <div class = "sg_list_text"><b style="color: #5c6b72">@Resource.Rating</b></div>
+</div>
+
+@foreach (Reward item in Model)
+{
+    <div class = "sg_list_row">        
+        <div class = "sg_list_image">
+            @if (item.Picture != null && item.Picture != "")
+            {
+                <a href = "@Url.Action("Detail", new { id = item.Id })">
+                    <img src = "@Url.Content(item.Picture)" class = "sg_list_image" alt = "@Resource.Picture"/>
+                </a>
+            }        
+        </div>
+        <div class = "sg_list_text">
+            <div class = "sg_list_text" style = "width: 100px;"><a href = "@Url.Action("Detail", new { id = item.Id })"><b> @item.Name</b></a></div> 
+            <div class = "sg_list_text" style = "width: 100px; background-color: #f3f8fa">@item.Cost</div>
+            <div class = "sg_list_text" style = "width: 100px;">@item.Amount</div>
+            <div class = "sg_list_text" style = "width: 100px; background-color: #f3f8fa">@Html.Raw(item.Purchases.Sum(x => x.Amount))</div>
+            @if (item.Ratings.Count != 0)
+            {
+                //show rating by showing the corresponding number of "ranking stars".
+                <div class = "sg_list_text">@{double Ranking = item.Ratings.Average(x => x.RatedWith);}
+                @for (int i = 1; i <= Ranking; i++)
+                {
+                    <img src = "@Url.Content("~/Content/images/buttons/star.gif")" alt = "ranking" style = "width: 10px; height: 10px;"/>
+                }
+                </div>
+            }
+        </div>
+    </div>       
+}
+  

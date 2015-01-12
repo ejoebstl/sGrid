@@ -1,0 +1,44 @@
+﻿@{
+    //The partial AchievementsListView is responsible for rendering a list of achievements.
+}
+@model IEnumerable<Achievement>
+@using Resource = sGridServer.Resources.UserAchievement.UserAchievement
+<script type="text/javascript">
+    $().ready(function () {
+        //show popup with a detail achievement view.
+        $(".openDialog").live("click", function (e) {
+            e.preventDefault();
+
+            $('<div/>')
+                .addClass("dialog")
+                .appendTo("body")
+                .dialog({
+                    title: $(this).attr("data-dialog-title"),
+                    close: function () { $(this).remove() },
+                    modal: true
+                })
+                .load(this.href, {});
+        });
+
+        $(".close").live("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+</script>
+
+@foreach (sGridServer.Code.DataAccessLayer.Models.Achievement item in Model)
+{
+    <div class = "sg_list_row">
+        <div class = "sg_list_image">
+            @if (item.Icon != "")
+            {
+            <img src = "@Url.Content(item.Icon)" class = "sg_list_image" alt = "@Resource.Icon"/>
+            }
+        </div>
+        <div class = "sg_list_text">
+            @Html.ActionLink(item.Name, "AchievementDetail", "UserAchievement", new { id = item.AchievementId},
+            new { @class = "openDialog", data_dialog_id = "achievement", data_dialog_title = @Resource.DetailTitleText })      
+        </div>
+    </div>   
+}

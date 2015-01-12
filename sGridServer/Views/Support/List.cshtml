@@ -1,0 +1,44 @@
+﻿@model IEnumerable<sGridServer.Code.DataAccessLayer.Models.Message>
+@using Resource = sGridServer.Resources.Support.List
+
+@{
+    /*The partial ListView is responsible for rendering a List of messages. 
+     * The ListView can be dynamically reloaded when the user type or messages type settings are changed. 
+     * The model of the ListView is an enumeration of Message objects. */
+    
+    String from;
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+        //styles for this view  
+        $(".sg_list_row, .sg_list_text").uniform();
+    });
+</script>
+
+@if (Model != null)
+{
+    foreach (sGridServer.Code.DataAccessLayer.Models.Message m in Model)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_text">
+                @m.Id)
+                <a href="@Url.Action("DetailMessage", new { id = m.Id })">@m.Subject</a>
+                @if(m.Account != null)
+                {
+                    from = m.Account.Nickname;
+                } 
+                else 
+                {
+                    from = m.EMail;
+                }
+
+                @Resource.FromText @from
+            </div>
+        </div> 
+    }
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}

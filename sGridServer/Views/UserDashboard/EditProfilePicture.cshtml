@@ -1,0 +1,20 @@
+﻿@{
+    //The partial EditProfilePictureView is responsible for showing the form to edit a user’s profile picture.
+}
+@model User
+@using Resource = sGridServer.Resources.UserDashboard.Dashboard
+<p style="text-align: center">
+<img src="@Url.Content(Model.Picture)" class = "profile_picture_big" style = "margin: auto" alt = "@Resource.Picture"/>
+</p>
+<script type="text/javascript">
+    $().ready(function () {
+        $(".sg_styled_input").uniform();
+    });
+</script>
+@using (Html.BeginForm("UploadProfilePicture", "UserDashboard", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="text-align: center;">
+        <input type="file" name="file" id="file" style="width: 270px;" class="sg_styled_input"/><br />
+        <input type="submit" value="@Resource.Submit" class="sg_styled_input"/>
+    </div>
+}

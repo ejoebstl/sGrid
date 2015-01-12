@@ -1,0 +1,10 @@
+﻿@model IEnumerable<sGridServer.Models.MenuItem>
+@{
+    /* The partial SubMenu view is responsible for rendering the page's sub menu. */
+}
+<ul>
+@foreach (sGridServer.Models.MenuItem m in Model)
+{
+    <li><a href="@Url.Content(m.LinkUrl)" target="@m.LinkTarget">@m.LinkText</a></li>
+}
+</ul>

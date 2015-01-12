@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = @Resource.TitleText;
+    //The AchievementDetailView is responsible for showing a detailed achievement.
+}
+@model Achievement
+@using Resource = sGridServer.Resources.AchievementConfiguration.AchievementDetail
+
+<div style="width : 600px; display: table;">
+    <h3>@Resource.PropertiesText @Model.Name</h3>
+    <div style="width: 150px; margin-top: 30px; float: left; height: 150px">
+        <img src="@Url.Content(Model.Icon)" alt="@Resource.Icon" width="150px" height="150px"/>
+    </div>
+    <p style="margin-top: 44px;">
+        <b>@Resource.Name: </b> @Model.Name <br />
+        <b>@Resource.AchievementId: </b> @Model.AchievementId <br />
+        <b>@Resource.Active: </b> @Model.Active <br />
+        <b>@Resource.AchievementType: </b> @Model.AchievementType <br />
+        <b>@Resource.BonusCoins: </b> @Model.BonusCoins <br />
+        <b>@Resource.Description: </b> @Model.Description <br />
+        <b>@Resource.ExtendedParameters: </b> <br /> <input type="text" readonly="readonly"value="@Model.ExtendedParameters" class="sg_styled_input" style="width: 400px"/> <br />
+        <b>@Resource.Icon: </b> <br /> <input type="text" readonly="readonly" value="@Model.Icon" class="sg_styled_input" style="width: 400px"/> <br />
+        <input type="button" class="sg_styled_button" value="@Resource.Edit" style="float:right" onclick="location.href = '@Url.Action("EditAchievement", "AchievementConfiguration", new { id = Model.AchievementId})'" />
+    </p>
+</div>

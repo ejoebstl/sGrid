@@ -1,0 +1,23 @@
+﻿@using Resource = sGridServer.Resources.About
+
+@{
+    ViewBag.Title = Resource.AboutUs.AboutUsText;
+    
+    // This View contains tabs with the PartialViews which shows the information about project, grid computing etc.
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+    //makes tabs in that View
+    $("#controls").tabs()
+    });
+</script>
+
+<div id = "controls" style="font-size: 11px">
+<ul>
+    <li><a href="@Url.Action("AboutUs")">@Resource.AboutUs.AboutUsText</a></li>
+    <li><a href="@Url.Action("SGridHistory")">@Resource.SGridHistory.SGridHistoryText</a></li>
+    <li><a href="@Url.Action("AwardSystem")">@Resource.AwardSystem.AwardSystemText</a></li>
+    <li><a href="@Url.Action("GridComputing")">@Resource.GridComputing.GridComputingText</a></li>
+</ul>
+</div>

@@ -1,0 +1,22 @@
+﻿@model sGridServer.Code.GridProviders.GridPerformanceData
+@using Resource = sGridServer.Resources.Project.ListProjectStatistics
+
+@{
+    /*The partial ListProjectStatisticsView is responsible for rendering a project statistic. 
+     * The model of the ListProjectStatisticsView is a ProjectPerformanceData object.*/
+}
+
+@if (Model != null)
+{
+    TimeSpan runtime = new TimeSpan(0, 0, Model.TotalRuntime);
+    <div style="margin-top:10px; margin-bottom:10px">
+        <p><b>@Resource.ForText @ViewBag.ProjectName</b></p>
+        <p><i>@Resource.ResultsText</i> @Model.ResultCount</p>
+        <p><i>@Resource.TotalUptimeText</i> @Html.TimeSpan(runtime) </p>
+        <p><i>@Resource.LastResultText</i> @Model.TimeOfLastResult</p>
+    </div>
+}
+else
+{
+   <div style="margin-top:20px; margin-bottom:10px">@ViewBag.Message</div>
+}

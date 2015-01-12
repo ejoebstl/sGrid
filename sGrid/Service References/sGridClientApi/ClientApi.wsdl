@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClientApi" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/sGrid" />
+      <xsd:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/sGridServer.Code.DataAccessLayer.Models" />
+      <xsd:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClientApi_GetCurrentProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentProject" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_GetCurrentProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_GetTokenForProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTokenForProject" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_GetTokenForProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTokenForProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_PackageFinished_InputMessage">
+    <wsdl:part name="parameters" element="tns:PackageFinished" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_PackageFinished_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PackageFinishedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_TestClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestClient" />
+  </wsdl:message>
+  <wsdl:message name="IClientApi_TestClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestClientResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClientApi">
+    <wsdl:operation name="GetCurrentProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientApi/GetCurrentProject" message="tns:IClientApi_GetCurrentProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientApi/GetCurrentProjectResponse" message="tns:IClientApi_GetCurrentProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTokenForProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientApi/GetTokenForProject" message="tns:IClientApi_GetTokenForProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientApi/GetTokenForProjectResponse" message="tns:IClientApi_GetTokenForProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientApi/GetUser" message="tns:IClientApi_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientApi/GetUserResponse" message="tns:IClientApi_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PackageFinished">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientApi/PackageFinished" message="tns:IClientApi_PackageFinished_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientApi/PackageFinishedResponse" message="tns:IClientApi_PackageFinished_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientApi/TestClient" message="tns:IClientApi_TestClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientApi/TestClientResponse" message="tns:IClientApi_TestClient_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IClientApi" type="tns:IClientApi">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCurrentProject">
+      <soap:operation soapAction="http://tempuri.org/IClientApi/GetCurrentProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTokenForProject">
+      <soap:operation soapAction="http://tempuri.org/IClientApi/GetTokenForProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IClientApi/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackageFinished">
+      <soap:operation soapAction="http://tempuri.org/IClientApi/PackageFinished" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestClient">
+      <soap:operation soapAction="http://tempuri.org/IClientApi/TestClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientApi">
+    <wsdl:port name="BasicHttpBinding_IClientApi" binding="tns:BasicHttpBinding_IClientApi">
+      <soap:address location="http://localhost:5469/API/Client/ClientApi.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

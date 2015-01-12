@@ -1,0 +1,32 @@
+﻿@model sGridServer.Code.DataAccessLayer.Models.Sponsor
+@using Resource = sGridServer.Resources.PartnerSupport.BannerDetail
+
+@{
+    ViewBag.Title = "BannerDetail";
+
+    /*The BannerDetailView is responsible for showing a banner and its show frequency.
+     * The model of the BannerDetailView is a Sponsor object.
+     * The banner of the given sponsor can be approved or edited.*/
+}
+
+<h2>@Resource.OfText @Model.Nickname</h2>
+
+<div>
+    <img src="@Url.Content(Model.Banner)"  width="150px" height="35px"  alt="" />
+    <p>@Resource.FrequencyText @Model.ShowFrequency</p>
+    <p><a href="@Url.Action("EditBanner", "PartnerSupport", new { id = @Model.Id })">@Resource.EditText</a></p>
+</div>
+
+@using (Html.BeginForm("ApproveBanner", "PartnerSupport", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id);
+                                      
+    if (Model.Approved)
+    {
+       <p><span style="color: Green;">@Resource.Approved</span></p>
+    }
+    else
+    {
+       <input type="submit" id="resolve_button" class="sg_styled_button" value="@Resource.ToApprove" />
+    }
+}

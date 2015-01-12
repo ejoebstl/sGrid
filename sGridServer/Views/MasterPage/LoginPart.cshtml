@@ -1,0 +1,16 @@
+﻿@using Resource = sGridServer.Resources.MasterPage.LoginPart
+@{
+    /* The partial LoginPart view is responsible for rendering the login section. */
+}
+@if (sGridServer.Code.Security.SecurityProvider.Context != null)
+{
+     sGridServer.Code.DataAccessLayer.Models.Account currentUser = sGridServer.Code.Security.SecurityProvider.CurrentUser;
+    <li><div class="login_part_text">@String.Format(Resource.GreetText, currentUser.Nickname)</div></li>
+    <li><a href="@Url.Action("Logout")" id="logout_link">@Resource.LogoutText</a></li>
+    <li><a href="@Url.Action("ProfileDetail", "Profile", new { id = currentUser.Id })" id="profile_link" class=".last_item">@Resource.ProfileText</a></li>
+}
+else
+{
+    <li><a href="#" id="login_link">@Resource.LoginText</a></li>
+    <li><a href="#" id="register_link" class=".last_item">@Resource.RegisterText</a></li>
+}

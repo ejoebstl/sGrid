@@ -1,0 +1,35 @@
+﻿@model IEnumerable<sGridServer.Code.DataAccessLayer.Models.Reward>
+@using Resource = sGridServer.Resources.PartnerSupport.ListRewards
+
+@{
+    /*The partial ListRewardsView is responsible for rendering a list of rewards. 
+     * The model of the ListRewardsView is an enumeration of Reward objects.
+     * It shows the picture and the name of each reward in the model.
+     * By clicking at the name of a reward it redirects to the DetailRewardView.*/
+}
+
+<script type="text/javascript">
+    $().ready(function () {
+        //styles for this PartialView  
+        $(".sg_list_row, .sg_list_image, .sg_list_text").uniform();
+    });
+</script>
+
+@if (Model != null)
+{
+    foreach (sGridServer.Code.DataAccessLayer.Models.Reward r in Model)
+    {
+        <div class="sg_list_row">
+            <div class="sg_list_image"> 
+                <img src = "@Url.Content(r.Picture)" class="sg_list_image" alt="" /> 
+            </div>
+            <div class="sg_list_text">
+                <a href="@Url.Action("RewardDetail", new { id = r.Id })">@r.Name</a>
+            </div>
+        </div>     
+    }
+}
+else
+{
+    <div style="margin-top:10px; margin-bottom:10px">@ViewBag.Message</div>
+}

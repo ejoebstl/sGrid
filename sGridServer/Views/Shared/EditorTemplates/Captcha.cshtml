@@ -1,0 +1,10 @@
+﻿@model sGridServer.Models.Captcha
+
+<div class="sg_captcha_box">
+    <img src="@Model.ImageUrl" class="sg_captcha_image" /><br />
+
+    @Html.TextBoxFor(model => model.EnteredText)
+    @Html.HiddenFor(model => model.Code)
+    @Html.HiddenFor(model => model.ImageUrl)
+</div>
+<div style="clear: both"></div>

@@ -1,0 +1,77 @@
+﻿@model ProfileDetailModel
+@using Resource = sGridServer.Resources.Profile.ProfileDetail
+
+@{
+    ViewBag.Title = @Resource.TitleText;
+    //The ProfileDetailView is responsible for showing details of a specific profile. Add friend and remove friend button are shown (if needed).
+    
+    Statistics userStatistics = new Statistics(600, 250, false, false, false, false, false);
+}
+
+<h3 style = "margin-top: 30px; color: #066375"> @Model.Account.Nickname</h3>
+<div style = "float : left;">
+    <div style = "float : left;">
+    @if (Model.Account.Picture != null && Model.Account.Picture != "")
+    {
+        <img src = "@Url.Content(Model.Account.Picture)" class = "profile_picture_big" style = "margin-top: -10px;" alt = "@Resource.Icon" />
+    }
+    </div>
+    <div style = "float: left; margin-top: 85px; margin-left: 10px;">
+        <b style = "color: #066375">@Resource.Nickname:</b> <span style="color: #5c6b72">@Model.Account.Nickname</span>
+        <br />
+        <b style = "color: #066375">@Resource.RegistrationDate:</b> <span style="color: #5c6b72">@Model.Account.RegistrationDate</span>
+        <br />
+        @if (Model.FriendsNumber != -1)
+        {
+            <div><b style = "color: #066375">@Resource.FriendsNumber:</b> <span style="color: #5c6b72">@Model.FriendsNumber</span></div>
+        }
+        @if (Model.ShowAddFriendButton)
+        {
+            <div>
+            @using (Html.BeginForm("RequestFriendship", "Friends", new {userId = Model.Account.Id}, FormMethod.Post))
+            {
+                 <input type = "submit"/ value = "@Resource.AddFriend" class="sg_styled_input"/>
+            }
+            </div>
+        }
+        else if (Model.ShowRemoveFriendButton)
+        {
+            <div>
+            @using (Html.BeginForm("RemoveFriend", "Friends", new { userId = Model.Account.Id }, FormMethod.Post))
+            {
+                 <input type = "submit"/ value = "@Resource.RemoveFriend" class="sg_styled_input"/>
+            }
+            </div>
+        } 
+    </div>
+</div>
+
+<div style = "width: 320px; float:right;">
+    <div style = "float: right;"id = "top_ranked_view">
+        @Html.Action("GetTopRanked", "Statistics")
+    </div>
+    <div style = "float: right; margin-top: 20px;"id = "top_rated_view">
+        @Html.Action("GetTopRatedRewards", "Statistics")
+    </div>
+</div>
+<h3 style="color: #5c6b72">@Resource.Statistics:</h3>
+ <div id = "statistics_view" style = "float: left; width: 600;">
+    <div style="margin-left: -9px;">
+        @if(Model != null && Model.Account is User) 
+        {
+          @Html.Action("CalculatedPackages", "Statistics", new { userId = Model.Account.Id, fromDate = DateTime.MinValue, to = DateTime.MaxValue, diagramSettings = userStatistics })
+        }
+        else if(Model != null && Model.Account is CoinPartner)
+        {
+          @Html.Action("CoinPartnerStatistics", "Statistics", new { userId = Model.Account.Id, fromDate = DateTime.MinValue, to = DateTime.MaxValue, diagramSettings = userStatistics })
+        }
+    </div>
+    <div style = "height: 20px; margin-top: 10px;">    
+        @Html.ShareButton(Url.Action("ProfileDetail", "Profile", new { id = Model.Account.Id }, "http"),
+        global::sGridServer.Properties.Settings.Default.SGridLogo, "sGrid", Resource.TitleText, Resource.ShareText)
+    </div>
+</div>     
+        
+     
+
+        

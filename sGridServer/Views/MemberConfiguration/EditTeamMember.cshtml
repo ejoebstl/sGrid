@@ -1,0 +1,16 @@
+﻿@{
+        /*The EditTeamMemberView shows fields to edit team members.
+     * It uses the partial EditAccountView to edit basic fields. It provides no additional fields.*/
+}
+@model TeamMemberConfigurationModel
+@using Resource = sGridServer.Resources.MemberConfiguration.EditTeamMember
+<fieldset class="sg_editor_form"> 
+    <legend>@Resource.PropertiesText @Model.Account.Nickname</legend>
+    @using (Html.BeginForm("EditTeamMember", "MemberConfiguration"))
+    { 
+        @Html.Action("EditAccount", new { account = Model.Account })
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.Submit" /> 
+        </div>
+    }
+ </fieldset>

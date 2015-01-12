@@ -1,0 +1,37 @@
+﻿@model sGridServer.Code.DataAccessLayer.Models.Message
+@using Resource = sGridServer.Resources.Support.DetailMessage
+
+@{
+    ViewBag.Title = Resource.Title;
+
+    /*The DetailView is responsible for showing message details. 
+     * The message can be marked as resolved by pressing the according button. 
+     * The model of the DetailMessageView is a Message object.*/
+}
+
+@using (Html.BeginForm("ResolveMessage", "Support", FormMethod.Post))
+{
+    <fieldset>
+        <legend>@Resource.DetailsOfMessage @Model.Id</legend>
+        <h4>@Model.Subject</h4>
+        @if (Model.Account == null)
+        {
+            <p>@Resource.SentFromText @Model.EMail</p>
+        }
+        else
+        {
+            <p>@Resource.SentFromUserText @Model.Account.Nickname</p>
+        }
+        <p>@Model.MessageText</p>
+
+        @Html.HiddenFor(model => model.Id)
+        @if (Model.Resolved)
+        {
+            <p> <span style="color: Green;">@Resource.ResolvedText</span></p>
+        }
+        else
+        {
+            <input type="submit" class="sg_styled_button" id="resolve_button" value="@Resource.ToResolveText" />
+        }
+    </fieldset>
+}

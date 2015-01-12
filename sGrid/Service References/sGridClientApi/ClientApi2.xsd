@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/sGrid" />
+  <xs:import schemaLocation="http://localhost:5469/API/Client/ClientApi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/sGridServer.Code.DataAccessLayer.Models" />
+  <xs:element name="GetCurrentProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="authentication" nillable="true" type="q1:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="GetCurrentProjectResult" nillable="true" type="q2:ProjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTokenForProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="authentication" nillable="true" type="q3:Credential" />
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTokenForProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="GetTokenForProjectResult" nillable="true" type="q4:ProjectData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="authentication" nillable="true" type="q5:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/sGridServer.Code.DataAccessLayer.Models" minOccurs="0" name="GetUserResult" nillable="true" type="q6:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PackageFinished">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="message" nillable="true" type="q7:StatusMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PackageFinishedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="authentication" nillable="true" type="q8:Credential" />
+        <xs:element minOccurs="0" name="clientversion" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/sGrid" minOccurs="0" name="TestClientResult" type="q9:TestResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

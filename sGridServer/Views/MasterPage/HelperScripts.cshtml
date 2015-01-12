@@ -1,0 +1,30 @@
+﻿@{
+    /* The partial HelperScripts view is responsible for rendering javascript functions which are globally available. */
+}
+
+<!-- Global helpers -->
+
+<script type="text/javascript">
+    
+    /* Ajax helpers */
+
+    /* Returns an image tag containing the "success" image */
+    ajaxSuccess = function () {
+        return "<img src='@Url.Content("~/Content/images/ajax/finished.gif")' class='sg_ajax_icon' alt='' width='15px' height='15px' />"
+    }
+    
+    /* Returns an image tag containing the "loading" image */
+    ajaxLoader = function () {
+        return "<img src='@Url.Content("~/Content/images/ajax/loader.gif")' class='sg_ajax_icon' alt='' width='15px' height='15px' />"
+    }
+    
+    /* Returns an image tag containing the "error" image */
+    ajaxError = function () {
+        return "<img src='@Url.Content("~/Content/images/ajax/error.gif")' class='sg_ajax_icon' alt='' width='15px' height='15px' />"
+    }
+    
+    /* Applies form styles */
+    $().ready(function () {
+        $(".sg_editor_row select, .sg_captcha_box input, .sg_editor_row input, .sg_editor_row button, .sg_editor_row textarea, .sg_submit_row input, .sg_styled_button, .sg_styled_input, .sg_editor_textarea_row textarea").uniform();
+    });
+</script>

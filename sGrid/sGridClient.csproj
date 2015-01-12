@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B8E8357F-AE26-491A-ABB0-04CD71EF7871}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sGrid</RootNamespace>
+    <AssemblyName>sGrid</AssemblyName>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>ftp://waws-prod-am2-001.ftp.azurewebsites.windows.net/site/wwwroot/Content/download/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://sgrid.azurewebsites.net/Content/download/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>30</ApplicationRevision>
+    <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\sGrid.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A9DAE97AA5DE8C65FD51FCA8889AE0BFDC0A2E29</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>sGridClient_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ClientApiWrapper.cs" />
+    <Compile Include="ClientController.cs" />
+    <Compile Include="ClientEventController.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="Configurator.cs" />
+    <Compile Include="InstallationHelper.cs" />
+    <Compile Include="Listener\AuthenticationReceivedEventArgs.cs" />
+    <Compile Include="Listener\Listener.cs" />
+    <Compile Include="Resources\ClientRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ClientRes.de-DE.Designer.cs">
+      <DependentUpon>ClientRes.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Service References\sGridClientApi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInformation.cs" />
+    <Page Include="LogIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\sGridClientApi\ClientApi.disco" />
+    <Resource Include="global_prefs_override.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\sGrid Logo Small.png" />
+    <None Include="Resources\sGrid Logo Small.png" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ClientRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClientRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ClientRes.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClientRes.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Boinc\ca-bundle.crt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\COPYING">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\COPYRIGHT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\Helvetica.txf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\locale\ar\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\ar\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\be\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\be\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\bg\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\bg\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\ca\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\ca\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\cs\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\cs\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\cy\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\cy\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\da\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\da\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\de\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\de\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\el\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\el\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\es\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\es\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\fa\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\fa\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\fi\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\fi\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\fr\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\fr\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\gl\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\gl\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\he\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\he\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\hr\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\hr\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\hu\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\hu\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\it\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\it\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\ja\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\ja\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\ko\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\ko\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\lt\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\lt\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\lv\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\lv\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\nb\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\nb\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\nl\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\nl\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\nn\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\nn\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\pl\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\pl\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\pt_BR\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\pt_BR\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\pt_PT\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\pt_PT\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\ro\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\ro\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\ru\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\ru\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\sk\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\sk\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\sl\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\sl\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\sv_SE\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\sv_SE\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\tr\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\tr\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\uk\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\uk\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\zh_CN\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\zh_CN\BOINC-Manager.mo" />
+    <Content Include="Boinc\locale\zh_TW\BOINC-Client.mo" />
+    <Content Include="Boinc\locale\zh_TW\BOINC-Manager.mo" />
+    <Content Include="Boinc\Microsoft.VC80.CRT.manifest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\symsrv.yes">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\sGridClientApi\ClientApi.wsdl" />
+    <None Include="Service References\sGridClientApi\ClientApi.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\sGridClientApi\ClientApi1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\sGridClientApi\ClientApi2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\sGridClientApi\ClientApi3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\sGridClientApi\ClientApi4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\sGridClientApi\ClientApi5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\sGridClientApi\sGrid.sGridClientApi.ProjectData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\sGridClientApi\sGrid.sGridClientApi.TestResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\sGridClientApi\sGrid.sGridClientApi.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="sGridClient_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoincCore\BoincGuiRpc.Net.csproj">
+      <Project>{EEF3E246-320F-4B74-A68B-248F16D1D869}</Project>
+      <Name>BoincGuiRpc.Net</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\sGridClientApi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\sGridClientApi\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\sGridClientApi\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\sGridClientApi\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sGrid.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sGrid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="BoincGuiRpc.Net.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="sGrid.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Boinc\boinc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\boinccmd.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\BOINCGUIApp.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\boincmgr.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\boincscr.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\boincsvcctrl.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\boinctray.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\boinc_logo_black.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\dbghelp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\dbghelp95.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\libcurl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\libeay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\msvcm80.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\msvcp80.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\msvcr80.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\Skins\Default\background_image.png" />
+    <Content Include="Boinc\Skins\Default\skin.xml" />
+    <Content Include="Boinc\Skins\Default\workunit_running_image.png" />
+    <Content Include="Boinc\Skins\Default\workunit_suspended_image.png" />
+    <Content Include="Boinc\Skins\Default\workunit_waiting_image.png" />
+    <Content Include="Boinc\sqlite3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\srcsrv.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\ssleay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\symsrv.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Boinc\zlib1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

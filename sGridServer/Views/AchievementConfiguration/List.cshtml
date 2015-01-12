@@ -1,0 +1,24 @@
+﻿@{
+    /*The ListView is responsible for rendering a detailed list of achievement.
+     Icon, name and description are shown for each achievement*/
+}
+@model IEnumerable<Achievement>
+@using Resource = sGridServer.Resources.AchievementConfiguration.AchievementList
+
+@foreach (sGridServer.Code.DataAccessLayer.Models.Achievement item in Model)
+{
+    <div class="sg_list_row">
+        <div class="sg_list_image">
+            <a href="@Url.Action("AchievementDetail", new { id = item.AchievementId })">
+                <img src="@Url.Content(item.Icon)" class="sg_list_image" alt="@Resource.Icon"/>
+            </a>
+        </div>     
+        <div class="sg_list_text" style="min-width: 150px">
+            <b>@Html.ActionLink(item.Name, "AchievementDetail", new { id = item.AchievementId }) </b>
+        </div>
+        <div class="sg_list_text">
+            @item.Description
+        </div>
+    </div>  
+}
+

@@ -1,0 +1,19 @@
+﻿@using Resource = sGridServer.Resources.MasterPage.AccountBalance
+@{
+    /* The partial AccountBalance view is responsible for showing the account balance of the current user, if applicable. */
+}
+@if (sGridServer.Code.Security.SecurityProvider.CurrentUser is User)
+{
+    <div id="account_balance_container">
+        <img src="@Url.Content("~/Content/images/coins.png")" alt="@Resource.AccountBalanceText"/>
+        <p id="account_balance">
+
+        </p>
+    </div>
+}
+else if (sGridServer.Code.Security.SecurityProvider.Context == null) 
+{
+    <div id="join_container">
+        <a href="#" onclick="javascript:showRegistrationView()">@Resource.Join</a> 
+    </div>
+}

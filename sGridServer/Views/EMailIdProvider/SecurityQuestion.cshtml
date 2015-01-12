@@ -1,0 +1,38 @@
+﻿@model sGridServer.Models.SecurityQuestion
+@using Resource = sGridServer.Resources.EMailIdProvider.SecurityQuestion
+
+@{
+    ViewBag.Title = Resource.Title;
+
+    /* The EMailIdProvider SecurityQuestion view handles the check of the security question when conducting a password reset for coin partners. */
+    
+    if (Session["ClientLayout"] != null)
+    {
+        Layout = "~/Views/Shared/_Client.cshtml";
+    }
+}
+
+@using(Html.BeginForm("SecurityQuestion", "EMailIdProvider"))
+{
+    <fieldset class="sg_editor_form"> 
+        <legend>@Resource.Title</legend>
+        <p>
+            @Resource.Description
+        </p>
+        <span class="field-validation-error">@ViewBag.ErrorMessage</span>
+        
+        <p>
+            <span style="font-weight: bold">@Resource.Question:</span>
+            <i>@Model.Question</i>
+        </p>
+        
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.Answer, Resource.Answer)
+            @Html.TextBoxFor(model => model.Answer)
+        </div> 
+        
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.SubmitText" />
+        </div>
+    </fieldset>
+}

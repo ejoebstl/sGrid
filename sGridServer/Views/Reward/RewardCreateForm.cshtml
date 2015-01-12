@@ -1,0 +1,114 @@
+﻿@model sGridServer.Models.RewardModel
+
+@using Resource = sGridServer.Resources.Rewards.RewardRes
+
+@{
+    ViewBag.Title = Resource.Title;
+    int i = 0; //Counter for unique ID generation. 
+}
+@{/*This view shows a reward that can be changed or created.*/}
+
+@{/*script for the DateTimePicker*/}
+<script type="text/javascript">
+    $().ready(function () {
+        $.each($(".reward_date_picker"), function () {
+            $(this).datepicker({
+                dateFormat: "yy-MM-dd",
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                onClose: function (selectedDate) {
+                    $(this).val(selectedDate);
+                },
+                hideIfNoPrevNext: false
+            });
+        });
+    });
+
+</script>
+
+@using (Html.BeginForm("Submit", "Reward", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset class="sg_editor_form"> 
+        <legend>@Resource.Title</legend>
+        @{/*if errors occured during the first try to submit,
+           * they will be shown here*/}
+        @if ((ViewBag.RewardErrorMessage != null) && (ViewBag.RewardErrorMessage != ""))
+        {
+            <p>@ViewBag.RewardErrorMessage</p>
+        }
+        
+        <p>@Resource.FormHello</p>
+
+        @{/*shows the image and gives the possibility to change it*/}
+        <div class="sg_editor_row" style = "height: 150px;">
+        @if (Model.Icon != null && Model.Icon != "")
+        {
+            <div class="sg_editor_row">
+                <label>@Resource.CurrentImage</label>
+                <img src="@Url.Content(Model.Icon)" alt="" width="150px" height="150px" />
+            </div>
+        }
+        </div>
+        <div class="sg_editor_row">
+            <label>@Resource.NewImage</label>
+            <input type="file" name="file" id="file" />
+        </div>
+
+        @{/*the multi language strings name, description and shortDescription can be changed here*/}
+        <div class="sg_editor_language_row">
+            <label>@Html.LabelFor(model => model.Name)</label>
+            @Html.EditorFor(model => model.Name)
+        </div>
+        <div class="sg_editor_language_row">
+            <label>@Html.LabelFor(model => model.Description)</label>
+            @Html.EditorFor(model => model.Description)
+        </div>
+        <div class="sg_editor_language_row">
+            <label>@Html.LabelFor(model => model.ShortDescription)</label>
+            @Html.EditorFor(model => model.ShortDescription)
+        </div>
+
+        @{/*a field for the coin partner if the reward is created by an admin*/}
+        @if ((Model.RewardId < 0) && (sGridServer.Code.Security.SecurityProvider.CurrentUser.UserPermission == SiteRoles.Admin))
+        {
+            <div class="sg_editor_row">
+                <label>@Html.LabelFor(model => model.CoinPartnerId)</label>
+                @Html.EditorFor(model => model.CoinPartnerId)
+            </div>
+        }
+
+        @{/*for every property a field is created*/}
+        @for (int n = 0; n < Model.StringProperties.Count; n++)
+        {
+            <div class="sg_editor_row">
+                <label>@Model.StringProperties[n].ShowName</label>
+                @Html.EditorFor(model => model.StringProperties[n].Value)
+                @Html.HiddenFor(model => model.StringProperties[n].PropertyName)
+                @Html.HiddenFor(model => model.StringProperties[n].ShowName)
+            </div>
+        }
+        
+        @{/*for every property with the type DateTime a picker is created*/}
+        @for (int n = 0; n < Model.DateTimeProperties.Count; n++)
+        {
+            
+            <div class="sg_editor_row">
+                <label>@Model.DateTimeProperties[n].ShowName</label>
+                @{/*Unique ID auto-generation*/}
+                @Html.TextBoxFor(model => model.DateTimeProperties[n].Value, new { @class = "reward_date_picker", @id = "dateTimeProperty" + (i++) }) 
+                @Html.HiddenFor(model => model.DateTimeProperties[n].PropertyName)
+                @Html.HiddenFor(model => model.DateTimeProperties[n].ShowName)
+            </div>
+        }
+        
+        <div class="sg_submit_row">
+        @{/*finally the submit button and the cancel link are here*/}
+            <input type="submit" value="@Resource.Submit" />
+            @Html.ActionLink(Resource.Cancel, "Cancel", "Reward")
+
+            @Html.HiddenFor(model => model.RewardType)
+            @Html.HiddenFor(model => model.RewardId)
+        </div>
+    </fieldset>
+}

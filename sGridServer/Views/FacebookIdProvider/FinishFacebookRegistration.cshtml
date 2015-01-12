@@ -1,0 +1,46 @@
+﻿@model FacebookRegistrationData  
+@using Resource = sGridServer.Resources.FacebookIdProvider.Register
+
+@{
+    /* The FinishFacebookRegistration view gathers data from the user, so the facebook registration can be finished */
+    ViewBag.Title = Resource.Title;
+}
+
+@using (Html.BeginForm("FinishFacebookRegistration", "FacebookIdProvider", FormMethod.Post))
+{  
+    <fieldset class="sg_editor_form"> 
+        <legend>@Resource.Title</legend>
+        
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.Nickname, Resource.Nickname)
+            @Html.TextBoxFor(model => model.Nickname) 
+            @Html.ValidationMessageFor(model => model.Nickname)
+            <span class="field-validation-error">@ViewBag.UsernameMessage</span>
+        </div> 
+        
+        <div class="sg_editor_row">
+            @Html.LabelFor(model => model.EMailAddress, Resource.EMailAddress)
+            @Html.TextBoxFor(model => model.EMailAddress) 
+            @Html.ValidationMessageFor(model => model.EMailAddress)
+            <span class="field-validation-error">@ViewBag.EMailMessage</span>
+        </div> 
+        
+        <div class="sg_editor_row">
+            <label>@Resource.AllowFacebookPicture</label>
+            @Html.CheckBoxFor(model => model.GetPictureFormFacebook) 
+            <div style="clear: both;"></div>
+        </div> 
+        
+        <div class="sg_editor_row">
+            <label>@Resource.PicturePreview</label>
+            <img src="@Url.Content(Model.PictureUrl)" width="50px" height="50px" alt=""/>
+        </div> 
+        
+        <div class="sg_submit_row">
+            <input type="submit" value="@Resource.SubmitText" class="SendButton"/>
+            @Html.HiddenFor(model => model.Culture)
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.PictureUrl)
+        </div>
+    </fieldset>
+}

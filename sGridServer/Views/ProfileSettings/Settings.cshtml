@@ -1,0 +1,28 @@
+﻿@using Resource = sGridServer.Resources.ProfileSettings.Settings
+@{
+    ViewBag.Title = @Resource.Title;
+    /*The SettingsView is responsible for rendering the partial GeneralView,
+    PrivacyView or NotificationView and for providing controls to change the shown partial view.*/
+}
+<script type="text/javascript">
+    $().ready(function () {
+        //add jQuery tab control to show general, notifications and privacy settings.
+        $( "#controls" ).tabs({
+          beforeLoad: function( event, ui ) {
+            ui.jqXHR.error(function() {
+              ui.panel.html(
+                "@Resource.TabLoadFailure");
+            });
+          }
+        });
+    });
+</script>
+
+<h2>@Resource.MySettings</h2>
+<div id = "controls" style="font-size: 11px">
+    <ul>
+        <li><a href="@Url.Action("General")">@Resource.General</a></li>
+        <li><a href="@Url.Action("Notifications")">@Resource.Notifications</a></li>
+        <li><a href="@Url.Action("Privacy")">@Resource.Privacy</a></li>
+    </ul>
+</div>

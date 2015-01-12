@@ -1,0 +1,57 @@
+﻿@{
+    /*The partial NotificationsView is responsible for showing the user’s notification settings.
+     This settings can be changed by the user.*/
+}
+@model Account
+@using Resource = sGridServer.Resources.ProfileSettings.Settings
+
+<script type = "text/javascript">
+    $().ready(function () {
+        $("#submit_button_notifications").click(function (data) {
+            //start loader animation
+            $("#loader_notifications").html(ajaxLoader());
+            //send data to the server, change loader by success or error
+            $.ajax({                
+                    url: "@Url.Action("Notifications")",
+                    cache: false,
+                    async: true,
+                    data: { notifyOnAchievementReached: $('#get_achievement').attr("checked") == "checked",
+                            notifyOnCoinBalanceChanged: $('#changed_balance').attr("checked") == "checked" ,
+                            notifyOnProjectChanged: $('#changed_project').attr("checked") == "checked"},
+                    type: "POST",
+                    error: function (result) { 
+                        $("#loader_notifications").html(ajaxError());
+                    }, 
+                    success: function(result) { 
+                        $("#loader_notifications").html(ajaxSuccess());
+                    }
+            });
+         });
+        
+         $(".sg_editor_row select, .sg_editor_row input, .sg_submit_row input").uniform();
+     });
+</script>
+@using (Html.BeginForm())
+{
+    <fieldset class="sg_editor_form"> 
+        <p>
+            @Resource.Notify
+        </p>
+        <div class="sg_editor_row">
+            <label>@Resource.NotifyOnAchievementReached</label>
+            <input type="checkbox" id = "get_achievement" @(Model.NotifyOnAchievementReached ? "checked=\"checked\"" : "")/>
+        </div>
+        <div class="sg_editor_row">
+            <label>@Resource.NotifyOnProjectChanged</label>
+            <input type="checkbox" id = "changed_project" @(Model.NotifyOnProjectChanged ? "checked=\"checked\"" : "")/>
+        </div>
+        <div class="sg_editor_row">
+            <label>@Resource.NotifyOnBalanceChanged</label>
+            <input type="checkbox" id = "changed_balance" @(Model.NotifyOnCoinBalanceChanged ? "checked=\"checked\"" : "")/>
+        </div>
+   
+        <div class="sg_submit_row">
+            <input type="button" id = "submit_button_notifications" value="@Resource.Submit"/><span id="loader_notifications"></span>
+        </div>
+    </fieldset>
+}

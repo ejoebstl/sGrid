@@ -1,0 +1,57 @@
+﻿@model sGridServer.Controllers.DebugModel
+
+@{
+    ViewBag.Title = "Debug-Seite";
+}
+
+<h2>Debug-Seite</h2>
+<p class="field-validation-error">@ViewBag.ErrorMessage</p>
+@if(sGridServer.Code.Security.SecurityProvider.Context == null) {
+<p>
+    Mich anmelden als: 
+    @Html.ActionLink("Benutzer", "LoginAsUser"), 
+    @Html.ActionLink("CoinPartner", "LoginAsPartner"), 
+    @Html.ActionLink("Sponsor", "LoginAsSponsor") oder
+    @Html.ActionLink("sGrid Team", "LoginAsAdmin")
+</p>
+} else {
+<p>
+    @{sGridServer.Code.DataAccessLayer.Models.Account account = sGridServer.Code.Security.SecurityProvider.CurrentUser; }
+    Derzeitiger Benutzer: @account.Nickname <br />
+    Adresse: @account.EMail <br />
+    Berechtigung: @account.UserPermission <br />
+</p>
+    if (account.UserPermission == SiteRoles.CoinPartner)
+    {
+        sGridServer.Code.DataAccessLayer.Models.CoinPartner partner = sGridServer.Code.Security.SecurityProvider.CurrentUser as sGridServer.Code.DataAccessLayer.Models.CoinPartner;
+
+        using (Html.BeginForm("SetSecurityQuestion", "Debug")) 
+        {
+            <p>
+                Sicherheitsfrage: @Html.TextBox("question", partner.SecurityQuestion) <br />
+                Sicherheitsantwort: @Html.TextBox("answer", partner.SecurityAnswer) <br />
+                <input type="submit" value="Ändern" />
+            </p>
+        }
+    }
+    if (account.UserPermission == SiteRoles.User)
+    {
+        <p>
+            Mich umwandeln in: 
+            @Html.ActionLink("CoinPartner", "ElevateMeToPartner"), 
+            @Html.ActionLink("Sponsor", "ElevateMeToSponsor") oder
+            @Html.ActionLink("sGrid Team", "ElevateMeToAdmin")
+        </p>
+        <p>
+            <script type="text/javascript">
+                giveCoins = function () {
+                    $.get('@Url.Action("GiveCoins")');
+                }
+            </script>
+            <a href="javascript:giveCoins();">Mir 100 Coins geben</a>
+        </p>
+    }
+}
+
+     
+@Html.ActionLink("Testumgebung erstellen", "CreateDebugEnvironment")

@@ -1,0 +1,74 @@
+﻿@model sGridServer.Models.AchievementModel
+
+@using Resource = sGridServer.Resources.Achievements.AchievementRes
+
+@{
+    ViewBag.Title = Resource.Title;
+}
+@{/*This view shows an achievement that can be changed or created.*/}
+
+@using (Html.BeginForm("Submit", "Achievement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset class="sg_editor_from">
+        <legend>@Resource.Title</legend>
+        @{/*if errors occured during the first try to submit,
+           * they will be shown here*/}
+        @if ((ViewBag.AchievementErrorMessage != null) && (ViewBag.AchievementErrorMessage != ""))
+        {
+            <p>@ViewBag.AchievementErrorMessage</p>
+        }
+
+        <p>@Resource.FormHello</p>
+
+        @{/*shows the image and gives the possibility to change it*/}
+        <div class="sg_editor_row" style = "height: 150px;">
+        @if (Model.Icon != null && Model.Icon != "")
+        {
+            <div class="sg_editor_row">
+                <label>@Resource.CurrentImage</label>
+                <img src="@Url.Content(Model.Icon)" alt="" style = "width: 150px; height: 150px;"/>
+            </div>
+        }
+        </div>
+        <div class="sg_editor_row" style = "margin-top: 1px;">
+            <label>@Resource.NewImage</label>
+            <input type="file" name="file" id="file" />
+        </div>
+
+        @{/*the multi language strings name and description can be changed here*/}
+        <div class="sg_editor_language_row">
+            <label>@Html.LabelFor(model => model.Name)</label>
+            @Html.EditorFor(model => model.Name)
+        </div>
+        <div class="sg_editor_language_row">
+            <label>@Html.LabelFor(model => model.Description)</label>
+            @Html.EditorFor(model => model.Description)
+        </div>
+
+        @{/*field to change the active status*/}
+        <div class="sg_editor_row">
+            <label>@Html.LabelFor(model => model.Active)</label>
+            @Html.EditorFor(model => model.Active)
+        </div>
+
+        @{/*for every property a field is created*/}
+        @for (int n = 0; n < Model.Properties.Count; n++)
+        {
+            <div class="sg_editor_row">
+                <label>@Model.Properties[n].ShowName</label>
+                @Html.EditorFor(model => model.Properties[n].Value)
+                @Html.HiddenFor(model => model.Properties[n].PropertyName)
+                @Html.HiddenFor(model => model.Properties[n].ShowName)
+            </div>
+        }
+
+        <div class="sg_submit_row">
+        @{/*finally the submit button and the cancel link are here*/}
+            <input type="submit" value="@Resource.Submit" />
+            @Html.ActionLink(Resource.Cancel, "Cancel", "Reward")
+
+            @Html.HiddenFor(model => model.AchievementType)
+            @Html.HiddenFor(model => model.AchievementId)
+        </div>
+    </fieldset>
+}

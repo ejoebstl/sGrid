@@ -1,0 +1,19 @@
+﻿
+@model sGridServer.Code.DataAccessLayer.Models.MultiLanguageString
+@{
+    //******************************************************
+    // This source file is only here for testing/debugging
+    // and will be deleted. 
+    //******************************************************
+    //TODO EMI: Delete after testing
+    ViewBag.Title = "MultiLanguageTest";
+}
+
+<h2>MultiLanguageTest</h2>
+@using (Html.BeginForm())
+{
+@Html.EditorFor(model => model)
+    <p>Model: @Model</p>
+    <p>DisplayFor: @Html.DisplayFor(model => model)</p>
+<input type="submit" value="ok"/>
+}

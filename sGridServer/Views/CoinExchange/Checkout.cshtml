@@ -1,0 +1,62 @@
+﻿@{
+    //The CheckoutView is responsible for showing a checkout confirm dialog.
+}
+@model CheckOutData
+@{
+    Account current = sGridServer.Code.Security.SecurityProvider.CurrentUser;
+    bool show = (current != null && current is User);
+}
+@using Resource = sGridServer.Resources.CoinExchange.Checkout
+
+<script type = "text/javascript">
+    //Submit a form with given quantity and reward id as parameter, change a view with a given responce.
+    bindSubmit({
+        buttonId: "#buy_button",
+        actionUrl: '@Url.Action("PerformCheckout")',
+        data: function () {
+                return {
+                            Quantity: $("#spinner").spinner("value"),
+                            "Reward.Id": "@Model.Reward.Id" 
+                       };
+        },
+        success: function (data) {
+           $('#checkout').html(data);
+        }
+    });
+    $().ready(function () {
+        //add a jQuery spinner, change value of the cost-span on stop. 
+        var spinner = $("#spinner").spinner({
+            //set minimum value for quanity
+            min: 1,
+            stop: function (event, ui) {
+                $("#cost").html(spinner.spinner("value") * @Model.Reward.Cost);
+            }
+        });
+        //set start value to 1.
+        spinner.spinner("value", 1);
+        //style the buttons
+        $(".sg_styled_button").uniform();
+    });
+</script>
+<div id = "checkout">
+    @if (show)
+    {
+        if (Model.Reward.Picture != "")
+        {
+            <img src = "@Url.Content(Model.Reward.Picture)" class = "sg_list_image" alt = "@Resource.Icon"/>
+        }
+        <p>
+        @Resource.BuyText&nbsp
+        @Html.TextBoxFor(x => x.Quantity, new { @id = "spinner", @style = "width: 20px"}) &nbsp
+        @Model.Reward.Name@Resource.Buy</p>
+        <br />
+        <b>@Resource.Cost: </b> <span id = "cost" > @Model.Reward.Cost</span> <br />
+        <input type = "submit" id = "buy_button" class="sg_styled_button" value="@Resource.CheckoutButton" />    
+        @Html.HiddenFor(x => x.Reward.Id)
+    }
+    else
+    {
+        <p>@Resource.OnlyForRegistered<br />
+        @Resource.Please <a href="javascript:showRegistrationView()"> @Resource.Register</a> @Resource.Or&nbsp<a href="javascript:showLoginView()">@Resource.Login</a></p>
+    }
+</div>
